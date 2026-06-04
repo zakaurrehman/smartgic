@@ -12,9 +12,9 @@ export const company = {
   licenseNo: '1394564',
   authority: 'Dubai Department of Economy & Tourism (DET)',
   email: 'info@smartgic.ae',
-  phone: '+971 50 000 0000',
-  phoneHref: '+971500000000',
-  whatsapp: '971500000000',
+  phone: '+971 50 835 4654',
+  phoneHref: '+971508354654',
+  whatsapp: '971508354654',
   address: 'Business Bay, Dubai, United Arab Emirates',
   hours: 'Mon – Sat, 9:00 AM – 6:00 PM (GST)',
 };
