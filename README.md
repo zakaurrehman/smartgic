@@ -54,7 +54,7 @@ npm start
 1. Push this folder to a GitHub/GitLab/Bitbucket repo.
 2. Go to <https://vercel.com/new> and **import** the repo.
 3. Vercel auto-detects Next.js — no configuration needed. Click **Deploy**.
-4. Add your custom domain (`smartgic.ae`) under **Settings → Domains**.
+4. Add your custom domain (`smartgicvisa.com`) under **Settings → Domains**.
 
 ### Option B — Vercel CLI
 ```bash
@@ -81,7 +81,7 @@ lib/data.ts
 |-------|--------------|
 | `phone` / `phoneHref` | Your real phone number |
 | `whatsapp` | Your WhatsApp number (digits only, e.g. `9715XXXXXXXX`) |
-| `email` | Your real email (e.g. `info@smartgic.ae`) |
+| `email` | Your real email (e.g. `info@smartgicvisa.com`) |
 | `address` | Your exact office address |
 
 Other quick edits:

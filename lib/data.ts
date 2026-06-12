@@ -11,7 +11,7 @@ export const company = {
   tagline: 'Business Setup & Immigration Experts in Dubai',
   licenseNo: '1394564',
   authority: 'Dubai Department of Economy & Tourism (DET)',
-  email: 'info@smartgic.ae',
+  email: 'info@smartgicvisa.com',
   phone: '+971 50 835 4654',
   phoneHref: '+971508354654',
   whatsapp: '971508354654',

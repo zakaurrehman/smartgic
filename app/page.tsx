@@ -22,7 +22,7 @@ const jsonLd = {
   alternateName: company.fullName,
   description:
     'Dubai-licensed business setup, PRO and immigration consultancy. Company formation, trade licenses, residence & Golden Visas, corporate tax and bank account assistance.',
-  url: 'https://smartgic.ae',
+  url: 'https://smartgicvisa.com',
   telephone: company.phone,
   email: company.email,
   areaServed: 'Worldwide',

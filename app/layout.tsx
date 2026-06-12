@@ -9,7 +9,7 @@ const jakarta = Plus_Jakarta_Sans({
   display: 'swap',
 });
 
-const siteUrl = 'https://smartgic.ae';
+const siteUrl = 'https://smartgicvisa.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
