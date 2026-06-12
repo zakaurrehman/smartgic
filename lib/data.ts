@@ -15,7 +15,7 @@ export const company = {
   phone: '+971 50 835 4654',
   phoneHref: '+971508354654',
   whatsapp: '971508354654',
-  address: 'Business Bay, Dubai, United Arab Emirates',
+  address: 'Office 44, Floor M2, BN Complex, Deira Al Muteena, Dubai, UAE',
   hours: 'Mon – Sat, 9:00 AM – 6:00 PM (GST)',
 };
 
