@@ -9,44 +9,46 @@ const jakarta = Plus_Jakarta_Sans({
   display: 'swap',
 });
 
-const siteUrl = 'https://smartgicvisa.com';
+const siteUrl = 'https://www.smartgicvisa.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Smartgic Immigration | Business Setup & Visa Experts in Dubai, UAE',
-    template: '%s | Smartgic Immigration',
+    default: 'Dubai Business Setup & UAE Visa Services | Smartgic Visa',
+    template: '%s | Smartgic Visa',
   },
   description:
-    'Smartgic Immigration is a Dubai-licensed business setup, PRO and immigration consultancy. Company formation, trade licenses, residence & Golden Visas, corporate tax and bank account assistance for clients worldwide.',
+    'Begin your UAE business with the expert company formation, Golden Visa, residence visa, PRO, banking and tax services. Free consultation.',
   keywords: [
-    'business setup Dubai',
-    'company formation UAE',
-    'PRO services Dubai',
-    'trade license Dubai',
+    'Dubai business setup',
+    'UAE company formation',
     'Golden Visa UAE',
-    'residence visa Dubai',
-    'free zone company',
-    'mainland company Dubai',
-    'Smartgic Immigration',
+    'business setup Dubai',
+    'UAE residence visa',
   ],
-  authors: [{ name: 'Smartgic Immigration' }],
+  authors: [{ name: 'Smartgic Visa' }],
+  alternates: {
+    canonical: 'https://www.smartgicvisa.com/',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_AE',
-    url: siteUrl,
-    siteName: 'Smartgic Immigration',
-    title: 'Smartgic Immigration | Business Setup & Visa Experts in Dubai',
+    url: 'https://www.smartgicvisa.com/',
+    siteName: 'Smartgic Visa',
+    title: 'Dubai Business Setup & UAE Visa Services | Smartgic Visa',
     description:
-      'Dubai-licensed business setup, PRO and immigration consultancy serving founders from 120+ countries.',
+      'Begin your UAE business with the expert company formation, Golden Visa, residence visa, PRO, banking and tax services. Free consultation.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Smartgic Immigration | Business Setup & Visa Experts in Dubai',
+    title: 'Dubai Business Setup & UAE Visa Services | Smartgic Visa',
     description:
-      'Company formation, trade licenses, Golden Visas, corporate tax and banking — handled end to end in Dubai.',
+      'Company formation, Golden Visa, residence visa, PRO, banking and tax services in Dubai. Free consultation.',
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: 'H8chgkOxfRSEElSqwPSm2Z3GUWhd2Ve0p_hqYUWl_Uk',
+  },
   icons: {
     icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
   },

@@ -15,34 +15,69 @@ import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
 import { company, faqs } from '@/lib/data';
 
+const SITE = 'https://www.smartgicvisa.com';
+
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: company.legalName,
-  alternateName: company.fullName,
-  description:
-    'Dubai-licensed business setup, PRO and immigration consultancy. Company formation, trade licenses, residence & Golden Visas, corporate tax and bank account assistance.',
-  url: 'https://smartgicvisa.com',
-  telephone: company.phone,
-  email: company.email,
-  areaServed: 'Worldwide',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Dubai',
-    addressCountry: 'AE',
-    streetAddress: company.address,
-  },
-  identifier: { '@type': 'PropertyValue', name: 'DET License', value: company.licenseNo },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '512',
-  },
-  mainEntity: faqs.map((f) => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
-  })),
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE}/#organization`,
+      name: 'Smartgic Visa',
+      url: `${SITE}/`,
+      logo: `${SITE}/logo.png`,
+      description:
+        'Smartgic Visa provides UAE company formation, Golden Visa, residence visa, business setup, banking assistance, corporate tax and PRO services.',
+      email: company.email,
+      telephone: company.phone,
+      sameAs: [
+        'https://www.facebook.com/',
+        'https://www.linkedin.com/company/',
+        'https://www.instagram.com/',
+      ],
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE}/#localbusiness`,
+      name: 'Smartgic Visa',
+      url: `${SITE}/`,
+      telephone: company.phone,
+      email: company.email,
+      image: `${SITE}/logo.png`,
+      priceRange: '$$',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: company.address,
+        addressLocality: 'Dubai',
+        addressCountry: 'AE',
+      },
+      areaServed: {
+        '@type': 'Country',
+        name: 'United Arab Emirates',
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '512',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE}/#website`,
+      url: `${SITE}/`,
+      name: 'Smartgic Visa',
+      publisher: { '@id': `${SITE}/#organization` },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE}/#faq`,
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
 };
 
 export default function Home() {
