@@ -141,7 +141,7 @@ export default function Header() {
                     })}
                   </div>
                   <a
-                    href="/#services"
+                    href="/services"
                     onClick={() => setMega(false)}
                     className="mt-1 flex items-center justify-between rounded-2xl bg-brand-navy px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-navy-soft"
                   >

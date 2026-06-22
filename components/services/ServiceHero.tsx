@@ -19,7 +19,7 @@ export default function ServiceHero({ service }: { service: Service }) {
           light
           items={[
             { label: 'Home', href: '/' },
-            { label: 'Corporate Services', href: '/#services' },
+            { label: 'Corporate Services', href: '/services' },
             { label: service.navLabel },
           ]}
         />
