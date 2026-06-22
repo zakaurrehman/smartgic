@@ -1,5 +1,5 @@
 import {
-  Building2, FileCheck2, IdCard, Plane, Landmark, ScrollText,
+  Building2, FileCheck2, IdCard, Plane, Landmark,
   Briefcase, Stamp, Users, Wallet, ShieldCheck, Receipt,
   Globe2, Crown, FileSignature, BadgeCheck,
 } from 'lucide-react';
@@ -262,10 +262,10 @@ export const faqs = [
 ];
 
 export const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Free Zones', href: '#freezones' },
-  { label: 'Process', href: '#process' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Golden Visa', href: '#golden-visa' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Free Zones', href: '/#freezones' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Golden Visa', href: '/#golden-visa' },
+  { label: 'FAQ', href: '/#faq' },
 ];

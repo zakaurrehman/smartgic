@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook } from 'lucide-react';
-import { company, navLinks, services } from '@/lib/data';
+import { company, navLinks } from '@/lib/data';
+import { serviceNav } from '@/lib/services';
 import BrandMark from './ui/BrandMark';
 
 const socials = [
@@ -10,7 +11,6 @@ const socials = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const topServices = services.slice(0, 6);
 
   return (
     <footer className="relative overflow-hidden bg-brand-navy text-slate-300">
@@ -61,15 +61,17 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-white">Services</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white">
+              Corporate Services
+            </h3>
             <ul className="mt-5 space-y-3 text-sm">
-              {topServices.map((service) => (
-                <li key={service.title}>
+              {serviceNav.map((service) => (
+                <li key={service.slug}>
                   <a
-                    href="#services"
+                    href={`/services/${service.slug}`}
                     className="text-slate-400 transition-colors hover:text-brand-cyan"
                   >
-                    {service.title}
+                    {service.label}
                   </a>
                 </li>
               ))}

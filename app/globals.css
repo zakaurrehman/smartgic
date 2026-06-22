@@ -19,6 +19,7 @@
     @apply bg-white text-ink-700 antialiased;
     font-feature-settings: 'ss01', 'cv01';
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
   ::selection {
     @apply bg-brand-blue/20 text-brand-navy;

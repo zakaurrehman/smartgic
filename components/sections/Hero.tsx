@@ -62,11 +62,11 @@ export default function Hero() {
             className="mt-9 flex animate-fade-up flex-col gap-3 opacity-0 sm:flex-row sm:items-center"
             style={{ animationDelay: '360ms' }}
           >
-            <a href="#contact" className="btn-gradient group">
+            <a href="#contact" className="btn-gradient group w-full sm:w-auto">
               Get a Free Consultation
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#pricing" className="btn-white">
+            <a href="#pricing" className="btn-white w-full sm:w-auto">
               View Pricing
             </a>
           </div>
