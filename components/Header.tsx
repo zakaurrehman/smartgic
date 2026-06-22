@@ -8,9 +8,9 @@ import { serviceNav } from '@/lib/services';
 import BrandMark from './ui/BrandMark';
 
 const sectionLinks = [
-  { label: 'Free Zones', href: '/#freezones' },
-  { label: 'Pricing', href: '/#pricing' },
-  { label: 'Golden Visa', href: '/#golden-visa' },
+  { label: 'Free Zones', href: '/free-zones' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Golden Visa', href: '/golden-visa' },
 ];
 
 export default function Header() {

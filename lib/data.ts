@@ -262,10 +262,9 @@ export const faqs = [
 ];
 
 export const navLinks = [
-  { label: 'Services', href: '/#services' },
-  { label: 'Free Zones', href: '/#freezones' },
-  { label: 'Process', href: '/#process' },
-  { label: 'Pricing', href: '/#pricing' },
-  { label: 'Golden Visa', href: '/#golden-visa' },
-  { label: 'FAQ', href: '/#faq' },
+  { label: 'Home', href: '/' },
+  { label: 'Free Zones', href: '/free-zones' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Golden Visa', href: '/golden-visa' },
+  { label: 'Contact', href: '#contact' },
 ];
