@@ -17,7 +17,7 @@ const description =
   'Explore Smartgic Visa corporate services in Dubai — company registration, professional licences, bank account opening, visas, document clearing, PRO services, licence renewals and co-working space.';
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   keywords: [
     'corporate services Dubai',

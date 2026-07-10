@@ -15,7 +15,7 @@ const description =
   'Secure your 10-year UAE Golden Visa. Eligibility assessment and full application for investors, entrepreneurs, skilled professionals and talents — and your family. Free consultation.';
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   keywords: ['UAE Golden Visa', '10 year visa UAE', 'Golden Visa Dubai', 'investor Golden Visa', 'long term residency UAE'],
   alternates: { canonical: url },

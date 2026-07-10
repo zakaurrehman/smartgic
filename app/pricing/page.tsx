@@ -16,7 +16,7 @@ const description =
   'Transparent business setup pricing in Dubai — Free Zone, Mainland and Premium packages with all-inclusive quotes. No hidden fees. Get a tailored quote in minutes.';
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   keywords: ['business setup cost Dubai', 'company formation pricing UAE', 'free zone packages Dubai', 'trade licence cost Dubai', 'Smartgic pricing'],
   alternates: { canonical: url },

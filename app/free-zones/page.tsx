@@ -15,7 +15,7 @@ const description =
   'Set up in 40+ UAE free zones or on the mainland — IFZA, DMCC, Meydan, DAFZA, JAFZA, RAKEZ and more. We match your activity, budget and visa needs to the right jurisdiction.';
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   keywords: ['UAE free zones', 'free zone company Dubai', 'IFZA', 'DMCC', 'Meydan free zone', 'mainland company Dubai'],
   alternates: { canonical: url },
