@@ -1,6 +1,7 @@
 import {
   Building2, Briefcase, Wallet, Plane, FileCheck2, Landmark,
-  RefreshCw, Building, type LucideIcon,
+  RefreshCw, Building, FileSignature, Handshake, Copyright,
+  ArrowRightLeft, Archive, type LucideIcon,
 } from 'lucide-react';
 
 export type ServiceStat = { value: string; label: string };
@@ -21,6 +22,8 @@ export type Service = {
   navLabel: string;
   icon: LucideIcon;
   eyebrow: string;
+  /** Short Avyanco-style description shown under the label in the mega-menu. */
+  blurb?: string;
   title: string;
   heroSubtitle: string;
   heroHighlights: string[];
@@ -47,6 +50,7 @@ export const services: Service[] = [
     navLabel: 'Company Registration',
     icon: Building2,
     eyebrow: 'Company Formation',
+    blurb: 'Mainland, free zone & offshore setup',
     title: 'Company Registration in Dubai & the UAE',
     heroSubtitle:
       'Register your Mainland, Free Zone or Offshore company with 100% foreign ownership. We handle activity selection, trade name, approvals and your trade licence — start to finish.',
@@ -136,6 +140,7 @@ export const services: Service[] = [
     navLabel: 'Professional Services',
     icon: Briefcase,
     eyebrow: 'Professional Licence',
+    blurb: 'Consultancy & expert licences',
     title: 'Professional Services Licence in Dubai',
     heroSubtitle:
       'Launch your consultancy, agency or professional practice with a DET professional licence — 100% ownership, low capital and a fast path to investor visas.',
@@ -201,6 +206,7 @@ export const services: Service[] = [
     navLabel: 'Bank Account Opening',
     icon: Wallet,
     eyebrow: 'Corporate Banking',
+    blurb: 'Local, international & digital banks',
     title: 'Corporate Bank Account Opening in the UAE',
     heroSubtitle:
       'Open a corporate or personal bank account with leading UAE banks. We prepare a compliant application, make the introductions and guide you through KYC to approval.',
@@ -266,6 +272,7 @@ export const services: Service[] = [
     navLabel: 'Visa Services',
     icon: Plane,
     eyebrow: 'Residence Visas',
+    blurb: 'Residence, Golden, investor & family',
     title: 'UAE Visa Services — Residence, Investor & Golden Visa',
     heroSubtitle:
       'Investor, partner, employment, family and 10-year Golden Visas — processed end to end, from entry permit and medical to Emirates ID and stamping.',
@@ -331,6 +338,7 @@ export const services: Service[] = [
     navLabel: 'Document Clearing Services',
     icon: FileCheck2,
     eyebrow: 'Documents & Attestation',
+    blurb: 'Typing, notary & MOFA attestation',
     title: 'Document Clearing & Attestation Services',
     heroSubtitle:
       'Typing-centre, attestation and government document clearing handled accurately and fast — applications, approvals, MOFA and embassy attestation, and certified translation.',
@@ -396,6 +404,7 @@ export const services: Service[] = [
     navLabel: 'Corporate PRO Services',
     icon: Landmark,
     eyebrow: 'PRO & Compliance',
+    blurb: 'Government liaison, visas & attestation',
     title: 'Corporate PRO Services & Government Liaison',
     heroSubtitle:
       'Outsource your government relations to a dedicated PRO. Licence renewals, visa processing, labour and immigration cards, approvals and ongoing compliance — all managed for you.',
@@ -485,6 +494,7 @@ export const services: Service[] = [
     navLabel: 'Trade License Renewals',
     icon: RefreshCw,
     eyebrow: 'Licence Renewal',
+    blurb: 'Annual DET / DED & free zone renewal',
     title: 'Trade Licence Renewals in Dubai',
     heroSubtitle:
       'Renew your Mainland or Free Zone trade licence on time and avoid penalties. We track your expiry, renew your Ejari and licence, and keep your visas and cards aligned.',
@@ -544,12 +554,343 @@ export const services: Service[] = [
     related: ['corporate-pro-services', 'company-registration', 'document-clearing-services'],
   },
 
+  /* ───────────────────────── MOA AMENDMENTS ───────────────────────── */
+  {
+    slug: 'moa-amendments',
+    navLabel: 'MoA Amendments',
+    icon: FileSignature,
+    eyebrow: 'Company Amendments',
+    blurb: 'Activity, capital, name & legal form',
+    title: 'MOA Amendments & Company Changes in Dubai',
+    heroSubtitle:
+      'Add activities, change shareholders or managers, increase capital, rename your company or convert its legal form — we draft, notarise and register every amendment to your Memorandum of Association.',
+    heroHighlights: ['Same-Week Processing', 'Notary Handled', 'DET & Free Zones'],
+    metaTitle: 'MOA Amendments Dubai | Licence & Company Changes | Smartgic Visa',
+    metaDescription:
+      'Amend your MOA in Dubai — add activities, change shareholders or managers, increase capital, rename or convert legal form. Drafting, notary and authority processing handled.',
+    keywords: [
+      'MOA amendment Dubai',
+      'licence amendment UAE',
+      'add business activity Dubai',
+      'share capital increase UAE',
+      'company name change Dubai',
+    ],
+    overview: {
+      heading: 'Your company evolves — your MOA must keep up',
+      body: [
+        'Every meaningful change to your business — a new activity, a new partner, more capital, a new name or a different legal form — must be reflected in your Memorandum of Association and registered with the licensing authority. Left un-amended, your documents fall out of sync with reality, blocking bank updates, visas and future transactions.',
+        'Smartgic drafts the shareholder resolutions and amended MOA, handles notarisation, secures authority approvals and delivers your updated licence and MOA — typically within the same week, with zero licence downtime.',
+      ],
+    },
+    stats: [
+      { value: '2–5', label: 'Days Typical' },
+      { value: 'All', label: 'Amendment Types' },
+      { value: '100%', label: 'Notary Compliant' },
+      { value: '0', label: 'Licence Downtime' },
+    ],
+    benefits: [
+      { title: 'Activity Add / Remove', desc: 'Expand or refine what your licence covers, with the right activity codes selected first time.' },
+      { title: 'Shareholder & Manager Changes', desc: 'Bring in partners or change managers with correctly drafted resolutions and clean registration.' },
+      { title: 'Capital Increase / Decrease', desc: 'Adjust share capital with compliant documentation banks and authorities accept.' },
+      { title: 'Trade Name Change', desc: 'Rebrand with name reservation, MOA amendment and updated licence handled together.' },
+      { title: 'Legal Form Conversion', desc: 'Convert between establishment, LLC and other forms as your business matures.' },
+      { title: 'Error-Free Notarisation', desc: 'Bilingual drafting and notary appointments managed so nothing bounces back.' },
+    ],
+    process: [
+      { title: 'Review & Resolution', desc: 'We confirm the change, check authority requirements and draft the shareholder resolution.' },
+      { title: 'Draft & Notarise', desc: 'We prepare the amended MOA and complete notarisation with all signatories.' },
+      { title: 'Authority Approval', desc: 'We file the amendment with DET or your free zone and track approval.' },
+      { title: 'Updated Documents Issued', desc: 'You receive the updated licence and MOA, ready for banks and government use.' },
+    ],
+    requirements: [
+      'Current trade licence copy',
+      'Existing MOA / AOA',
+      'Shareholder passports & Emirates IDs',
+      'Details of the intended change',
+      'Shareholder resolution (we draft)',
+      'Company stamp',
+    ],
+    faqs: [
+      { q: 'Which changes need an MOA amendment?', a: 'Any change to shareholders, shareholding percentages, share capital, managers, trade name, legal form or (for many authorities) business activities requires a formal MOA amendment registered with the authority.' },
+      { q: 'How long does an amendment take?', a: 'Straightforward amendments are typically completed in 2–5 working days once all signatories are available for notarisation.' },
+      { q: 'Do all shareholders need to be present?', a: 'Signatories generally must sign before the notary, but powers of attorney can often be used — we advise the cleanest route for your case.' },
+      { q: 'Does my licence stop working during the amendment?', a: 'No. Your licence remains valid throughout; the authority simply issues updated documents once the amendment is approved.' },
+      { q: 'Can you update the bank and visas afterwards?', a: 'Yes. We update your establishment card, visas and bank records so every register reflects the new structure.' },
+    ],
+    related: ['share-transfer', 'company-registration', 'corporate-pro-services'],
+  },
+
+  /* ───────────────────────── SPONSORSHIP SERVICES ───────────────────────── */
+  {
+    slug: 'sponsorship-services',
+    navLabel: 'Sponsorship Services',
+    icon: Handshake,
+    eyebrow: 'Sponsorship & LSA',
+    blurb: 'Local sponsor & LSA arrangements',
+    title: 'Local Sponsor & LSA Services in Dubai',
+    heroSubtitle:
+      'Vetted corporate sponsorship and Local Service Agent arrangements with watertight side agreements — keep 100% operational and financial control while staying fully compliant.',
+    heroHighlights: ['100% Control Retained', 'Fixed Annual Fee', 'Watertight Agreements'],
+    metaTitle: 'Local Sponsor & LSA Services Dubai | Corporate Sponsorship | Smartgic Visa',
+    metaDescription:
+      'Reliable local sponsor and Local Service Agent (LSA) services in Dubai. Corporate nominee sponsorship, fixed annual fee, watertight side agreements, 100% control retained.',
+    keywords: [
+      'local sponsor Dubai',
+      'LSA services UAE',
+      'corporate sponsorship Dubai',
+      'local service agent UAE',
+      'UAE national sponsor',
+    ],
+    overview: {
+      heading: 'When you still need a local partner, choose a safe one',
+      body: [
+        'Since 2021 most UAE activities allow 100% foreign ownership — but certain regulated and strategic activities still require an Emirati partner, and mainland professional licences require a Local Service Agent. Who you appoint, and on what paperwork, determines how safe your business really is.',
+        'Smartgic arranges vetted corporate and individual sponsors on a fixed annual fee, protected by notarised side agreements and powers of attorney that keep 100% of operational control, profits and banking in your hands.',
+      ],
+    },
+    stats: [
+      { value: '0%', label: 'Equity Taken' },
+      { value: 'Fixed', label: 'Annual Fee' },
+      { value: '100%', label: 'Profit Retention' },
+      { value: '24h', label: 'Signature Turnaround' },
+    ],
+    benefits: [
+      { title: 'Vetted Corporate Sponsor', desc: 'A stable corporate entity rather than an individual — no succession or availability risk.' },
+      { title: 'LSA for Professional Licences', desc: 'Compliant Local Service Agent appointments with zero interference in your practice.' },
+      { title: 'Watertight Side Agreements', desc: 'Notarised agreements and POAs that legally secure your control and profits.' },
+      { title: 'Fixed Fee, No Profit Share', desc: 'A transparent annual fee — the sponsor has no claim on revenue or dividends.' },
+      { title: 'Fast Government Signatures', desc: 'Sponsor signatures for renewals, visas and amendments within 24 hours.' },
+      { title: 'Easy Exit & Transfer', desc: 'Clean transfer terms if you later restructure to 100% ownership.' },
+    ],
+    process: [
+      { title: 'Requirement Check', desc: 'We confirm whether your activity truly needs a sponsor or LSA — many no longer do.' },
+      { title: 'Sponsor Matching', desc: 'We introduce a vetted corporate or individual sponsor suited to your activity.' },
+      { title: 'Agreements & Notary', desc: 'Side agreements, POAs and the sponsorship contract are drafted and notarised.' },
+      { title: 'Registration & Ongoing Management', desc: 'The arrangement is registered and we manage sponsor signatures year-round.' },
+    ],
+    requirements: [
+      'Business activity & licence details',
+      'Shareholder passports & Emirates IDs',
+      'Current MOA (for existing companies)',
+      'Corporate documents (for corporate shareholders)',
+      'Proposed structure & control terms',
+      'Company stamp (where applicable)',
+    ],
+    faqs: [
+      { q: 'Do I still need a local sponsor in 2026?', a: 'Most commercial and industrial activities no longer require one — 100% foreign ownership is standard. However, certain strategic-impact activities still need an Emirati partner, and mainland professional licences need a Local Service Agent. We confirm your exact position before you commit to anything.' },
+      { q: 'What protects me from the sponsor claiming my business?', a: 'Notarised side agreements, powers of attorney and bank-mandate structures that keep signing authority, profits and assets exclusively with you. This is standard, court-recognised practice we implement for every arrangement.' },
+      { q: 'What does a sponsor cost?', a: 'A fixed annual fee agreed upfront — no percentage of revenue or profits. The fee depends on the activity and sponsor type.' },
+      { q: 'Corporate sponsor vs individual — which is safer?', a: 'Corporate nominee sponsorship is generally safer: it removes succession risk (death or incapacity of an individual) and gives more predictable signatures and continuity.' },
+      { q: 'Can I remove the sponsor later?', a: 'Yes. If regulations change or you restructure to an eligible 100% ownership setup, we handle the amendment and clean exit under the terms built into your agreements.' },
+    ],
+    related: ['professional-services', 'company-registration', 'moa-amendments'],
+  },
+
+  /* ───────────────────────── IP & TRADEMARK ───────────────────────── */
+  {
+    slug: 'ip-trademark',
+    navLabel: 'IP & Trademark',
+    icon: Copyright,
+    eyebrow: 'Brand Protection',
+    blurb: 'Trademark registration with the MoE',
+    title: 'Trademark Registration & IP Protection in the UAE',
+    heroSubtitle:
+      'Register your trademark with the UAE Ministry of Economy — search, filing, publication and certificate — and protect your brand name, logo and identity across the Emirates.',
+    heroHighlights: ['MoE Official Filing', '10-Year Protection', 'Search & Classes Included'],
+    metaTitle: 'Trademark Registration UAE | IP & Brand Protection Dubai | Smartgic Visa',
+    metaDescription:
+      'Register your trademark in the UAE with the Ministry of Economy. Availability search, class selection, filing, publication and certificate — full brand and IP protection.',
+    keywords: [
+      'trademark registration UAE',
+      'register trademark Dubai',
+      'brand protection UAE',
+      'IP registration Dubai',
+      'Ministry of Economy trademark',
+    ],
+    overview: {
+      heading: 'Your brand is an asset — register it before someone else does',
+      body: [
+        'The UAE is a first-to-file jurisdiction: whoever registers a trademark first generally owns it. An unregistered brand can be copied, imported against, or even registered by a competitor — forcing you into an expensive dispute or a rebrand.',
+        'Smartgic manages the full registration with the Ministry of Economy: availability search, correct NICE class selection, filing, the publication and opposition window, and your final registration certificate — plus renewals and enforcement support once you are protected.',
+      ],
+    },
+    stats: [
+      { value: '10-Yr', label: 'Protection Term' },
+      { value: '45', label: 'Trademark Classes' },
+      { value: '24h', label: 'Search Report' },
+      { value: '1st', label: 'To File Wins' },
+    ],
+    benefits: [
+      { title: 'Availability Search', desc: 'A professional search before you file — avoid rejections and conflicts with existing marks.' },
+      { title: 'Correct Class Selection', desc: 'Your goods and services mapped to the right NICE classes so protection actually covers your business.' },
+      { title: 'MoE Filing & Publication', desc: 'Complete filing with the Ministry of Economy and management of the publication stage.' },
+      { title: 'Objection & Opposition Handling', desc: 'Responses to examiner objections and third-party oppositions handled by specialists.' },
+      { title: '10-Year Protection & Renewals', desc: 'Registration valid for 10 years, with renewal reminders and processing managed for you.' },
+      { title: 'Enforcement Support', desc: 'Cease-and-desist, customs recordal and infringement action support when copycats appear.' },
+    ],
+    process: [
+      { title: 'Search & Strategy', desc: 'We run an availability search and define the classes and mark format to file.' },
+      { title: 'Filing with the MoE', desc: 'We prepare and submit your application to the Ministry of Economy.' },
+      { title: 'Publication & Opposition', desc: 'Your mark is published; we monitor and respond to any objections.' },
+      { title: 'Registration Certificate', desc: 'Your trademark certificate is issued — your brand is protected for 10 years.' },
+    ],
+    requirements: [
+      'Clear image / wordmark of the brand',
+      'Owner details (person or company)',
+      'Trade licence copy (for companies)',
+      'Passport copy (for individuals)',
+      'List of goods / services covered',
+      'Power of attorney (we prepare)',
+    ],
+    faqs: [
+      { q: 'How long does trademark registration take?', a: 'Filing is quick, but the full cycle — examination, publication, opposition window and certificate — typically takes several months. Your protection is backdated to the filing date, which is why filing early matters.' },
+      { q: 'What can I register as a trademark?', a: 'Brand names, logos, wordmarks, slogans and distinctive combinations of them. We advise on what is registrable and how to maximise protection.' },
+      { q: 'Is a UAE trademark valid in other countries?', a: 'A UAE registration protects you in the UAE. For wider coverage we can file in other GCC states or coordinate international protection strategies.' },
+      { q: 'What are trademark classes?', a: 'The NICE system divides goods and services into 45 classes. You are protected only in the classes you register, so correct selection is critical — we handle this for you.' },
+      { q: 'What if someone is already using my brand?', a: 'We assess prior use and registrations in the search stage and advise whether to file, adjust the mark, or pursue an opposition or enforcement route.' },
+    ],
+    related: ['company-registration', 'professional-services', 'document-clearing-services'],
+  },
+
+  /* ───────────────────────── SHARE TRANSFER ───────────────────────── */
+  {
+    slug: 'share-transfer',
+    navLabel: 'Share Transfer',
+    icon: ArrowRightLeft,
+    eyebrow: 'Ownership Changes',
+    blurb: 'Ownership changes & buy-outs',
+    title: 'Share Transfer & Ownership Changes in Dubai',
+    heroSubtitle:
+      'Buy-outs, new partners, exits and restructures — we draft the share transfer agreements, amend your MOA and complete authority processing without disrupting the business.',
+    heroHighlights: ['Buy-Outs & Exits', 'MOA Updated', 'Bank-Ready Records'],
+    metaTitle: 'Share Transfer Dubai | Company Ownership Changes & Buy-Outs | Smartgic Visa',
+    metaDescription:
+      'Transfer company shares in Dubai — buy-outs, partner exits and restructures. Share purchase agreements, MOA amendment and authority processing handled end to end.',
+    keywords: [
+      'share transfer Dubai',
+      'company ownership change UAE',
+      'partner buyout Dubai',
+      'transfer company shares UAE',
+      'shareholder exit Dubai',
+    ],
+    overview: {
+      heading: 'Change owners on paper as smoothly as you did the deal',
+      body: [
+        'A handshake deal only becomes real ownership when the share transfer is notarised, the MOA is amended and the authority registers the change. Done badly, transfers stall at the notary, break bank mandates, or leave exiting partners on visas and records they should be off.',
+        'Smartgic manages the full transfer: share purchase agreements and resolutions, notarisation, authority approval, updated licence and MOA — then realigns visas, establishment cards and bank records so the new ownership is reflected everywhere that matters.',
+      ],
+    },
+    stats: [
+      { value: '3–7', label: 'Days Typical' },
+      { value: '100%', label: 'Legally Compliant' },
+      { value: '0', label: 'Business Downtime' },
+      { value: 'All', label: 'Legal Forms Covered' },
+    ],
+    benefits: [
+      { title: 'Share Purchase Agreements', desc: 'Clear, enforceable SPAs and resolutions drafted for both sides of the deal.' },
+      { title: 'Full or Partial Transfers', desc: 'Sell 100%, admit a new partner, or rebalance percentages between existing owners.' },
+      { title: 'MOA Amendment Included', desc: 'The amended MOA is drafted, notarised and registered as part of the same engagement.' },
+      { title: 'Visa & Card Realignment', desc: 'Exiting partners removed and incoming partners added across visas and establishment cards.' },
+      { title: 'Bank Record Updates', desc: 'Mandates and KYC updated so banking continues without freezes or surprises.' },
+      { title: 'Confidential Handling', desc: 'Sensitive exits and buy-outs handled discreetly and professionally.' },
+    ],
+    process: [
+      { title: 'Deal Terms & Documents', desc: 'We confirm the transfer terms and collect documents from both parties.' },
+      { title: 'SPA & Resolutions', desc: 'We draft the share purchase agreement, resolutions and amended MOA.' },
+      { title: 'Notary & Authority', desc: 'All parties sign before the notary and we process authority approval.' },
+      { title: 'Updated Licence & Records', desc: 'New licence and MOA issued; visas, cards and bank records realigned.' },
+    ],
+    requirements: [
+      'Current trade licence & MOA',
+      'Passports & Emirates IDs of all parties',
+      'Agreed transfer terms & price',
+      'Corporate documents (for corporate buyers)',
+      'No-objection / clearance where applicable',
+      'Company stamp',
+    ],
+    faqs: [
+      { q: 'How long does a share transfer take?', a: 'Most transfers complete within 3–7 working days once documents are ready and all parties are available to sign before the notary.' },
+      { q: 'Do both buyer and seller need to attend?', a: 'Signatories generally sign before the notary, but powers of attorney can be used where a party is overseas — we structure the cleanest option.' },
+      { q: 'Can shares be transferred to a foreign company?', a: 'Yes. Corporate shareholders are common; their documents need attestation, which we arrange through our document clearing team.' },
+      { q: 'What happens to the exiting partner’s visa?', a: 'We cancel or transfer visas linked to the exiting partner and update the establishment card so no dangling sponsorships remain.' },
+      { q: 'Is the transfer confidential?', a: 'The registered change is a matter of official record, but we handle negotiations, documents and processing with full discretion.' },
+    ],
+    related: ['moa-amendments', 'company-registration', 'liquidation-deregistration'],
+  },
+
+  /* ───────────────────────── LIQUIDATION & DEREGISTRATION ───────────────────────── */
+  {
+    slug: 'liquidation-deregistration',
+    navLabel: 'Liquidation & Deregistration',
+    icon: Archive,
+    eyebrow: 'Company Closure',
+    blurb: 'Company closure & strike-off',
+    title: 'Company Liquidation & Deregistration in Dubai',
+    heroSubtitle:
+      'Close your company cleanly — liquidator appointment, licence cancellation, visa cancellations, clearances from every authority and final strike-off, with zero loose ends.',
+    heroHighlights: ['Fine-Free Closure', 'All Clearances', 'Visa Cancellations'],
+    metaTitle: 'Company Liquidation Dubai | Licence Cancellation & Strike-Off | Smartgic Visa',
+    metaDescription:
+      'Liquidate and deregister your Dubai company properly — liquidator report, licence cancellation, visa cancellations and all authority clearances. Avoid fines and blacklisting.',
+    keywords: [
+      'company liquidation Dubai',
+      'licence cancellation UAE',
+      'close company Dubai',
+      'company deregistration UAE',
+      'strike off company Dubai',
+    ],
+    overview: {
+      heading: 'Walking away is not closing — close it properly',
+      body: [
+        'Simply abandoning a company is the most expensive way to end it: the licence keeps accruing renewal fines, visas stay live against you as sponsor, and unresolved records can lead to blacklisting that follows you into your next venture.',
+        'Smartgic manages formal liquidation end to end — shareholder resolution and liquidator appointment, public notice period, clearances from immigration, labour, customs, utilities and the bank, cancellation of all visas, and the final deregistration certificate that ends your liabilities cleanly.',
+      ],
+    },
+    stats: [
+      { value: '4–8', label: 'Weeks Typical' },
+      { value: '0', label: 'Residual Liabilities' },
+      { value: 'All', label: 'Authority Clearances' },
+      { value: '100%', label: 'Compliant Strike-Off' },
+    ],
+    benefits: [
+      { title: 'Liquidator & Audit Report', desc: 'A registered liquidator appointed and the liquidation report prepared where required.' },
+      { title: 'Licence Cancellation', desc: 'Formal cancellation with DET or your free zone — renewal fines stop accruing.' },
+      { title: 'Visa & Card Cancellations', desc: 'Employee and partner visas, work permits and the establishment card all cancelled.' },
+      { title: 'Full Clearance Sweep', desc: 'Immigration, labour, customs, utilities, telecom and landlord clearances collected.' },
+      { title: 'Bank Account Closure', desc: 'Corporate accounts closed correctly after final settlements.' },
+      { title: 'Final Certificate', desc: 'The deregistration certificate that formally ends the company and your exposure.' },
+    ],
+    process: [
+      { title: 'Resolution & Liquidator', desc: 'Shareholders resolve to liquidate and a registered liquidator is appointed.' },
+      { title: 'Notice & Clearances', desc: 'The public notice period runs while we collect clearances from every authority.' },
+      { title: 'Visa & Account Closure', desc: 'All visas, cards and the corporate bank account are cancelled and closed.' },
+      { title: 'Final Deregistration', desc: 'The authority issues the cancellation certificate — the company is formally closed.' },
+    ],
+    requirements: [
+      'Trade licence copy',
+      'MOA and any amendments',
+      'Shareholder resolution to liquidate (we draft)',
+      'Passports & Emirates IDs of shareholders',
+      'Establishment card & visa details',
+      'Company stamp',
+    ],
+    faqs: [
+      { q: 'How long does liquidation take?', a: 'Typically 4–8 weeks for a mainland LLC including the public notice period; free-zone closures can be faster. Complex companies with employees, debts or disputes take longer.' },
+      { q: 'What happens if I just stop renewing the licence?', a: 'Fines accrue every year, visas remain your liability, and authorities can blacklist the owners and managers — blocking future companies and visas. Formal liquidation is always cheaper in the end.' },
+      { q: 'Do I need an audit or liquidator report?', a: 'Mainland LLCs generally require a registered liquidator and a liquidation report. Sole establishments and many free-zone entities have simpler requirements — we confirm the exact path for your structure.' },
+      { q: 'What happens to employee visas?', a: 'All employee visas and work permits must be cancelled (with end-of-service settlements paid) before the licence can be cancelled. We process every cancellation as part of the closure.' },
+      { q: 'Can I close a company with debts?', a: 'Outstanding liabilities must be settled or formally resolved with creditors before deregistration. We help sequence settlements and clearances so the closure completes cleanly.' },
+    ],
+    related: ['share-transfer', 'corporate-pro-services', 'document-clearing-services'],
+  },
+
   /* ───────────────────────── 8. CO-WORKING SPACE ───────────────────────── */
   {
     slug: 'co-working-space',
     navLabel: 'Co-working Space',
     icon: Building,
     eyebrow: 'Flexible Workspace',
+    blurb: 'Flexi-desks & licence-ready address',
     title: 'Co-working Space & Business Address in Dubai',
     heroSubtitle:
       'Flexi-desks, dedicated desks, private offices and licence-ready business addresses in prime Dubai locations — with meeting rooms, mail handling and visa-eligible packages.',
@@ -649,5 +990,5 @@ export const serviceNav = services.map((s) => ({
   slug: s.slug,
   label: s.navLabel,
   icon: s.icon,
-  blurb: s.eyebrow,
+  blurb: s.blurb ?? s.eyebrow,
 }));

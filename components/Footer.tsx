@@ -20,7 +20,7 @@ export default function Footer() {
       </div>
 
       <div className="container-x relative">
-        <div className="grid gap-12 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 py-16 lg:grid-cols-[1.2fr_0.7fr_1.7fr_1fr]">
           {/* Brand */}
           <div>
             <BrandMark className="h-10 w-10" withWordmark wordmarkClassName="text-white" />
@@ -64,7 +64,7 @@ export default function Footer() {
             <h3 className="text-sm font-bold uppercase tracking-wider text-white">
               Corporate Services
             </h3>
-            <ul className="mt-5 space-y-3 text-sm">
+            <ul className="mt-5 grid grid-cols-1 gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
               {serviceNav.map((service) => (
                 <li key={service.slug}>
                   <a

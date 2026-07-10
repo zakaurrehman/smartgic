@@ -116,7 +116,7 @@ export default function Header() {
                     : 'invisible -translate-y-1 opacity-0'
                 }`}
               >
-                <div className="overflow-hidden rounded-3xl border border-slate-100 bg-white p-3 shadow-soft">
+                <div className="max-h-[min(600px,calc(100vh-110px))] overflow-y-auto overscroll-contain rounded-3xl border border-slate-100 bg-white p-3 shadow-soft">
                   <div className="grid grid-cols-2 gap-1">
                     {serviceNav.map((s) => {
                       const Icon = s.icon;
