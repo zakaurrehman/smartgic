@@ -16,6 +16,7 @@ export type ServicePackage = {
   features: string[];
 };
 export type ServiceFaq = { q: string; a: string };
+export type ServiceScopeGroup = { group: string; desc: string; items: string[] };
 
 export type Service = {
   slug: string;
@@ -38,6 +39,8 @@ export type Service = {
   benefits: ServiceBenefit[];
   process: ServiceStep[];
   requirements: string[];
+  /** "What's included" — grouped sub-services rendered on the service page. */
+  included?: ServiceScopeGroup[];
   packages?: ServicePackage[];
   faqs: ServiceFaq[];
   related: string[];
@@ -131,6 +134,41 @@ export const services: Service[] = [
       { q: 'Do I need a physical office?', a: 'Most free zones offer flexi-desk or virtual office packages that satisfy licensing requirements. Mainland licences may require a tenancy (Ejari), which we can arrange.' },
       { q: 'Can you register the company remotely?', a: 'Yes, we can start and largely complete your formation remotely. A short visit may be needed for Emirates ID biometrics and bank verification.' },
     ],
+    included: [
+      {
+        group: 'Mainland Company Setup',
+        desc: 'Full DET registration for companies trading directly in the UAE market.',
+        items: [
+          'Commercial, professional & industrial licences',
+          'Trade name reservation & initial approval',
+          'MOA drafting & notarisation',
+          'Ejari / tenancy registration',
+          'Establishment card & unlimited visa eligibility',
+        ],
+      },
+      {
+        group: 'Free Zone Company Setup',
+        desc: 'Formation in 40+ free zones matched to your activity, budget and visa needs.',
+        items: [
+          'Jurisdiction comparison & selection (IFZA, DMCC, Meydan…)',
+          'Licence application & registration',
+          'Flexi-desk / office package arrangement',
+          'Visa quota allocation & investor visa',
+          'Bank introduction letter & document pack',
+        ],
+      },
+      {
+        group: 'Offshore & Holding Structures',
+        desc: 'Asset-holding and international structures with confidentiality and tax efficiency.',
+        items: [
+          'Offshore incorporation (JAFZA, RAK ICC)',
+          'Holding company structuring',
+          'Registered agent & registered office',
+          'Corporate documents & apostille support',
+          'Bank account opening assistance',
+        ],
+      },
+    ],
     related: ['professional-services', 'bank-account-opening', 'visa-services'],
   },
 
@@ -196,6 +234,41 @@ export const services: Service[] = [
       { q: 'Is a professional licence cheaper than commercial?', a: 'Often yes — capital requirements and certain fees tend to be lower, making it a cost-effective route for service businesses.' },
       { q: 'Can I get a residence visa with this licence?', a: 'Yes. A professional licence supports an investor/partner residence visa for you and lets you sponsor employees and family.' },
       { q: 'Can I add more activities later?', a: 'Yes, activities can usually be added or amended on your licence as your practice expands. We handle the amendment.' },
+    ],
+    included: [
+      {
+        group: 'Licence Structuring',
+        desc: 'The right professional licence, correctly scoped for what you actually do.',
+        items: [
+          'Activity selection & DET approval',
+          'Trade name reservation',
+          'Local Service Agent appointment (no equity)',
+          'MOA / civil company agreement drafting',
+          'Licence issuance & establishment card',
+        ],
+      },
+      {
+        group: 'Qualifications & Approvals',
+        desc: 'Regulated professions cleared with the right credentials and bodies.',
+        items: [
+          'Degree & certificate attestation',
+          'Regulatory body approvals where required',
+          'Manager appointment & documentation',
+          'Notary & typing centre handling',
+          'Compliance review before submission',
+        ],
+      },
+      {
+        group: 'Visas & Growth',
+        desc: 'Residency for you and headroom to hire as your practice scales.',
+        items: [
+          'Investor / partner residence visa',
+          'Employee visa quota & processing',
+          'Family sponsorship support',
+          'Activity additions as you expand',
+          'Renewals & ongoing PRO support',
+        ],
+      },
     ],
     related: ['company-registration', 'corporate-pro-services', 'visa-services'],
   },
@@ -263,6 +336,41 @@ export const services: Service[] = [
       { q: 'Which banks do you work with?', a: 'We work with leading local and international banks operating in the UAE and recommend the best fit for your profile — we do not push a single bank.' },
       { q: 'Can you guarantee approval?', a: 'No one can guarantee a bank’s decision, but our preparation and introductions significantly improve approval odds — our success rate is around 95%.' },
     ],
+    included: [
+      {
+        group: 'Corporate Accounts',
+        desc: 'Business accounts with the UAE banks most likely to approve your profile.',
+        items: [
+          'Bank matching by activity & nationality',
+          'KYC & source-of-funds file preparation',
+          'Business plan / company profile drafting',
+          'Relationship manager introductions',
+          'Application tracking to activation',
+        ],
+      },
+      {
+        group: 'Personal Accounts',
+        desc: 'Current and savings accounts for residents, investors and their families.',
+        items: [
+          'Salary & non-salary account options',
+          'Documentation & Emirates ID coordination',
+          'Branch appointment scheduling',
+          'Debit / credit card setup',
+          'Online & mobile banking activation',
+        ],
+      },
+      {
+        group: 'Specialist Banking',
+        desc: 'Beyond the basics — the right facilities as your business grows.',
+        items: [
+          'Multi-currency account structuring',
+          'Digital bank alternatives (fast-track)',
+          'Trade finance & POS facilities guidance',
+          'Additional signatories & mandates',
+          'Account maintenance & compliance support',
+        ],
+      },
+    ],
     related: ['company-registration', 'corporate-pro-services', 'professional-services'],
   },
 
@@ -329,6 +437,41 @@ export const services: Service[] = [
       { q: 'Do I need a medical test?', a: 'Yes, a medical fitness test is mandatory for residence visas, along with Emirates ID biometrics. We schedule and accompany you.' },
       { q: 'Can you process visas for my employees?', a: 'Absolutely. We handle establishment/immigration cards, MOHRE work permits and the full employee visa chain.' },
     ],
+    included: [
+      {
+        group: 'Investor & Partner Visas',
+        desc: 'Residency linked to your company ownership, processed without queues.',
+        items: [
+          'Eligibility & quota check',
+          'Entry permit & status change',
+          'Medical fitness & Emirates ID booking',
+          'Visa stamping & issuance',
+          'Renewals, amendments & cancellations',
+        ],
+      },
+      {
+        group: 'Employment & Family Visas',
+        desc: 'Compliant sponsorship for your team and your loved ones.',
+        items: [
+          'MOHRE work permits & labour contracts',
+          'Employee residence visa chain',
+          'Spouse, children & parents sponsorship',
+          'Attested certificate coordination',
+          'Domestic staff visas',
+        ],
+      },
+      {
+        group: 'Golden & Long-Term Visas',
+        desc: 'The 10-year route for investors, entrepreneurs, talents and professionals.',
+        items: [
+          'Golden Visa eligibility assessment',
+          'Nomination & documentation build',
+          'Application submission & follow-up',
+          'Family inclusion under your Golden Visa',
+          'Renewal after 10 years',
+        ],
+      },
+    ],
     related: ['company-registration', 'document-clearing-services', 'corporate-pro-services'],
   },
 
@@ -394,6 +537,41 @@ export const services: Service[] = [
       { q: 'Do you provide certified translation?', a: 'Yes. We provide legal translation certified for UAE courts and government departments across more than 12 languages.' },
       { q: 'Can you attest educational certificates?', a: 'Yes — degrees, diplomas and school certificates are among the most common documents we attest for visas and employment.' },
       { q: 'Do I need to hand over original documents?', a: 'Originals are usually required for attestation. We handle them securely and return them with the completed attestation.' },
+    ],
+    included: [
+      {
+        group: 'Attestation & Legalisation',
+        desc: 'Documents verified through every required authority, local and foreign.',
+        items: [
+          'MOFA attestation',
+          'Embassy & consulate legalisation',
+          'Degree & education certificate attestation',
+          'Marriage & birth certificate attestation',
+          'Commercial document attestation (MOA, POA)',
+        ],
+      },
+      {
+        group: 'Certified Translation',
+        desc: 'Court- and government-accepted translation, done right the first time.',
+        items: [
+          'Legal translation (12+ languages)',
+          'Court & notary document translation',
+          'Certificate & contract translation',
+          'Arabic ↔ English business documents',
+          'Same-day express options',
+        ],
+      },
+      {
+        group: 'Government Typing & Applications',
+        desc: 'The licensed typing-centre engine behind every application we run.',
+        items: [
+          'DET, GDRFA & MOHRE application typing',
+          'Visa & Emirates ID form processing',
+          'Notary public coordination',
+          'Power of attorney drafting & processing',
+          'Application follow-up & collection',
+        ],
+      },
     ],
     related: ['visa-services', 'corporate-pro-services', 'company-registration'],
   },
@@ -485,6 +663,41 @@ export const services: Service[] = [
       { q: 'Can you take over from our current setup?', a: 'Yes. We audit your current licence and visa status, then take over renewals and liaison seamlessly.' },
       { q: 'Do you cover all emirates?', a: 'We focus on Dubai and coordinate federal departments (GDRFA, MOHRE, MOFA). Other emirates can be supported on request.' },
     ],
+    included: [
+      {
+        group: 'Visa & Immigration Processing',
+        desc: 'Your entire employee and partner visa lifecycle, handled at the counters.',
+        items: [
+          'Employment & investor residence visas',
+          'Entry permits & status changes',
+          'Emirates ID & medical coordination',
+          'Work permits & labour contracts',
+          'Dependant & family visas',
+        ],
+      },
+      {
+        group: 'Licence & Corporate Amendments',
+        desc: 'Every change to your licence processed with the right authority.',
+        items: [
+          'Trade licence renewals',
+          'Activity additions & amendments',
+          'Shareholder & manager changes',
+          'Address & establishment updates',
+          'Free zone authority liaison',
+        ],
+      },
+      {
+        group: 'Attestation & Document Clearing',
+        desc: 'The paperwork layer that keeps everything else moving.',
+        items: [
+          'MOFA attestation & legalisation',
+          'Power of attorney processing',
+          'Notarisation coordination',
+          'Typing centre services',
+          'Government document clearing',
+        ],
+      },
+    ],
     related: ['visa-services', 'document-clearing-services', 'trade-license-renewals'],
   },
 
@@ -550,6 +763,41 @@ export const services: Service[] = [
       { q: 'Do I need to renew my Ejari too?', a: 'For mainland licences, a valid registered tenancy (Ejari) is usually required to renew the licence. We handle both together.' },
       { q: 'How fast is the renewal?', a: 'Once documents are in order, many renewals are completed within 1–2 working days.' },
       { q: 'Can I change activities during renewal?', a: 'Yes, renewal is a convenient time to add activities or update company details — we process amendments alongside the renewal.' },
+    ],
+    included: [
+      {
+        group: 'Mainland Renewal',
+        desc: 'DET renewals with the tenancy layer handled alongside.',
+        items: [
+          'Expiry tracking & early reminders',
+          'Ejari / tenancy contract renewal',
+          'DET licence renewal processing',
+          'Fine assessment & clearance if late',
+          'Updated licence delivery',
+        ],
+      },
+      {
+        group: 'Free Zone Renewal',
+        desc: 'Renewals across 40+ free zone authorities, whatever your package.',
+        items: [
+          'Authority-specific renewal processing',
+          'Flexi-desk / office package renewal',
+          'Visa quota revalidation',
+          'Portal & document management',
+          'Renewal certificate delivery',
+        ],
+      },
+      {
+        group: 'Post-Renewal Alignment',
+        desc: 'Everything attached to your licence stays in sync after renewal.',
+        items: [
+          'Establishment card update',
+          'Visa validity alignment',
+          'Bank record update support',
+          'Activity amendments at renewal',
+          'Next-year compliance calendar',
+        ],
+      },
     ],
     related: ['corporate-pro-services', 'company-registration', 'document-clearing-services'],
   },
@@ -617,6 +865,41 @@ export const services: Service[] = [
       { q: 'Does my licence stop working during the amendment?', a: 'No. Your licence remains valid throughout; the authority simply issues updated documents once the amendment is approved.' },
       { q: 'Can you update the bank and visas afterwards?', a: 'Yes. We update your establishment card, visas and bank records so every register reflects the new structure.' },
     ],
+    included: [
+      {
+        group: 'Ownership & Capital',
+        desc: 'Changes to who owns the company and what it is capitalised at.',
+        items: [
+          'Shareholder additions & exits',
+          'Shareholding percentage changes',
+          'Share capital increase / decrease',
+          'Manager appointment & removal',
+          'Corporate shareholder documentation',
+        ],
+      },
+      {
+        group: 'Name, Activity & Form',
+        desc: 'Changes to what the company is called, does and legally is.',
+        items: [
+          'Trade name change & reservation',
+          'Business activity additions / removals',
+          'Legal form conversion (EST ↔ LLC)',
+          'Registered address changes',
+          'Branch additions',
+        ],
+      },
+      {
+        group: 'Execution & Registration',
+        desc: 'The legal machinery that makes the change official everywhere.',
+        items: [
+          'Shareholder resolution drafting',
+          'Amended MOA preparation (bilingual)',
+          'Notary appointment & signing',
+          'DET / free zone approval & fees',
+          'Updated licence & MOA delivery',
+        ],
+      },
+    ],
     related: ['share-transfer', 'company-registration', 'corporate-pro-services'],
   },
 
@@ -682,6 +965,41 @@ export const services: Service[] = [
       { q: 'What does a sponsor cost?', a: 'A fixed annual fee agreed upfront — no percentage of revenue or profits. The fee depends on the activity and sponsor type.' },
       { q: 'Corporate sponsor vs individual — which is safer?', a: 'Corporate nominee sponsorship is generally safer: it removes succession risk (death or incapacity of an individual) and gives more predictable signatures and continuity.' },
       { q: 'Can I remove the sponsor later?', a: 'Yes. If regulations change or you restructure to an eligible 100% ownership setup, we handle the amendment and clean exit under the terms built into your agreements.' },
+    ],
+    included: [
+      {
+        group: 'Corporate Nominee Sponsorship',
+        desc: 'A stable corporate Emirati partner for activities that still require one.',
+        items: [
+          'Requirement assessment (many activities no longer need one)',
+          'Vetted corporate sponsor introduction',
+          'Sponsorship agreement drafting',
+          'Fixed annual fee structuring',
+          'Annual renewals & signatures',
+        ],
+      },
+      {
+        group: 'Local Service Agent (LSA)',
+        desc: 'Compliant LSA appointments for mainland professional licences.',
+        items: [
+          'LSA appointment & registration',
+          'LSA agreement notarisation',
+          'Government liaison signatures',
+          'LSA replacement / transfer',
+          'Annual fee management',
+        ],
+      },
+      {
+        group: 'Legal Protection Layer',
+        desc: 'The paperwork that keeps control, profits and assets with you.',
+        items: [
+          'Notarised side agreements',
+          'Powers of attorney in your favour',
+          'Bank mandate structuring',
+          'Succession-safe documentation',
+          'Exit & restructure terms built in',
+        ],
+      },
     ],
     related: ['professional-services', 'company-registration', 'moa-amendments'],
   },
@@ -749,6 +1067,41 @@ export const services: Service[] = [
       { q: 'What are trademark classes?', a: 'The NICE system divides goods and services into 45 classes. You are protected only in the classes you register, so correct selection is critical — we handle this for you.' },
       { q: 'What if someone is already using my brand?', a: 'We assess prior use and registrations in the search stage and advise whether to file, adjust the mark, or pursue an opposition or enforcement route.' },
     ],
+    included: [
+      {
+        group: 'Search & Strategy',
+        desc: 'Know exactly what you can protect before you spend on filing.',
+        items: [
+          'Trademark availability search',
+          'Conflict & prior-mark analysis',
+          'NICE class mapping to your business',
+          'Wordmark vs logo filing strategy',
+          'Multi-class & GCC filing advice',
+        ],
+      },
+      {
+        group: 'Filing & Prosecution',
+        desc: 'The full Ministry of Economy registration cycle, managed for you.',
+        items: [
+          'MoE application preparation & filing',
+          'Official fee handling',
+          'Examiner objection responses',
+          'Publication & opposition monitoring',
+          'Registration certificate delivery',
+        ],
+      },
+      {
+        group: 'Protection & Enforcement',
+        desc: 'Keeping your mark alive and defended after registration.',
+        items: [
+          '10-year renewal management',
+          'Trademark assignment & licensing',
+          'Cease & desist support',
+          'Customs recordal guidance',
+          'Infringement action coordination',
+        ],
+      },
+    ],
     related: ['company-registration', 'professional-services', 'document-clearing-services'],
   },
 
@@ -815,6 +1168,41 @@ export const services: Service[] = [
       { q: 'What happens to the exiting partner’s visa?', a: 'We cancel or transfer visas linked to the exiting partner and update the establishment card so no dangling sponsorships remain.' },
       { q: 'Is the transfer confidential?', a: 'The registered change is a matter of official record, but we handle negotiations, documents and processing with full discretion.' },
     ],
+    included: [
+      {
+        group: 'Deal Documentation',
+        desc: 'The legal paperwork both sides can rely on.',
+        items: [
+          'Share purchase agreement (SPA) drafting',
+          'Shareholder resolutions',
+          'Full & partial transfer structuring',
+          'Corporate buyer document attestation',
+          'Valuation support coordination',
+        ],
+      },
+      {
+        group: 'Notary & Authority Processing',
+        desc: 'From signatures to an updated licence, without stalls.',
+        items: [
+          'Notary appointment & bilingual documents',
+          'Power of attorney for absent parties',
+          'DET / free zone approval processing',
+          'Amended MOA registration',
+          'Updated licence issuance',
+        ],
+      },
+      {
+        group: 'Post-Transfer Alignment',
+        desc: 'The new ownership reflected everywhere that matters.',
+        items: [
+          'Exiting partner visa cancellation',
+          'Incoming partner visa processing',
+          'Establishment card update',
+          'Bank mandate & KYC updates',
+          'Records handover & compliance check',
+        ],
+      },
+    ],
     related: ['moa-amendments', 'company-registration', 'liquidation-deregistration'],
   },
 
@@ -880,6 +1268,41 @@ export const services: Service[] = [
       { q: 'Do I need an audit or liquidator report?', a: 'Mainland LLCs generally require a registered liquidator and a liquidation report. Sole establishments and many free-zone entities have simpler requirements — we confirm the exact path for your structure.' },
       { q: 'What happens to employee visas?', a: 'All employee visas and work permits must be cancelled (with end-of-service settlements paid) before the licence can be cancelled. We process every cancellation as part of the closure.' },
       { q: 'Can I close a company with debts?', a: 'Outstanding liabilities must be settled or formally resolved with creditors before deregistration. We help sequence settlements and clearances so the closure completes cleanly.' },
+    ],
+    included: [
+      {
+        group: 'Resolution & Liquidator',
+        desc: 'The formal start of a clean, compliant closure.',
+        items: [
+          'Shareholder resolution drafting & notary',
+          'Registered liquidator appointment',
+          'Liquidation report / audit coordination',
+          'Authority notification & fees',
+          'Public notice period management',
+        ],
+      },
+      {
+        group: 'Clearances & Cancellations',
+        desc: 'Every authority signed off, every sponsorship ended.',
+        items: [
+          'Employee & partner visa cancellations',
+          'Establishment & immigration card cancellation',
+          'Immigration, labour & customs clearances',
+          'Utilities, telecom & landlord clearances',
+          'Corporate bank account closure',
+        ],
+      },
+      {
+        group: 'Final Deregistration',
+        desc: 'The certificate that formally ends the company — and your exposure.',
+        items: [
+          'Final submission to DET / free zone',
+          'Licence cancellation certificate',
+          'VAT / Corporate Tax deregistration support',
+          'Record archive handover',
+          'Post-closure confirmation letter',
+        ],
+      },
     ],
     related: ['share-transfer', 'corporate-pro-services', 'document-clearing-services'],
   },
@@ -970,6 +1393,41 @@ export const services: Service[] = [
       { q: 'Can I start virtual and upgrade later?', a: 'Yes. Many clients start with a flexi-desk or virtual package and upgrade to a dedicated desk or private office as the team grows.' },
       { q: 'Where are the locations?', a: 'We offer addresses in prime Dubai business districts. We recommend the best location for your budget, image and visa needs.' },
       { q: 'Are meeting rooms included?', a: 'Most packages include meeting-room credits, with additional hours available on demand.' },
+    ],
+    included: [
+      {
+        group: 'Workspace Options',
+        desc: 'From a hot-desk to a private floor — pay only for what you need.',
+        items: [
+          'Flexi-desk (shared hot-desk) packages',
+          'Dedicated desk with 24/7 access options',
+          'Private & serviced offices',
+          'Meeting & conference room credits',
+          'Month-to-month and annual terms',
+        ],
+      },
+      {
+        group: 'Business Address Services',
+        desc: 'A prime, licence-ready address that projects credibility.',
+        items: [
+          'Registered address for your trade licence',
+          'Business mail handling & forwarding',
+          'Call answering & reception services',
+          'Prime Dubai district locations',
+          'Address renewal with your licence',
+        ],
+      },
+      {
+        group: 'Growth & Visas',
+        desc: 'Workspace that scales with your headcount and visa needs.',
+        items: [
+          'Visa-eligible package structuring',
+          'Visa quota upgrades as you hire',
+          'Upgrade path: virtual → desk → office',
+          'Licence & workspace renewal alignment',
+          'Team onboarding support',
+        ],
+      },
     ],
     related: ['company-registration', 'professional-services', 'corporate-pro-services'],
   },

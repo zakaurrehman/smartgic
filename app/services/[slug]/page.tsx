@@ -9,6 +9,7 @@ import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
 
 import ServiceHero from '@/components/services/ServiceHero';
+import ServiceIncluded from '@/components/services/ServiceIncluded';
 import { Overview, Benefits, Process, Requirements } from '@/components/services/ServiceContent';
 import ServicePackages from '@/components/services/ServicePackages';
 import ServiceFaq from '@/components/services/ServiceFaq';
@@ -99,6 +100,9 @@ export default async function ServicePage({
       <main>
         <ServiceHero service={service} />
         <Overview service={service} />
+        {service.included && service.included.length > 0 && (
+          <ServiceIncluded groups={service.included} label={service.navLabel} />
+        )}
         <Benefits service={service} />
         <Process service={service} />
         <Requirements service={service} />
