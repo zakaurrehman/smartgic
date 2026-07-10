@@ -263,6 +263,7 @@ export const faqs = [
 
 export const navLinks = [
   { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
   { label: 'Free Zones', href: '/free-zones' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Golden Visa', href: '/golden-visa' },

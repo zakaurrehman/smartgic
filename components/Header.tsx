@@ -11,6 +11,7 @@ const sectionLinks = [
   { label: 'Free Zones', href: '/free-zones' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Golden Visa', href: '/golden-visa' },
+  { label: 'About', href: '/about' },
 ];
 
 export default function Header() {
