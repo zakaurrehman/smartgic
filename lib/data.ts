@@ -267,5 +267,6 @@ export const navLinks = [
   { label: 'Free Zones', href: '/free-zones' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Golden Visa', href: '/golden-visa' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '#contact' },
 ];

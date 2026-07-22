@@ -99,6 +99,39 @@ Other quick edits:
 
 ---
 
+## ✍️ Publishing a blog post (daily workflow)
+
+Posts are markdown files in `content/blog/`. **Each git push auto-deploys the site**, so publishing is just adding a file:
+
+### Easiest way — GitHub website (no tools needed)
+1. Open your repo → `content/blog/` folder → **Add file → Create new file**
+2. Name it like `my-post-title.md` (lowercase, hyphens — this becomes the URL `/blog/my-post-title`)
+3. Paste this template at the top, then write your article in Markdown below it:
+
+```markdown
+---
+title: "Your Post Title Here"
+description: "One-sentence summary shown on the blog card and in Google (max ~155 chars)."
+date: "2026-06-24"
+author: "Smartgic Editorial Team"
+category: "Business Setup"
+keywords: ["keyword one", "keyword two", "keyword three"]
+---
+
+Your article starts here. Use ## for headings, **bold**, - for bullets,
+and [link text](/services/company-registration) for internal links.
+```
+
+4. Click **Commit changes** — the site rebuilds and your post is live in ~1 minute at `/blog/<file-name>`.
+
+Categories in use: `Business Setup`, `Visas & Immigration` (any new category works automatically).
+The post automatically appears on `/blog`, in the sitemap, with full SEO tags and article schema.
+
+### Or just ask Claude
+"Write and publish a blog post about X" — done in one go.
+
+---
+
 ## 📁 Project structure
 
 ```

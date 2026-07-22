@@ -12,6 +12,7 @@ const sectionLinks = [
   { label: 'Pricing', href: '/pricing' },
   { label: 'Golden Visa', href: '/golden-visa' },
   { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
 ];
 
 export default function Header() {
@@ -48,9 +49,11 @@ export default function Header() {
   }, []);
 
   const dark = !scrolled; // transparent header over dark hero → light text
-  const linkBase = dark
-    ? 'text-white/85 hover:bg-white/10 hover:text-white'
-    : 'text-ink-700 hover:bg-slate-100 hover:text-brand-blue';
+  const linkBase = `whitespace-nowrap ${
+    dark
+      ? 'text-white/85 hover:bg-white/10 hover:text-white'
+      : 'text-ink-700 hover:bg-slate-100 hover:text-brand-blue'
+  }`;
 
   return (
     <header
@@ -167,14 +170,14 @@ export default function Header() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href={`tel:${company.phoneHref}`}
-            className={`flex items-center gap-2 text-sm font-semibold transition-colors ${
+            className={`flex items-center gap-2 whitespace-nowrap text-sm font-semibold transition-colors ${
               dark ? 'text-white hover:text-brand-cyan' : 'text-ink-900 hover:text-brand-blue'
             }`}
           >
             <Phone className="h-4 w-4 text-brand-cyan" />
             <span className="hidden xl:inline">{company.phone}</span>
           </a>
-          <a href="#contact" className="btn-gradient !px-5 !py-2.5">
+          <a href="#contact" className="btn-gradient whitespace-nowrap !px-5 !py-2.5">
             Free Consultation
           </a>
         </div>
