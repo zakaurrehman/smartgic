@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import BlogCover from '@/components/blog/BlogCover';
 import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
 import { getAllPosts, getPost, getPostSlugs, formatDate } from '@/lib/blog';
@@ -117,6 +118,18 @@ export default async function BlogPostPage({
         {/* Article body */}
         <section className="section bg-white">
           <div className="container-x">
+            <div className="mx-auto mb-12 max-w-3xl overflow-hidden rounded-3xl shadow-soft">
+              {post.image ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="h-52 w-full object-cover sm:h-72"
+                />
+              ) : (
+                <BlogCover category={post.category} className="h-52 sm:h-72" iconSize="h-14 w-14" />
+              )}
+            </div>
             <article
               className="prose prose-slate mx-auto max-w-3xl
                 prose-headings:font-display prose-headings:tracking-tight prose-headings:text-ink-900
@@ -143,17 +156,20 @@ export default async function BlogPostPage({
                   <a
                     key={p.slug}
                     href={`/blog/${p.slug}`}
-                    className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
                   >
-                    <span className="text-xs font-semibold uppercase tracking-wider text-brand-cyan-dark">
-                      {p.category}
-                    </span>
-                    <h3 className="mt-2 flex-1 text-base font-bold leading-snug text-ink-900 group-hover:text-brand-blue">
-                      {p.title}
-                    </h3>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
-                      Read article <ArrowUpRight className="h-4 w-4" />
-                    </span>
+                    <BlogCover category={p.category} className="h-24" iconSize="h-8 w-8" />
+                    <div className="flex flex-1 flex-col p-6">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-brand-cyan-dark">
+                        {p.category}
+                      </span>
+                      <h3 className="mt-2 flex-1 text-base font-bold leading-snug text-ink-900 group-hover:text-brand-blue">
+                        {p.title}
+                      </h3>
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
+                        Read article <ArrowUpRight className="h-4 w-4" />
+                      </span>
+                    </div>
                   </a>
                 ))}
               </div>

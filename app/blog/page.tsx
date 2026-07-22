@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import PageHero from '@/components/ui/PageHero';
 import Reveal from '@/components/ui/Reveal';
+import BlogCover from '@/components/blog/BlogCover';
 import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
 import { getAllPosts, formatDate } from '@/lib/blog';
@@ -69,13 +70,27 @@ export default function BlogIndexPage() {
                     href={`/blog/${post.slug}`}
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
                   >
-                    <div className="relative flex h-36 items-end overflow-hidden bg-brand-navy p-5">
-                      <div className="aurora right-[-15%] top-[-30%] h-40 w-40 bg-brand-blue/40" />
-                      <div className="aurora bottom-[-40%] left-[-10%] h-36 w-36 bg-brand-cyan/30" />
-                      <span className="relative rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-brand-cyan backdrop-blur">
-                        {post.category}
-                      </span>
-                    </div>
+                    {post.image ? (
+                      <div className="relative flex h-40 items-end overflow-hidden p-5">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          loading="lazy"
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 to-transparent" />
+                        <span className="relative rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
+                          {post.category}
+                        </span>
+                      </div>
+                    ) : (
+                      <BlogCover category={post.category} className="h-40">
+                        <span className="relative rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-semibold text-brand-cyan backdrop-blur">
+                          {post.category}
+                        </span>
+                      </BlogCover>
+                    )}
                     <div className="flex flex-1 flex-col p-6">
                       <div className="flex items-center gap-4 text-xs text-ink-400">
                         <span className="inline-flex items-center gap-1.5">

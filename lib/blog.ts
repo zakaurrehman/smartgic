@@ -10,6 +10,8 @@ export type BlogPost = {
   author: string;
   category: string;
   keywords: string[];
+  /** Optional real cover image path (e.g. /blog-images/my-post.jpg in public/). */
+  image?: string;
   content: string; // raw markdown
   readingTime: number; // minutes
 };
@@ -34,6 +36,7 @@ export function getAllPosts(): BlogPost[] {
         author: String(data.author ?? 'Smartgic Editorial Team'),
         category: String(data.category ?? 'Business Setup'),
         keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
+        image: data.image ? String(data.image) : undefined,
         content,
         readingTime: Math.max(1, Math.round(words / 200)),
       } satisfies BlogPost;
