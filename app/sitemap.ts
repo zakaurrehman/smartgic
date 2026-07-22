@@ -6,7 +6,7 @@ const SITE = 'https://www.smartgicvisa.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticPages = ['about', 'services', 'free-zones', 'pricing', 'golden-visa', 'blog'];
+  const staticPages = ['about', 'services', 'free-zones', 'pricing', 'golden-visa', 'blog', 'privacy'];
   return [
     {
       url: `${SITE}/`,

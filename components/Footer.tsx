@@ -105,7 +105,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-7 text-xs text-slate-400 sm:flex-row">
           <p>
-            © {year} {company.legalName} All rights reserved.
+            © {year} {company.legalName} All rights reserved. ·{' '}
+            <a href="/privacy" className="transition-colors hover:text-brand-cyan">
+              Privacy Policy
+            </a>
           </p>
           <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
             <span>Licensed by {company.authority}</span>
