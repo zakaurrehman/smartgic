@@ -31,7 +31,7 @@ export default function GoldenVisa() {
               </Reveal>
               <Reveal delay={140}>
                 <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-300">
-                  Whether you're an investor, entrepreneur, skilled professional or exceptional
+                  Whether you&rsquo;re an investor, entrepreneur, skilled professional or exceptional
                   talent, our specialists assess your eligibility and manage the full application —
                   so you and your family can call the UAE home for the next decade.
                 </p>

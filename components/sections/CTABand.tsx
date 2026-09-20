@@ -2,7 +2,15 @@ import { ArrowRight, PhoneCall } from 'lucide-react';
 import { company } from '@/lib/data';
 import Reveal from '../ui/Reveal';
 
-export default function CTABand() {
+export default function CTABand({
+  /**
+   * Where the primary CTA points. Defaults to the in-page contact section;
+   * pages that do not render one must pass "/contact" so the link resolves.
+   */
+  ctaHref = '#contact',
+}: {
+  ctaHref?: string;
+} = {}) {
   return (
     <section className="bg-white pb-4">
       <div className="container-x">
@@ -18,7 +26,7 @@ export default function CTABand() {
                 a team that handles the rest.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <a href="#contact" className="btn-white group">
+                <a href={ctaHref} className="btn-white group">
                   Get started now
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>

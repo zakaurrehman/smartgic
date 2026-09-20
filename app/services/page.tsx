@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import AllServices from '@/components/services/AllServices';
 import WhyUs from '@/components/sections/WhyUs';
@@ -52,7 +53,7 @@ export default function ServicesHubPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <main>
+      <main id="main">
         <PageHero
           eyebrow="Corporate Services"
           title={
@@ -72,6 +73,7 @@ export default function ServicesHubPage() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <MobileActionBar />
     </>
   );
 }

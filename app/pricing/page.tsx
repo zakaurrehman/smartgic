@@ -2,11 +2,14 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import Packages from '@/components/sections/Packages';
+import PricingTransparency from '@/components/sections/PricingTransparency';
 import FAQ from '@/components/sections/FAQ';
 import Testimonials from '@/components/sections/Testimonials';
 import CTABand from '@/components/sections/CTABand';
+import Disclaimer from '@/components/ui/Disclaimer';
 import Contact from '@/components/sections/Contact';
 
 const SITE = 'https://www.smartgicvisa.com';
@@ -28,7 +31,7 @@ export default function PricingPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <PageHero
           eyebrow="Transparent Pricing"
           title={
@@ -40,13 +43,16 @@ export default function PricingPage() {
           crumbs={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]}
         />
         <Packages />
+        <PricingTransparency />
         <Testimonials />
         <FAQ />
+        <Disclaimer />
         <CTABand />
         <Contact />
       </main>
       <Footer />
       <WhatsAppButton />
+      <MobileActionBar />
     </>
   );
 }

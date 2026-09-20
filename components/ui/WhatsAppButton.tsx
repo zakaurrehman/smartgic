@@ -13,7 +13,9 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="group fixed bottom-5 right-5 z-50 flex items-center gap-3 rounded-full bg-[#25D366] py-3 pl-3 pr-3 text-white shadow-[0_10px_30px_-6px_rgba(37,211,102,0.6)] transition-all duration-300 hover:pr-5 sm:bottom-6 sm:right-6"
+      /* Hidden below lg: MobileActionBar already offers WhatsApp there, and a
+         floating button would sit on top of it. */
+      className="group fixed bottom-6 right-6 z-50 hidden items-center gap-3 rounded-full bg-[#25D366] py-3 pl-3 pr-3 text-white shadow-[0_10px_30px_-6px_rgba(37,211,102,0.6)] transition-all duration-300 hover:pr-5 lg:flex"
     >
       <span className="absolute inline-flex h-12 w-12 animate-ping rounded-full bg-[#25D366] opacity-30" />
       <svg viewBox="0 0 24 24" className="relative h-7 w-7 fill-white" aria-hidden="true">

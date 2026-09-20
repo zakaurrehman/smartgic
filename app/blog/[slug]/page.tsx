@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { marked } from 'marked';
@@ -5,11 +6,12 @@ import { ArrowUpRight, CalendarDays, Clock, UserRound } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import MobileActionBar from '@/components/ui/MobileActionBar';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import BlogCover from '@/components/blog/BlogCover';
 import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
-import { getAllPosts, getPost, getPostSlugs, formatDate } from '@/lib/blog';
+import { getPost, getPostSlugs, getRelatedPosts, formatDate } from '@/lib/blog';
 
 const SITE = 'https://www.smartgicvisa.com';
 
@@ -56,7 +58,7 @@ export default async function BlogPostPage({
 
   const url = `${SITE}/blog/${post.slug}`;
   const html = marked.parse(post.content) as string;
-  const related = getAllPosts().filter((p) => p.slug !== post.slug).slice(0, 3);
+  const related = getRelatedPosts(post, 3);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -78,7 +80,7 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <main>
+      <main id="main">
         {/* Post hero */}
         <section className="relative overflow-hidden bg-brand-navy pt-[72px] text-white">
           <div className="pointer-events-none absolute inset-0">
@@ -153,7 +155,7 @@ export default async function BlogPostPage({
               </h2>
               <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {related.map((p) => (
-                  <a
+                  <Link
                     key={p.slug}
                     href={`/blog/${p.slug}`}
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
@@ -170,7 +172,7 @@ export default async function BlogPostPage({
                         Read article <ArrowUpRight className="h-4 w-4" />
                       </span>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -182,6 +184,7 @@ export default async function BlogPostPage({
       </main>
       <Footer />
       <WhatsAppButton />
+      <MobileActionBar />
     </>
   );
 }

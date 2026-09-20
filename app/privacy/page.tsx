@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import { company } from '@/lib/data';
 
@@ -88,7 +89,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <PageHero
           eyebrow="Legal"
           title={
@@ -98,6 +99,7 @@ export default function PrivacyPage() {
           }
           subtitle="How we collect, use and protect your information across the Smartgic website and client portal app. Last updated: 23 June 2026."
           crumbs={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]}
+          ctaHref="/contact"
         />
         <section className="section bg-white">
           <div className="container-x">
@@ -118,6 +120,7 @@ export default function PrivacyPage() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <MobileActionBar />
     </>
   );
 }

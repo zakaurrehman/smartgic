@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { services } from '@/lib/services';
 import SectionHeading from '../ui/SectionHeading';
@@ -23,7 +24,7 @@ export default function AllServices() {
             const Icon = service.icon;
             return (
               <Reveal key={service.slug} delay={(i % 3) * 70}>
-                <a
+                <Link
                   href={`/services/${service.slug}`}
                   className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
                 >
@@ -42,7 +43,7 @@ export default function AllServices() {
                     Learn more
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>
-                </a>
+                </Link>
               </Reveal>
             );
           })}

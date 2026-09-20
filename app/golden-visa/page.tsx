@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import GoldenVisa from '@/components/sections/GoldenVisa';
 import Testimonials from '@/components/sections/Testimonials';
@@ -27,7 +28,7 @@ export default function GoldenVisaPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main">
         <PageHero
           eyebrow="Long-Term Residency"
           title={
@@ -45,6 +46,7 @@ export default function GoldenVisaPage() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <MobileActionBar />
     </>
   );
 }

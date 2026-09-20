@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { getService } from '@/lib/services';
 import SectionHeading from '../ui/SectionHeading';
@@ -25,7 +26,7 @@ export default function RelatedServices({ slugs }: { slugs: string[] }) {
             const Icon = service!.icon;
             return (
               <Reveal key={service!.slug} delay={(i % 3) * 80}>
-                <a
+                <Link
                   href={`/services/${service!.slug}`}
                   className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
                 >
@@ -43,7 +44,7 @@ export default function RelatedServices({ slugs }: { slugs: string[] }) {
                     Learn more
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
-                </a>
+                </Link>
               </Reveal>
             );
           })}

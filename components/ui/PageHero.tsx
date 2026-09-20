@@ -7,11 +7,17 @@ export default function PageHero({
   title,
   subtitle,
   crumbs,
+  ctaHref = '#contact',
 }: {
   eyebrow: string;
   title: React.ReactNode;
   subtitle: string;
   crumbs: Crumb[];
+  /**
+   * Where the primary CTA points. Defaults to the in-page contact section;
+   * pages that do not render one must pass "/contact" so the link resolves.
+   */
+  ctaHref?: string;
 }) {
   return (
     <section className="relative overflow-hidden bg-brand-navy pt-[72px] text-white">
@@ -40,7 +46,7 @@ export default function PageHero({
         </p>
 
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href="#contact" className="btn-gradient group w-full sm:w-auto">
+          <a href={ctaHref} className="btn-gradient group w-full sm:w-auto">
             Get a Free Consultation
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>

@@ -270,3 +270,24 @@ export const navLinks = [
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '#contact' },
 ];
+
+/** Google Maps deep link for the office address (used by contact cards & directions). */
+export const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  `${company.legalName}, ${company.address}`,
+)}`;
+
+/**
+ * Social profiles.
+ *
+ * Only entries with a real URL are rendered. Previously these pointed at "#"
+ * in the footer and at bare platform homepages in the Organization schema,
+ * which sent visitors nowhere and gave search engines incorrect `sameAs` data.
+ * Fill in the href as each profile goes live and it appears automatically.
+ */
+export const socialLinks: { label: string; href: string }[] = [
+  { label: 'LinkedIn', href: '' },
+  { label: 'Instagram', href: '' },
+  { label: 'Facebook', href: '' },
+];
+
+export const activeSocialLinks = socialLinks.filter((s) => s.href.trim().length > 0);

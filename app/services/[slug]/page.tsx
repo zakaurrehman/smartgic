@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import MobileActionBar from '@/components/ui/MobileActionBar';
 import Testimonials from '@/components/sections/Testimonials';
 import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
@@ -14,6 +15,8 @@ import { Overview, Benefits, Process, Requirements } from '@/components/services
 import ServicePackages from '@/components/services/ServicePackages';
 import ServiceFaq from '@/components/services/ServiceFaq';
 import RelatedServices from '@/components/services/RelatedServices';
+import ServiceJurisdictions from '@/components/services/ServiceJurisdictions';
+import Disclaimer from '@/components/ui/Disclaimer';
 
 import { getService, serviceSlugs } from '@/lib/services';
 import { company } from '@/lib/data';
@@ -97,7 +100,7 @@ export default async function ServicePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <main>
+      <main id="main">
         <ServiceHero service={service} />
         <Overview service={service} />
         {service.included && service.included.length > 0 && (
@@ -111,12 +114,15 @@ export default async function ServicePage({
         )}
         <Testimonials />
         <ServiceFaq faqs={service.faqs} label={service.navLabel} />
+        <ServiceJurisdictions label={service.navLabel} />
         <RelatedServices slugs={service.related} />
+        <Disclaimer />
         <CTABand />
         <Contact />
       </main>
       <Footer />
       <WhatsAppButton />
+      <MobileActionBar />
     </>
   );
 }
