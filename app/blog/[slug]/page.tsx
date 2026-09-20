@@ -180,7 +180,7 @@ export default async function BlogPostPage({
         )}
 
         <CTABand />
-        <Contact />
+        <Contact source={`Blog post — ${post.title}`} />
       </main>
       <Footer />
       <WhatsAppButton />

@@ -48,7 +48,7 @@ export default function PricingPage() {
         <FAQ />
         <Disclaimer />
         <CTABand />
-        <Contact />
+        <Contact source="Pricing page" defaultService="Company Formation" />
       </main>
       <Footer />
       <WhatsAppButton />

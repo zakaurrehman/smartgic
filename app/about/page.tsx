@@ -257,7 +257,7 @@ export default function AboutPage() {
         <WhyUs />
         <Testimonials />
         <CTABand />
-        <Contact />
+        <Contact source="About page" />
       </main>
       <Footer />
       <WhatsAppButton />

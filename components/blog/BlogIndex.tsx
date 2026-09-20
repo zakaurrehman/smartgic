@@ -140,6 +140,10 @@ export default function BlogIndex({
                   key={post.slug}
                   delay={(i % 3) * 80}
                   className={i >= visible ? 'hidden' : undefined}
+                  // Cards past the fold mount inside a `hidden` wrapper, where
+                  // the scroll observer cannot see them. Render them visible so
+                  // they appear the moment "Load more" removes `hidden`.
+                  immediate={i >= PAGE_SIZE}
                 >
                   <Link
                     href={`/blog/${post.slug}`}

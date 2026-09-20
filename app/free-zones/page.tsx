@@ -196,7 +196,7 @@ export default function FreeZonesPage() {
         <Testimonials />
         <Disclaimer />
         <CTABand />
-        <Contact />
+        <Contact source="Jurisdictions directory" />
       </main>
       <Footer />
       <WhatsAppButton />

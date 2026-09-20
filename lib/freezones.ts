@@ -1952,6 +1952,14 @@ export type JurisdictionSummary = {
   bestFor: string[];
   /** Everything a client-side search should match against. */
   searchIndex: string;
+  /**
+   * Matching indexes kept separate from `searchIndex` so scoring can weight an
+   * explicit "best for" match above an incidental sector mention. `searchIndex`
+   * includes the name and emirate, which makes it unsafe for keyword scoring —
+   * "Dubai" contains "ai", for example.
+   */
+  bestForIndex: string;
+  sectorIndex: string;
 };
 
 export const jurisdictionSummaries: JurisdictionSummary[] = jurisdictions.map((j) => ({
@@ -1967,7 +1975,21 @@ export const jurisdictionSummaries: JurisdictionSummary[] = jurisdictions.map((j
   searchIndex: [j.name, j.abbr, j.emirate, j.category, j.tagline, ...j.bestFor, ...j.sectors]
     .join(' ')
     .toLowerCase(),
+  bestForIndex: j.bestFor.join(' ').toLowerCase(),
+  sectorIndex: [...j.sectors, j.tagline].join(' ').toLowerCase(),
 }));
+
+/**
+ * Whole-word keyword test.
+ *
+ * Plain substring matching produces false positives that quietly corrupt
+ * scoring — "ai" matches "Dubai", "spc" matches nothing useful inside longer
+ * words, and so on.
+ */
+export function matchesKeyword(haystack: string, keyword: string): boolean {
+  const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[^a-z0-9])${escaped}([^a-z0-9]|$)`).test(haystack);
+}
 
 /** Compact list used by the header mega-menu (most-requested jurisdictions first). */
 export const featuredZoneSlugs = [

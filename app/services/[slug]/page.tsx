@@ -19,6 +19,7 @@ import ServiceJurisdictions from '@/components/services/ServiceJurisdictions';
 import Disclaimer from '@/components/ui/Disclaimer';
 
 import { getService, serviceSlugs } from '@/lib/services';
+import { serviceOptionForSlug } from '@/lib/leads';
 import { company } from '@/lib/data';
 
 const SITE = 'https://www.smartgicvisa.com';
@@ -118,7 +119,10 @@ export default async function ServicePage({
         <RelatedServices slugs={service.related} />
         <Disclaimer />
         <CTABand />
-        <Contact />
+        <Contact
+          source={`Service — ${service.navLabel}`}
+          defaultService={serviceOptionForSlug(service.slug)}
+        />
       </main>
       <Footer />
       <WhatsAppButton />

@@ -101,11 +101,6 @@ export const services = [
   },
 ];
 
-export const freeZones = [
-  'IFZA', 'DMCC', 'Meydan', 'DAFZA', 'JAFZA', 'SHAMS', 'RAKEZ',
-  'SPC Free Zone', 'DWC', 'DIFC', 'TECOM', 'Dubai South', 'ADGM', 'KIZAD',
-];
-
 export const process = [
   {
     step: '01',
@@ -261,15 +256,6 @@ export const faqs = [
   },
 ];
 
-export const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Free Zones', href: '/free-zones' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Golden Visa', href: '/golden-visa' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '#contact' },
-];
 
 /** Google Maps deep link for the office address (used by contact cards & directions). */
 export const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(

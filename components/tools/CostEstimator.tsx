@@ -16,6 +16,7 @@ import {
 import {
   costTierRank,
   jurisdictionSummaries,
+  matchesKeyword,
   type JurisdictionSummary,
 } from '@/lib/freezones';
 import { packages } from '@/lib/data';
@@ -127,7 +128,7 @@ const activityKeywords: Record<string, string[]> = {
   manufacturing: ['manufacturing', 'industrial', 'light manufacturing', 'production'],
   media: ['media', 'creative', 'marketing', 'content', 'events', 'design'],
   financial: ['funds', 'family offices', 'asset management', 'financial services', 'fintech'],
-  crypto: ['crypto', 'web3', 'blockchain', 'saas', 'ai'],
+  crypto: ['crypto', 'web3', 'blockchain', 'digital assets', 'artificial intelligence'],
 };
 
 function scoreZone(zone: JurisdictionSummary, a: Answers): number {
@@ -147,17 +148,27 @@ function scoreZone(zone: JurisdictionSummary, a: Answers): number {
     score += zone.category === 'Mainland' ? 7 : 5;
   }
 
-  // 2. Activity fit against the zone's own "best for" and sector tags.
+  // 2. Activity fit. An explicit "best for" match counts for more than an
+  //    incidental sector mention, and matching is whole-word — plain substring
+  //    matching let "ai" hit "Dubai", which handed every Dubai zone a false
+  //    activity score and buried the zone that genuinely specialises.
   const keywords = activityKeywords[a.activity] ?? [];
-  if (keywords.some((k) => zone.searchIndex.includes(k))) score += 6;
+  if (keywords.some((k) => matchesKeyword(zone.bestForIndex, k))) {
+    score += 9;
+  } else if (keywords.some((k) => matchesKeyword(zone.sectorIndex, k))) {
+    score += 5;
+  }
 
-  // 3. Workspace requirements.
+  // 3. Workspace requirements. Matched whole-word against the zone's own
+  //    sector and "best for" tags — "land" previously matched "Mainland",
+  //    which gave a mainland licence a phantom warehousing score.
+  const physical = ['warehouse', 'warehousing', 'industrial', 'manufacturing', 'logistics', 'distribution'];
+  const handlesPhysicalSpace = physical.some(
+    (k) => matchesKeyword(zone.sectorIndex, k) || matchesKeyword(zone.bestForIndex, k),
+  );
+
   if (a.workspace === 'warehouse') {
-    if (/warehouse|industrial|land/.test(zone.searchIndex) || /JAFZA|SAIF|RAKEZ|KEZAD|DWC|AFZ/.test(zone.abbr)) {
-      score += 5;
-    } else {
-      score -= 4;
-    }
+    score += handlesPhysicalSpace ? 5 : -4;
   }
   if (a.workspace === 'flexi' && costTierRank[zone.costTier] <= 1) score += 2;
 
@@ -169,7 +180,7 @@ function scoreZone(zone: JurisdictionSummary, a: Answers): number {
   if (a.priority === 'cost') score += (3 - costTierRank[zone.costTier]) * 2;
   if (a.priority === 'address' && zone.emirate === 'Dubai') score += 6;
   if (a.priority === 'banking' && zone.emirate === 'Dubai' && costTierRank[zone.costTier] >= 2) score += 6;
-  if (a.priority === 'scale' && /land|warehouse|industrial/.test(zone.searchIndex)) score += 4;
+  if (a.priority === 'scale' && handlesPhysicalSpace) score += 4;
 
   return score;
 }
@@ -177,6 +188,10 @@ function scoreZone(zone: JurisdictionSummary, a: Answers): number {
 /** The Smartgic package closest to the recommended route, for an honest starting figure. */
 function matchPackage(zone: JurisdictionSummary | undefined) {
   if (!zone) return undefined;
+  // Offshore entities carry no trade licence and no visa allocation, so none of
+  // the operating-company packages describe them. Showing one here would quote
+  // a price for a licence and a visa the client would never receive.
+  if (zone.category === 'Offshore') return undefined;
   if (zone.category === 'Mainland') return packages.find((p) => p.name === 'Mainland');
   if (costTierRank[zone.costTier] >= 2) return packages.find((p) => p.name === 'Premium Free Zone');
   return packages.find((p) => p.name === 'Free Zone');
@@ -270,6 +285,41 @@ export default function CostEstimator() {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {/* Offshore has no package equivalent — say what it actually is. */}
+              {!pkg && best?.category === 'Offshore' && (
+                <div className="mt-8 rounded-2xl border border-slate-100 bg-slate-50/70 p-6">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">
+                    Quoted per structure
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-500">
+                    An offshore company is not priced like a trading licence, because it is not one.
+                    There is no trade licence, no workspace and{' '}
+                    <span className="font-semibold text-ink-900">no residence visa</span> — so our
+                    operating-company packages do not apply. Offshore costs cover incorporation, the
+                    registered agent and annual renewal, and we quote them per structure once we know
+                    what the entity will hold.
+                  </p>
+                  <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
+                    {[
+                      'Incorporation & registered agent',
+                      'Corporate documents',
+                      'Annual renewal',
+                      'Bank account assistance (optional)',
+                    ].map((f) => (
+                      <li key={f} className="flex items-start gap-2.5 text-sm text-ink-500">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-5 text-xs leading-relaxed text-ink-400">
+                    If you also need UAE residency or to invoice UAE clients, you need a free zone or
+                    mainland licence alongside this — we commonly set up both, with the offshore
+                    entity holding the shares.
+                  </p>
                 </div>
               )}
 

@@ -42,7 +42,7 @@ export default function GoldenVisaPage() {
         <GoldenVisa />
         <Testimonials />
         <CTABand />
-        <Contact />
+        <Contact source="Golden Visa page" defaultService="Golden Visa" />
       </main>
       <Footer />
       <WhatsAppButton />

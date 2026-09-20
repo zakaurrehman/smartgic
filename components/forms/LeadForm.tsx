@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState, type FormEvent } from 'react';
+import { useId, useRef, useState, type FormEvent } from 'react';
 import {
   AlertCircle,
   CheckCircle2,
@@ -39,8 +39,19 @@ export default function LeadForm({
   const [fallbackHref, setFallbackHref] = useState('');
   const baseId = useId();
 
+  /**
+   * Synchronous re-entry guard.
+   *
+   * Disabling the submit button is not enough: setState is asynchronous, so a
+   * fast double-tap (common on mobile) can fire handleSubmit again before React
+   * re-renders the disabled button — sending the enquiry twice.
+   */
+  const inFlight = useRef(false);
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (inFlight.current) return;
+
     const form = e.currentTarget;
     const data = new FormData(form);
 
@@ -63,28 +74,34 @@ export default function LeadForm({
       return;
     }
 
+    inFlight.current = true;
     setFormError('');
     setStatus('submitting');
 
     const href = whatsappHref(lead);
     setFallbackHref(href);
 
-    const result = await submitLead(lead);
+    try {
+      const result = await submitLead(lead);
 
-    if (result.status === 'error') {
-      setStatus('error');
-      setFormError(result.message);
-      return;
-    }
+      if (result.status === 'error') {
+        setStatus('error');
+        setFormError(result.message);
+        return;
+      }
 
-    if (result.via === 'whatsapp') {
-      // No email backend configured — hand off to WhatsApp as before.
-      window.open(href, '_blank', 'noopener,noreferrer');
-      setStatus('sent-whatsapp');
-    } else {
-      setStatus('sent-email');
+      if (result.via === 'whatsapp') {
+        // No email backend configured — hand off to WhatsApp as before.
+        window.open(href, '_blank', 'noopener,noreferrer');
+        setStatus('sent-whatsapp');
+      } else {
+        setStatus('sent-email');
+      }
+      form.reset();
+    } finally {
+      // Released on every path so a failed send can be retried.
+      inFlight.current = false;
     }
-    form.reset();
   }
 
   if (status === 'sent-email' || status === 'sent-whatsapp') {

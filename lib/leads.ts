@@ -136,3 +136,23 @@ export const serviceOptions = [
   'Licence Renewal',
   'Not sure yet',
 ];
+
+/**
+ * Pre-selects the form's service dropdown from the service page a visitor is
+ * reading, so the field is already right when they reach the form. Slugs with
+ * no natural match return '' and the placeholder option stays selected.
+ */
+const SERVICE_BY_SLUG: Record<string, string> = {
+  'company-registration': 'Company Formation',
+  'professional-services': 'Trade Licence',
+  'bank-account-opening': 'Bank Account Opening',
+  'visa-services': 'Residence Visa',
+  'document-clearing-services': 'Document Clearing & Attestation',
+  'corporate-pro-services': 'PRO Services',
+  'trade-license-renewals': 'Licence Renewal',
+  'sponsorship-services': 'Residence Visa',
+};
+
+export function serviceOptionForSlug(slug: string): string {
+  return SERVICE_BY_SLUG[slug] ?? '';
+}

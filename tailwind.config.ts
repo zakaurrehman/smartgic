@@ -66,12 +66,18 @@ const config: Config = {
           '0%': { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' },
         },
+        /* Indeterminate progress sweep for the route-loading bar. */
+        progress: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(220%)' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.7s cubic-bezier(0.22,1,0.36,1) forwards',
         marquee: 'marquee 32s linear infinite',
         float: 'float 6s ease-in-out infinite',
         shimmer: 'shimmer 6s linear infinite',
+        progress: 'progress 1.1s ease-in-out infinite',
       },
     },
   },
