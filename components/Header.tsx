@@ -99,6 +99,31 @@ export default function Header() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  /**
+   * Marks the document as keyboard-driven so the skip link can reveal itself.
+   *
+   * Next.js moves focus to the top of the document after each client-side
+   * navigation, which lands on the skip link. `:focus-visible` does not help —
+   * Chrome treats that programmatic focus as focus-visible — so visibility is
+   * gated on the visitor actually pressing Tab. Capture phase runs before the
+   * browser moves focus, so the attribute is always set in time.
+   */
+  useEffect(() => {
+    const root = document.documentElement;
+    const onTab = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') root.dataset.kbd = 'true';
+    };
+    const onPointer = () => {
+      delete root.dataset.kbd;
+    };
+    window.addEventListener('keydown', onTab, true);
+    window.addEventListener('pointerdown', onPointer, true);
+    return () => {
+      window.removeEventListener('keydown', onTab, true);
+      window.removeEventListener('pointerdown', onPointer, true);
+    };
+  }, []);
+
   const dark = !scrolled; // transparent header over dark hero → light text
   const linkBase = `whitespace-nowrap ${
     dark
@@ -116,7 +141,7 @@ export default function Header() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand-navy focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
+        className="skip-link"
       >
         Skip to main content
       </a>

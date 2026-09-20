@@ -77,6 +77,45 @@
   }
 }
 
+/* Skip link.
+   Hidden by default and revealed only once the visitor is actually navigating
+   by keyboard. Next.js moves focus to the top of the document after every
+   client-side navigation, which lands on this link — without the keyboard
+   gate it would flash a panel over the logo on every page change. The gate is
+   a data attribute toggled synchronously in a capture-phase listener, so it is
+   set before focus moves and never lags a render behind. */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+[data-kbd='true'] .skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 60;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: nowrap;
+  border-radius: 9999px;
+  background-color: #0a1730;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 12px 32px rgba(10, 23, 48, 0.28);
+}
+
 /* Animated aurora background blobs */
 .aurora {
   position: absolute;
