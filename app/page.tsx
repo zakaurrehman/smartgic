@@ -16,6 +16,8 @@ import FAQ from '@/components/sections/FAQ';
 import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
 import Disclaimer from '@/components/ui/Disclaimer';
+import GuidesSection from '@/components/blog/GuidesSection';
+import { getAllPosts } from '@/lib/blog';
 import { activeSocialLinks, company, faqs } from '@/lib/data';
 
 const SITE = 'https://www.smartgicvisa.com';
@@ -100,6 +102,8 @@ const jsonLd = {
 };
 
 export default function Home() {
+  const latestGuides = getAllPosts().slice(0, 3);
+
   return (
     <>
       <script
@@ -119,6 +123,16 @@ export default function Home() {
         <GoldenVisa />
         <Testimonials />
         <FAQ />
+        <GuidesSection
+          posts={latestGuides}
+          eyebrow="Guides & insights"
+          title={
+            <>
+              Read up before <span className="gradient-text">you decide</span>
+            </>
+          }
+          description="Practical guides on setting up, licensing and staying compliant in the UAE — written by the team that files these applications every day."
+        />
         <Disclaimer />
         <CTABand />
         <Contact source="Homepage" />

@@ -4,6 +4,8 @@ description: "Not all Dubai business setup consultants are equal. The licence ch
 date: "2026-06-11"
 author: "Smartgic Editorial Team"
 category: "Business Setup"
+image: "/blog-images/choose-business-setup-consultant-dubai.jpg"
+imageAlt: "Smartgic Immigration cover showing a businessman at a desk overlooking Dubai with the Smartgic logo on his laptop, titled Dubai Business Setup Services: Your Trusted Partner for Business Setup in Dubai"
 keywords: ["business setup consultants Dubai", "business setup services Dubai", "UAE business consultants", "best business setup company Dubai", "company formation consultants"]
 ---
 

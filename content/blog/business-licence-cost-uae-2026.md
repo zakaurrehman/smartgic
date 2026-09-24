@@ -4,6 +4,8 @@ description: "What a UAE business licence really costs in 2026 — free zone vs 
 date: "2026-06-14"
 author: "Smartgic Editorial Team"
 category: "Business Setup"
+image: "/blog-images/business-licence-cost-uae-2026.jpg"
+imageAlt: "Smartgic Immigration cover showing a laptop on a terrace desk overlooking the Dubai skyline and a UAE flag, titled How to Start Business in Dubai: Key Steps for a Successful Launch"
 keywords: ["business license cost UAE", "UAE business license", "trade license cost Dubai", "Dubai business license", "commercial license Dubai cost"]
 ---
 

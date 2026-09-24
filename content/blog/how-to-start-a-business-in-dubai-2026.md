@@ -4,6 +4,8 @@ description: "Everything you need to start a business in Dubai in 2026 — choos
 date: "2026-06-23"
 author: "Smartgic Editorial Team"
 category: "Business Setup"
+image: "/blog-images/how-to-start-a-business-in-dubai-2026.jpg"
+imageAlt: "Smartgic Immigration cover showing a businessman at a laptop overlooking the Dubai skyline and Burj Khalifa, titled How to Start Business in Dubai: A Complete Guide for Entrepreneurs"
 keywords: ["start a business in Dubai", "Dubai business setup 2026", "company formation UAE", "trade licence Dubai", "business setup cost Dubai"]
 ---
 

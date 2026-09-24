@@ -5,8 +5,8 @@ import type { BlogCard, BlogPost } from './blog-shared';
 
 // Server-only module: reads content/blog from disk. Client components should
 // import types and formatDate from './blog-shared' instead.
-export type { BlogPost, BlogCard } from './blog-shared';
-export { formatDate } from './blog-shared';
+export type { BlogPost, BlogCard, PostSummary } from './blog-shared';
+export { formatDate, COVER_WIDTH, COVER_HEIGHT } from './blog-shared';
 
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 
@@ -29,6 +29,7 @@ export function getAllPosts(): BlogPost[] {
         category: String(data.category ?? 'Business Setup'),
         keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
         image: data.image ? String(data.image) : undefined,
+        imageAlt: data.imageAlt ? String(data.imageAlt) : undefined,
         content,
         readingTime: Math.max(1, Math.round(words / 200)),
       } satisfies BlogPost;
@@ -72,4 +73,10 @@ export function getRelatedPosts(post: BlogPost, limit = 3): BlogPost[] {
   const sameCategory = others.filter((p) => p.category === post.category);
   const rest = others.filter((p) => p.category !== post.category);
   return [...sameCategory, ...rest].slice(0, limit);
+}
+
+/** Posts for the given slugs, in the order given; unknown slugs are skipped. */
+export function getPostsBySlugs(slugs: string[]): BlogPost[] {
+  const bySlug = new Map(getAllPosts().map((p) => [p.slug, p]));
+  return slugs.map((s) => bySlug.get(s)).filter((p): p is BlogPost => Boolean(p));
 }

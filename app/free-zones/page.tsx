@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import { ArrowRight, Compass, Scale, Wallet } from 'lucide-react';
 
 import Header from '@/components/Header';
@@ -37,8 +38,16 @@ export const metadata: Metadata = {
     'UAE offshore company',
   ],
   alternates: { canonical: url },
-  openGraph: { type: 'website', locale: 'en_AE', url, siteName: 'Smartgic Visa', title, description },
-  twitter: { card: 'summary_large_image', title, description },
+  openGraph: {
+    type: 'website',
+    locale: 'en_AE',
+    url,
+    siteName: 'Smartgic Visa',
+    title,
+    description,
+    images: [DEFAULT_SHARE_IMAGE],
+  },
+  twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_SHARE_IMAGE] },
 };
 
 const chooseFactors = [

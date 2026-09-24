@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
@@ -63,11 +64,13 @@ export async function generateMetadata({
       siteName: 'Smartgic Visa',
       title: zone.metaTitle,
       description: zone.metaDescription,
+      images: [DEFAULT_SHARE_IMAGE],
     },
     twitter: {
       card: 'summary_large_image',
       title: zone.metaTitle,
       description: zone.metaDescription,
+      images: [DEFAULT_SHARE_IMAGE],
     },
   };
 }

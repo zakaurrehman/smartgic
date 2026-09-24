@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
@@ -20,8 +21,16 @@ export const metadata: Metadata = {
   description,
   keywords: ['UAE Golden Visa', '10 year visa UAE', 'Golden Visa Dubai', 'investor Golden Visa', 'long term residency UAE'],
   alternates: { canonical: url },
-  openGraph: { type: 'website', locale: 'en_AE', url, siteName: 'Smartgic Visa', title, description },
-  twitter: { card: 'summary_large_image', title, description },
+  openGraph: {
+    type: 'website',
+    locale: 'en_AE',
+    url,
+    siteName: 'Smartgic Visa',
+    title,
+    description,
+    images: [DEFAULT_SHARE_IMAGE],
+  },
+  twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_SHARE_IMAGE] },
 };
 
 export default function GoldenVisaPage() {

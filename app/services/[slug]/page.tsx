@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 
 import Header from '@/components/Header';
@@ -17,9 +18,12 @@ import ServiceFaq from '@/components/services/ServiceFaq';
 import RelatedServices from '@/components/services/RelatedServices';
 import ServiceJurisdictions from '@/components/services/ServiceJurisdictions';
 import Disclaimer from '@/components/ui/Disclaimer';
+import GuidesSection from '@/components/blog/GuidesSection';
 
 import { getService, serviceSlugs } from '@/lib/services';
 import { serviceOptionForSlug } from '@/lib/leads';
+import { getPostsBySlugs } from '@/lib/blog';
+import { relatedGuidesByService } from '@/lib/related-guides';
 import { company } from '@/lib/data';
 
 const SITE = 'https://www.smartgicvisa.com';
@@ -50,11 +54,13 @@ export async function generateMetadata({
       siteName: 'Smartgic Visa',
       title: service.metaTitle,
       description: service.metaDescription,
+      images: [DEFAULT_SHARE_IMAGE],
     },
     twitter: {
       card: 'summary_large_image',
       title: service.metaTitle,
       description: service.metaDescription,
+      images: [DEFAULT_SHARE_IMAGE],
     },
   };
 }
@@ -69,6 +75,7 @@ export default async function ServicePage({
   if (!service) notFound();
 
   const url = `${SITE}/services/${service.slug}`;
+  const guides = getPostsBySlugs(relatedGuidesByService[service.slug] ?? []);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -117,6 +124,16 @@ export default async function ServicePage({
         <ServiceFaq faqs={service.faqs} label={service.navLabel} />
         <ServiceJurisdictions label={service.navLabel} />
         <RelatedServices slugs={service.related} />
+        <GuidesSection
+          posts={guides}
+          eyebrow="Further reading"
+          title={
+            <>
+              Guides on <span className="gradient-text">{service.navLabel}</span>
+            </>
+          }
+          description="In-depth articles from our team covering the questions clients most often ask about this service."
+        />
         <Disclaimer />
         <CTABand />
         <Contact

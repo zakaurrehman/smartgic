@@ -4,6 +4,8 @@ description: "Yes, foreigners can own 100% of a Dubai business. Here's how to op
 date: "2026-06-13"
 author: "Smartgic Editorial Team"
 category: "Business Setup"
+image: "/blog-images/open-business-in-dubai-foreigner.jpg"
+imageAlt: "Smartgic Immigration cover showing a businessman reading a Business Steps newspaper about Dubai, titled How to Start Business in Dubai: A Step-by-Step Guide for Global Entrepreneurs"
 keywords: ["open business in Dubai", "start business in Dubai", "foreigner business Dubai", "open company Dubai", "Dubai business for expats"]
 ---
 

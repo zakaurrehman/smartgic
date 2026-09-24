@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import Link from 'next/link';
 import { ArrowUpRight, CalendarDays, Clock, Sparkles } from 'lucide-react';
 import Header from '@/components/Header';
@@ -7,7 +8,7 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import Reveal from '@/components/ui/Reveal';
-import BlogCover from '@/components/blog/BlogCover';
+import PostCover from '@/components/blog/PostCover';
 import BlogIndex from '@/components/blog/BlogIndex';
 import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
@@ -30,8 +31,16 @@ export const metadata: Metadata = {
     'free zone guides',
   ],
   alternates: { canonical: url },
-  openGraph: { type: 'website', locale: 'en_AE', url, siteName: 'Smartgic Visa', title, description },
-  twitter: { card: 'summary_large_image', title, description },
+  openGraph: {
+    type: 'website',
+    locale: 'en_AE',
+    url,
+    siteName: 'Smartgic Visa',
+    title,
+    description,
+    images: [DEFAULT_SHARE_IMAGE],
+  },
+  twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_SHARE_IMAGE] },
 };
 
 export default function BlogIndexPage() {
@@ -52,6 +61,7 @@ export default function BlogIndexPage() {
       headline: p.title,
       url: `${url}/${p.slug}`,
       datePublished: p.date,
+      ...(p.image ? { image: `${SITE}${p.image}` } : {}),
     })),
   };
 
@@ -81,26 +91,21 @@ export default function BlogIndexPage() {
               <Reveal>
                 <Link
                   href={`/blog/${featured.slug}`}
-                  className="group grid overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft lg:grid-cols-2"
+                  className="group grid overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft lg:grid-cols-2 lg:items-center"
                 >
-                  {featured.image ? (
-                    <div className="relative h-56 overflow-hidden lg:h-full lg:min-h-[320px]">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={featured.image}
-                        alt=""
-                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                  ) : (
-                    <BlogCover
-                      category={featured.category}
-                      className="h-56 lg:h-full lg:min-h-[320px]"
-                      iconSize="h-12 w-12"
+                  {/* Inset at its native ratio rather than stretched to the
+                      text column's height — stretching would crop the cover's
+                      baked-in headline. */}
+                  <div className="p-3 sm:p-4">
+                    <PostCover
+                      post={featured}
+                      sizes="(min-width: 1280px) 600px, (min-width: 1024px) 48vw, 100vw"
+                      className="rounded-2xl"
+                      zoomOnHover
                     />
-                  )}
+                  </div>
 
-                  <div className="flex flex-col justify-center p-7 sm:p-10">
+                  <div className="flex flex-col justify-center px-7 pb-8 pt-3 sm:px-10 sm:pb-10 lg:py-10 lg:pl-6">
                     <span className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-cyan-dark">
                       <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Latest
                     </span>

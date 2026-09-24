@@ -4,6 +4,8 @@ description: "LLC, sole establishment, free zone entity, branch or holding compa
 date: "2026-06-12"
 author: "Smartgic Editorial Team"
 category: "Business Setup"
+image: "/blog-images/uae-company-incorporation-legal-structures.jpg"
+imageAlt: "Smartgic Immigration cover showing a businessman on a terrace looking over the Dubai skyline at dusk, titled Dubai Business Setup Services: Expert Solutions for UAE Company Registration"
 keywords: ["company incorporation UAE", "UAE company incorporation", "LLC company formation UAE", "sole establishment UAE", "branch office UAE"]
 ---
 

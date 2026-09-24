@@ -2,10 +2,10 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, CalendarDays, Clock, Search, X } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import Reveal from '../ui/Reveal';
-import BlogCover from './BlogCover';
-import { formatDate, type BlogCard } from '@/lib/blog-shared';
+import PostCard from './PostCard';
+import type { BlogCard } from '@/lib/blog-shared';
 
 const PAGE_SIZE = 9;
 
@@ -145,54 +145,7 @@ export default function BlogIndex({
                   // they appear the moment "Load more" removes `hidden`.
                   immediate={i >= PAGE_SIZE}
                 >
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
-                  >
-                    {post.image ? (
-                      <div className="relative flex h-40 items-end overflow-hidden p-5">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={post.image}
-                          alt=""
-                          loading="lazy"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 to-transparent" />
-                        <span className="relative rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
-                          {post.category}
-                        </span>
-                      </div>
-                    ) : (
-                      <BlogCover category={post.category} className="h-40">
-                        <span className="relative rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-semibold text-brand-cyan backdrop-blur">
-                          {post.category}
-                        </span>
-                      </BlogCover>
-                    )}
-                    <div className="flex flex-1 flex-col p-6">
-                      <div className="flex items-center gap-4 text-xs text-ink-400">
-                        <span className="inline-flex items-center gap-1.5">
-                          <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />{' '}
-                          {formatDate(post.date)}
-                        </span>
-                        <span className="inline-flex items-center gap-1.5">
-                          <Clock className="h-3.5 w-3.5" aria-hidden="true" /> {post.readingTime} min
-                          read
-                        </span>
-                      </div>
-                      <h2 className="mt-3 text-lg font-bold leading-snug text-ink-900 transition-colors group-hover:text-brand-blue">
-                        {post.title}
-                      </h2>
-                      <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">
-                        {post.description}
-                      </p>
-                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
-                        Read article
-                        <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </span>
-                    </div>
-                  </Link>
+                  <PostCard post={post} headingLevel="h2" />
                 </Reveal>
               ))}
             </div>

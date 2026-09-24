@@ -4,6 +4,8 @@ description: "A practical comparison of Dubai mainland and free zone company set
 date: "2026-06-21"
 author: "Smartgic Editorial Team"
 category: "Business Setup"
+image: "/blog-images/mainland-vs-free-zone-dubai.jpg"
+imageAlt: "Smartgic Immigration cover showing a business team meeting around a laptop with the Burj Khalifa behind them, titled Business Setup in Dubai: Your Dubai Business Setup Service Solution Guide"
 keywords: ["mainland vs free zone Dubai", "free zone company UAE", "DET mainland licence", "best free zone Dubai", "Dubai company jurisdiction"]
 ---
 

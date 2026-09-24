@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { SHARE_IMAGE_ALT } from '@/lib/seo';
 
 /**
  * Default social share card.
@@ -8,8 +9,7 @@ import { ImageResponse } from 'next/og';
  * external font or asset fetch, so it cannot fail the build.
  */
 
-export const alt =
-  'Smartgic Visa — Dubai business setup, company formation and UAE visa services';
+export const alt = SHARE_IMAGE_ALT;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

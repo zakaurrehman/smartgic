@@ -4,6 +4,8 @@ description: "What UAE company registration actually involves in 2026 — requir
 date: "2026-06-20"
 author: "Smartgic Editorial Team"
 category: "Business Setup"
+image: "/blog-images/uae-company-registration-documents-cost-timeline.jpg"
+imageAlt: "Smartgic Immigration cover showing a desk with a laptop and a UAE flag in front of the Dubai skyline, titled Dubai Business Setup Services: Expert Solutions for UAE Company Registration"
 keywords: ["UAE company registration", "company registration Dubai", "register company in UAE", "company incorporation UAE", "Dubai company registration cost"]
 ---
 

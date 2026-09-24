@@ -30,3 +30,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# Designer source folder for blog covers. Holds Illustrator (.ai) sources
+# (~45MB) plus the unoptimised JPEG exports. Anything committed under public/
+# is publicly downloadable from the live site, so it stays local. The optimised,
+# slug-named copies the site actually uses live in public/blog-images/.
+/public/Blog Images/
