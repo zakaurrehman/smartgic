@@ -1,9 +1,13 @@
+import Image from 'next/image';
 import { Check, CircleCheck } from 'lucide-react';
 import type { Service } from '@/lib/services';
+import { serviceOverviewImages } from '@/lib/site-images';
 import SectionHeading from '../ui/SectionHeading';
 import Reveal from '../ui/Reveal';
 
 export function Overview({ service }: { service: Service }) {
+  const photo = serviceOverviewImages[service.slug];
+
   return (
     <section className="section bg-white">
       <div className="container-x grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:gap-16">
@@ -24,6 +28,32 @@ export function Overview({ service }: { service: Service }) {
         </div>
 
         <Reveal delay={120}>
+          {photo ? (
+            // The hero already lists all four stats, so the photo carries two
+            // as a floating strip rather than repeating the full card.
+            <div className="relative pb-6">
+              <div className="relative aspect-[5/4] overflow-hidden rounded-3xl bg-slate-100 shadow-soft">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  placeholder="blur"
+                  sizes="(min-width: 1280px) 500px, (min-width: 1024px) 42vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute inset-x-4 bottom-0 grid grid-cols-2 gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-soft sm:inset-x-8">
+                {service.stats.slice(0, 2).map((s) => (
+                  <div key={s.label} className="text-center">
+                    <p className="bg-brand-gradient bg-clip-text text-xl font-extrabold tracking-tight text-transparent sm:text-2xl">
+                      {s.value}
+                    </p>
+                    <p className="mt-0.5 text-xs text-ink-500">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
           <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-slate-50/70 p-8 shadow-card">
             <div className="pointer-events-none absolute right-[-10%] top-[-20%] h-48 w-48 rounded-full bg-brand-gradient-soft blur-2xl" />
             <p className="relative text-sm font-semibold uppercase tracking-wider text-brand-cyan-dark">
@@ -40,6 +70,7 @@ export function Overview({ service }: { service: Service }) {
               ))}
             </div>
           </div>
+          )}
         </Reveal>
       </div>
     </section>

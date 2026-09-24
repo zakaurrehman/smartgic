@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import {
   ShieldCheck, Eye, Zap, HeartHandshake, Landmark, Globe2,
@@ -16,6 +17,7 @@ import Testimonials from '@/components/sections/Testimonials';
 import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
 import { company, stats } from '@/lib/data';
+import { siteImages } from '@/lib/site-images';
 
 const SITE = 'https://www.smartgicvisa.com';
 const url = `${SITE}/about`;
@@ -244,7 +246,22 @@ export default function AboutPage() {
               }
               description="There's a reason founders from 120+ countries choose the UAE — and why most of them never leave."
             />
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {/* The city, not the office — this section is about Dubai itself,
+                so an iconic landmark belongs here rather than beside the
+                story copy about the Deira office. */}
+            <Reveal className="mt-14">
+              <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-slate-200 shadow-soft sm:aspect-[16/7]">
+                <Image
+                  src={siteImages.museumOfTheFutureDubai.src}
+                  alt={siteImages.museumOfTheFutureDubai.alt}
+                  fill
+                  placeholder="blur"
+                  sizes="(min-width: 1280px) 1176px, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <div className="relative -mt-10 grid gap-5 px-3 sm:-mt-16 sm:grid-cols-2 sm:px-6 lg:-mt-20 lg:grid-cols-4 lg:px-8">
               {whyDubai.map((w, i) => {
                 const Icon = w.icon;
                 return (
