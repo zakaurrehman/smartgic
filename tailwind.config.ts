@@ -71,6 +71,11 @@ const config: Config = {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(220%)' },
         },
+        /* Fills a hero slideshow bar over one photo's time on screen. */
+        'slide-fill': {
+          '0%': { transform: 'scaleX(0)' },
+          '100%': { transform: 'scaleX(1)' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.7s cubic-bezier(0.22,1,0.36,1) forwards',
@@ -78,6 +83,8 @@ const config: Config = {
         float: 'float 6s ease-in-out infinite',
         shimmer: 'shimmer 6s linear infinite',
         progress: 'progress 1.1s ease-in-out infinite',
+        // Duration is set inline from the slideshow's interval.
+        'slide-fill': 'slide-fill 3s linear forwards',
       },
     },
   },
