@@ -102,6 +102,9 @@ export default function BlogIndexPage() {
                       sizes="(min-width: 1280px) 600px, (min-width: 1024px) 48vw, 100vw"
                       className="rounded-2xl"
                       zoomOnHover
+                      // In the first screen on desktop, where it is the page's
+                      // largest image.
+                      priority
                     />
                   </div>
 

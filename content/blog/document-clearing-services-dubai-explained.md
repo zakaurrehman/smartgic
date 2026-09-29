@@ -4,6 +4,8 @@ description: "Document clearing explained — government typing, MOFA and embass
 date: "2026-06-09"
 author: "Smartgic Editorial Team"
 category: "Compliance"
+image: "/blog-images/document-clearing-services-dubai-explained.jpg"
+imageAlt: "A business owner at a desk overlooking the Dubai skyline, with the Smartgic Immigration logo on his laptop"
 keywords: ["document clearing services Dubai", "document clearing and attestation Dubai", "MOFA attestation Dubai", "attestation services UAE", "legal translation Dubai"]
 ---
 

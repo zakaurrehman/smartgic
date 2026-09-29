@@ -3,8 +3,12 @@ import { ArrowUpRight, CalendarDays, Clock } from 'lucide-react';
 import PostCover from './PostCover';
 import { formatDate, type PostSummary } from '@/lib/blog-shared';
 
-/** Grid widths the card is laid out at — keeps the cover's srcset honest. */
-const CARD_SIZES = '(min-width: 1280px) 380px, (min-width: 1024px) 31vw, (min-width: 640px) 48vw, 100vw';
+/**
+ * Widths the card is laid out at in the standard three-up grid — keeps the
+ * cover's srcset honest. Narrower grids pass their own.
+ */
+export const CARD_SIZES =
+  '(min-width: 1280px) 380px, (min-width: 1024px) 31vw, (min-width: 640px) 48vw, 100vw';
 
 /**
  * Blog post card, shared by the blog index, related posts, the homepage and
@@ -17,10 +21,13 @@ const CARD_SIZES = '(min-width: 1280px) 380px, (min-width: 1024px) 31vw, (min-wi
 export default function PostCard({
   post,
   headingLevel = 'h3',
+  sizes = CARD_SIZES,
 }: {
   post: PostSummary;
   /** h2 where cards are the page's primary list, h3 under a section heading. */
   headingLevel?: 'h2' | 'h3';
+  /** The cover's `sizes`, for grids laid out differently from three-up. */
+  sizes?: string;
 }) {
   const Heading = headingLevel;
 
@@ -29,7 +36,7 @@ export default function PostCard({
       href={`/blog/${post.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
     >
-      <PostCover post={post} sizes={CARD_SIZES} zoomOnHover />
+      <PostCover post={post} sizes={sizes} zoomOnHover />
 
       <div className="flex flex-1 flex-col p-6">
         <span className="text-xs font-semibold uppercase tracking-wider text-brand-cyan-dark">

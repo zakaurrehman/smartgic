@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { siteImages } from '@/lib/site-images';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import { ArrowRight, Compass, Scale, Wallet } from 'lucide-react';
 
@@ -131,6 +132,7 @@ export default function FreeZonesPage() {
       <Header />
       <main id="main">
         <PageHero
+          image={siteImages.entrepreneurDubaiSkyline}
           eyebrow="Jurisdictions"
           title={
             <>

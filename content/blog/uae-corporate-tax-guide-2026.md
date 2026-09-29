@@ -4,6 +4,8 @@ description: "A plain-English guide to UAE Corporate Tax in 2026 — who must re
 date: "2026-06-19"
 author: "Smartgic Editorial Team"
 category: "Tax & Compliance"
+image: "/blog-images/uae-corporate-tax-guide-2026.jpg"
+imageAlt: "An advisory meeting in a Dubai office, with financial charts on screen and the Burj Khalifa at sunset"
 keywords: ["corporate tax UAE", "UAE corporate tax registration", "corporate tax return UAE", "corporate tax filing UAE", "business tax UAE"]
 ---
 

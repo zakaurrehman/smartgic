@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { siteImages } from '@/lib/site-images';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import {
   Clock,
@@ -166,6 +167,7 @@ export default function ContactPage() {
       <Header />
       <main id="main">
         <PageHero
+          image={siteImages.businessOwnerDubaiOffice}
           eyebrow="Get in touch"
           title={
             <>

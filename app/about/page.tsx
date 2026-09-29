@@ -98,6 +98,7 @@ export default function AboutPage() {
       <Header />
       <main id="main">
         <PageHero
+          image={siteImages.smartgicMeetingRoom}
           eyebrow="About Us"
           title={
             <>

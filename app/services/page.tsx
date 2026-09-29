@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { siteImages } from '@/lib/site-images';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -64,6 +65,7 @@ export default function ServicesHubPage() {
       <Header />
       <main id="main">
         <PageHero
+          image={siteImages.dubaiBoardroomPresentation}
           eyebrow="Corporate Services"
           title={
             <>

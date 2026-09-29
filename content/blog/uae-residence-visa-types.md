@@ -4,6 +4,8 @@ description: "Every main UAE residence visa in 2026 — investor/partner, employ
 date: "2026-06-10"
 author: "Smartgic Editorial Team"
 category: "Visas & Immigration"
+image: "/blog-images/uae-residence-visa-types.jpg"
+imageAlt: "A business owner with a laptop on a terrace overlooking the Burj Khalifa and Dubai Water Canal"
 keywords: ["UAE residence visa", "investor visa UAE", "UAE visa types", "Dubai residence visa", "family visa UAE"]
 ---
 

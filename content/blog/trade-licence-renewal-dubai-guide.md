@@ -4,6 +4,8 @@ description: "How Dubai trade licence renewal works in 2026 — the documents, E
 date: "2026-06-17"
 author: "Smartgic Editorial Team"
 category: "Compliance"
+image: "/blog-images/trade-licence-renewal-dubai-guide.jpg"
+imageAlt: "A desk with a laptop, a UAE flag and a coffee cup overlooking the Burj Khalifa and Downtown Dubai"
 keywords: ["trade licence renewal Dubai", "UAE trade licence renewal", "renew trade license Dubai", "licence renewal cost Dubai", "expired trade licence UAE"]
 ---
 

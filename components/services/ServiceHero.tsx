@@ -2,9 +2,12 @@ import { ArrowRight, CheckCircle2, Phone, Sparkles } from 'lucide-react';
 import type { Service } from '@/lib/services';
 import { company } from '@/lib/data';
 import Breadcrumbs from '../ui/Breadcrumbs';
+import HeroPhoto from '../ui/HeroPhoto';
+import { serviceHeroImages } from '@/lib/site-images';
 
 export default function ServiceHero({ service }: { service: Service }) {
   const Icon = service.icon;
+  const photo = serviceHeroImages[service.slug];
 
   return (
     <section className="relative overflow-hidden bg-brand-navy pt-[72px] text-white">
@@ -60,7 +63,30 @@ export default function ServiceHero({ service }: { service: Service }) {
             </div>
           </div>
 
-          {/* Right: icon feature card */}
+          {/* Right: the service's photo where one fits; otherwise the stats
+              card. The stats also appear in the overview's "At a glance"
+              card, so the photo variant does not repeat them here. */}
+          {photo ? (
+            <HeroPhoto image={photo}>
+              <div className="flex items-center gap-4 rounded-2xl border border-white/15 bg-brand-navy/75 p-4 shadow-2xl backdrop-blur-xl sm:p-5">
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-gradient shadow-glow">
+                  <Icon className="h-6 w-6 text-white" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  {/* Wraps rather than truncates: "Document Clearing Services"
+                      does not fit on one line beside the advisor link. */}
+                  <p className="text-sm font-bold leading-snug text-white sm:text-base">{service.navLabel}</p>
+                  <p className="truncate text-xs text-slate-400">Smartgic Corporate Services</p>
+                </div>
+                <a
+                  href="#contact"
+                  className="hidden shrink-0 items-center gap-1.5 rounded-xl bg-white/10 px-3.5 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-white/20 sm:inline-flex"
+                >
+                  Speak to an advisor <ArrowRight className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </HeroPhoto>
+          ) : (
           <div className="relative mx-auto w-full max-w-md lg:max-w-none">
             <div className="relative rounded-3xl border border-white/15 bg-white/[0.07] p-6 shadow-2xl backdrop-blur-xl sm:p-8">
               <div className="flex items-center gap-4">
@@ -93,6 +119,7 @@ export default function ServiceHero({ service }: { service: Service }) {
               </a>
             </div>
           </div>
+          )}
         </div>
       </div>
     </section>

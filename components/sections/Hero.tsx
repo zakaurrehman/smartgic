@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import { ArrowRight, CheckCircle2, ShieldCheck, Star, Sparkles } from 'lucide-react';
+import { siteImages } from '@/lib/site-images';
 import { company, stats } from '@/lib/data';
 import Reveal from '../ui/Reveal';
 
@@ -14,15 +16,29 @@ const trackerRows = [
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-brand-navy pt-[72px] text-white">
-      {/* Aurora background */}
+      {/* Backdrop: Dubai Marina at dusk under a navy wash. Near-solid behind
+          the copy for contrast, opening up behind the tracker card, and fading
+          back to navy above the stats strip. Decorative, so alt="". */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="aurora left-[-10%] top-[-10%] h-[420px] w-[420px] bg-brand-cyan/40" />
-        <div className="aurora right-[-8%] top-[6%] h-[480px] w-[480px] bg-brand-blue/50" />
-        <div className="aurora bottom-[-20%] left-[30%] h-[420px] w-[520px] bg-brand-blue-dark/40" />
-        <div className="absolute inset-0 grid-pattern opacity-[0.55]" />
+        <Image
+          src={siteImages.dubaiMarinaDusk.src}
+          alt=""
+          fill
+          priority
+          placeholder="blur"
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: '50% 55%' }}
+        />
+        <div className="absolute inset-0 bg-brand-navy/80 lg:bg-transparent lg:bg-gradient-to-r lg:from-brand-navy lg:from-25% lg:via-brand-navy/80 lg:via-55% lg:to-brand-navy/40" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-brand-navy to-transparent" />
+        <div className="aurora left-[-10%] top-[-10%] h-[420px] w-[420px] bg-brand-cyan/30" />
+        <div className="aurora bottom-[-20%] left-[30%] h-[420px] w-[520px] bg-brand-blue-dark/30" />
+        <div className="absolute inset-0 grid-pattern opacity-[0.3]" />
       </div>
 
-      <div className="container-x relative grid gap-14 pb-24 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10 lg:pb-28 lg:pt-20">
+      {/* sm:gap-24 leaves room above the stacked card for its licence badge. */}
+      <div className="container-x relative grid gap-14 pb-24 pt-16 sm:gap-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10 lg:pb-28 lg:pt-20">
         {/* Left: copy */}
         <div>
           <span className="inline-flex animate-fade-up items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-cyan opacity-0 backdrop-blur">
@@ -134,22 +150,26 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Floating license badge */}
-          <div className="absolute -left-4 -top-5 hidden rounded-2xl border border-white/15 bg-white px-4 py-3 text-brand-navy shadow-xl sm:block">
-            <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-ink-400">
-              DET License
-            </p>
-            <p className="text-lg font-extrabold tracking-tight">{company.licenseNo}</p>
-          </div>
+            {/* The badges ride on the floating card rather than beside it, so
+                the float never slides content under them, and each sits
+                clear of the card's header and progress bar. */}
 
-          {/* Floating visa badge */}
-          <div className="absolute -bottom-6 -right-2 hidden items-center gap-3 rounded-2xl border border-white/15 bg-white px-4 py-3 text-brand-navy shadow-xl sm:flex">
-            <div className="grid h-10 w-10 place-items-center rounded-xl bg-amber-400/15 text-lg">⭐</div>
-            <div>
-              <p className="text-sm font-bold leading-tight">Golden Visa</p>
-              <p className="text-xs text-ink-400">10-year residency</p>
+            {/* Floating license badge */}
+            <div className="absolute -left-4 -top-14 hidden rounded-2xl border border-white/15 bg-white px-4 py-3 text-brand-navy shadow-xl sm:block">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-ink-400">
+                DET License
+              </p>
+              <p className="text-lg font-extrabold tracking-tight">{company.licenseNo}</p>
+            </div>
+
+            {/* Floating visa badge */}
+            <div className="absolute -bottom-12 -right-2 hidden items-center gap-3 rounded-2xl border border-white/15 bg-white px-4 py-3 text-brand-navy shadow-xl sm:flex">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-amber-400/15 text-lg">⭐</div>
+              <div>
+                <p className="text-sm font-bold leading-tight">Golden Visa</p>
+                <p className="text-xs text-ink-400">10-year residency</p>
+              </div>
             </div>
           </div>
         </div>

@@ -36,3 +36,9 @@ yarn-error.log*
 # is publicly downloadable from the live site, so it stays local. The optimised,
 # slug-named copies the site actually uses live in public/blog-images/.
 /public/Blog Images/
+
+# Supplied originals (1.jpg–18.jpg, 19.png, ~13MB). The site uses optimised
+# copies of these under descriptive names in the same folder; the numbered
+# originals stay on disk as sources and out of the repo and deploy.
+/public/images/[0-9]*.jpg
+/public/images/[0-9]*.png

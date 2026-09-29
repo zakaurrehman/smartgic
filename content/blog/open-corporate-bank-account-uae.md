@@ -4,6 +4,8 @@ description: "Why UAE corporate bank accounts get delayed or declined — and th
 date: "2026-06-18"
 author: "Smartgic Editorial Team"
 category: "Banking"
+image: "/blog-images/open-corporate-bank-account-uae.jpg"
+imageAlt: "An investment briefing with global market dashboards and an architectural model, overlooking Abu Dhabi"
 keywords: ["corporate bank account UAE", "corporate bank account Dubai", "open business bank account UAE", "corporate bank account opening Dubai", "UAE bank account requirements"]
 ---
 

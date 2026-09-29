@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import Reveal from '../ui/Reveal';
-import PostCard from './PostCard';
+import PostCard, { CARD_SIZES } from './PostCard';
 import type { PostSummary } from '@/lib/blog-shared';
 
 /**
@@ -27,12 +27,14 @@ export default function GuidesSection({
 }) {
   if (posts.length === 0) return null;
 
-  const grid =
+  // Each layout's card widths go with it, so the covers are fetched at the
+  // size they display — a lone card is wider than a three-up one.
+  const [grid, sizes] =
     posts.length === 1
-      ? 'mx-auto max-w-md'
+      ? ['mx-auto max-w-md', '(min-width: 488px) 448px, 100vw']
       : posts.length === 2
-        ? 'mx-auto max-w-3xl sm:grid-cols-2'
-        : 'sm:grid-cols-2 lg:grid-cols-3';
+        ? ['mx-auto max-w-3xl sm:grid-cols-2', '(min-width: 816px) 372px, (min-width: 640px) 48vw, 100vw']
+        : ['sm:grid-cols-2 lg:grid-cols-3', CARD_SIZES];
 
   return (
     <section className={`section ${className}`}>
@@ -42,7 +44,7 @@ export default function GuidesSection({
         <div className={`mt-14 grid gap-6 ${grid}`}>
           {posts.map((post, i) => (
             <Reveal key={post.slug} delay={(i % 3) * 80}>
-              <PostCard post={post} />
+              <PostCard post={post} sizes={sizes} />
             </Reveal>
           ))}
         </div>

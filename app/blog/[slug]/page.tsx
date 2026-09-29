@@ -158,6 +158,8 @@ export default async function BlogPostPage({
                 post={post}
                 alt={post.imageAlt ?? post.title}
                 sizes="(min-width: 800px) 768px, 100vw"
+                // The article's lead image, in the first screen on desktop.
+                priority
               />
             </div>
             <article

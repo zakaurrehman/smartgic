@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import { ArrowRight, Phone, Sparkles } from 'lucide-react';
+import type { SiteImage } from '@/lib/site-images';
 import { company } from '@/lib/data';
 import Breadcrumbs, { type Crumb } from './Breadcrumbs';
 
@@ -8,6 +10,7 @@ export default function PageHero({
   subtitle,
   crumbs,
   ctaHref = '#contact',
+  image,
 }: {
   eyebrow: string;
   title: React.ReactNode;
@@ -18,13 +21,43 @@ export default function PageHero({
    * pages that do not render one must pass "/contact" so the link resolves.
    */
   ctaHref?: string;
+  /**
+   * Optional photo behind the hero. Decorative (alt="") — the heading carries
+   * the meaning — and washed with navy so the centred copy keeps its contrast.
+   */
+  image?: SiteImage;
 }) {
   return (
     <section className="relative overflow-hidden bg-brand-navy pt-[72px] text-white">
       <div className="pointer-events-none absolute inset-0">
-        <div className="aurora left-[-10%] top-[-10%] h-[360px] w-[360px] bg-brand-cyan/40" />
-        <div className="aurora right-[-8%] top-[0%] h-[440px] w-[440px] bg-brand-blue/50" />
-        <div className="absolute inset-0 grid-pattern opacity-[0.5]" />
+        {image && (
+          <>
+            <Image
+              src={image.src}
+              alt=""
+              fill
+              priority
+              placeholder="blur"
+              sizes="100vw"
+              className="object-cover object-[var(--pos-sm)] sm:object-[var(--pos)]"
+              style={
+                {
+                  '--pos': image.position ?? '50% 50%',
+                  '--pos-sm': image.mobilePosition ?? image.position ?? '50% 50%',
+                } as React.CSSProperties
+              }
+            />
+            {/* Navy wash, deeper behind the centred copy, fading to solid navy
+                at the bottom so the hero meets the next section cleanly. */}
+            <div className="absolute inset-0 bg-brand-navy/75" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_65%_at_50%_50%,rgba(10,23,48,0.6),transparent)]" />
+            <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-brand-navy/95 via-brand-navy/60 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-brand-navy to-transparent" />
+          </>
+        )}
+        <div className={`aurora left-[-10%] top-[-10%] h-[360px] w-[360px] ${image ? 'bg-brand-cyan/25' : 'bg-brand-cyan/40'}`} />
+        <div className={`aurora right-[-8%] top-[0%] h-[440px] w-[440px] ${image ? 'bg-brand-blue/30' : 'bg-brand-blue/50'}`} />
+        <div className={`absolute inset-0 grid-pattern ${image ? 'opacity-[0.25]' : 'opacity-[0.5]'}`} />
       </div>
 
       <div className="container-x relative pb-16 pt-10 text-center sm:pb-20 lg:pb-24 lg:pt-14">

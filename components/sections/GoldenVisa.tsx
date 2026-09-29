@@ -11,8 +11,8 @@ export default function GoldenVisa() {
       <div className="container-x">
         <div className="relative overflow-hidden rounded-3xl bg-brand-navy px-7 py-12 sm:px-12 lg:px-16 lg:py-16">
           {/* Photo backdrop. Decorative (alt="") — the copy carries the meaning.
-              Anchored right so the skyline sits behind the benefit cards; the
-              navy gradient keeps the headline side solid for contrast. */}
+              The skyline and flag sit behind the benefit cards; the navy
+              gradient keeps the headline side solid for contrast. */}
           <div className="pointer-events-none absolute inset-0">
             <Image
               src={siteImages.dubaiTerraceSkyline.src}
@@ -20,9 +20,10 @@ export default function GoldenVisa() {
               fill
               placeholder="blur"
               sizes="(min-width: 1280px) 1176px, 100vw"
-              className="object-cover object-[78%_50%]"
+              className="object-cover"
+              style={{ objectPosition: siteImages.dubaiTerraceSkyline.position }}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/90 via-brand-navy/75 to-brand-navy/40 lg:bg-gradient-to-r lg:from-brand-navy lg:from-45% lg:via-brand-navy/70 lg:via-62% lg:to-brand-navy/10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/90 via-brand-navy/75 to-brand-navy/40 lg:bg-gradient-to-r lg:from-brand-navy lg:from-30% lg:via-brand-navy/70 lg:via-52% lg:to-brand-navy/10" />
             <div className="aurora bottom-[-30%] left-[-5%] h-72 w-72 bg-brand-cyan/25" />
             <div className="absolute inset-0 dot-pattern opacity-25" />
           </div>

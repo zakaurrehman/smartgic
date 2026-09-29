@@ -4,6 +4,8 @@ description: "The complete 2026 guide to the UAE Golden Visa — eligibility for
 date: "2026-06-22"
 author: "Smartgic Editorial Team"
 category: "Visas & Immigration"
+image: "/blog-images/uae-golden-visa-guide-2026.jpg"
+imageAlt: "The Museum of the Future in Dubai surrounded by landscaped gardens"
 keywords: ["UAE Golden Visa", "Golden Visa eligibility 2026", "10 year visa UAE", "Golden Visa Dubai apply", "long term residency UAE"]
 ---
 

@@ -4,6 +4,8 @@ description: "The step-by-step legal process for transferring shares in a Dubai 
 date: "2026-06-15"
 author: "Smartgic Editorial Team"
 category: "Corporate Changes"
+image: "/blog-images/transfer-company-shares-dubai-llc.jpg"
+imageAlt: "An executive boardroom meeting beneath lattice-screen windows, with the Burj Khalifa at sunset"
 keywords: ["share transfer Dubai", "transfer company shares", "share transfer LLC Dubai", "company ownership change UAE", "partner buyout Dubai"]
 ---
 

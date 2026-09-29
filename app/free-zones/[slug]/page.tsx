@@ -23,6 +23,7 @@ import Reveal from '@/components/ui/Reveal';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Accordion from '@/components/ui/Accordion';
 import Disclaimer from '@/components/ui/Disclaimer';
+import HeroPhoto from '@/components/ui/HeroPhoto';
 import Testimonials from '@/components/sections/Testimonials';
 import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
@@ -35,6 +36,7 @@ import {
 } from '@/lib/freezones';
 import { getService } from '@/lib/services';
 import { company } from '@/lib/data';
+import { jurisdictionHeroImages } from '@/lib/site-images';
 
 const SITE = 'https://www.smartgicvisa.com';
 
@@ -85,6 +87,7 @@ export default async function JurisdictionPage({
   if (!zone) notFound();
 
   const url = `${SITE}/free-zones/${zone.slug}`;
+  const photo = jurisdictionHeroImages[zone.slug];
   const relatedZones = zone.related
     .map((s) => getJurisdiction(s))
     .filter((z): z is NonNullable<typeof z> => Boolean(z));
@@ -181,7 +184,36 @@ export default async function JurisdictionPage({
                 </div>
               </div>
 
-              {/* Fact card */}
+              {/* A photo only where the scene is accurate for this
+                  jurisdiction, with the facts as a panel over it; otherwise
+                  the fact card on its own. */}
+              {photo ? (
+                <HeroPhoto image={photo}>
+                  <div className="rounded-2xl border border-white/15 bg-brand-navy/75 p-4 shadow-2xl backdrop-blur-xl sm:p-5">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-9 shrink-0 place-items-center rounded-lg bg-brand-gradient px-2.5 text-xs font-extrabold text-white">
+                        {zone.abbr}
+                      </span>
+                      <p className="text-sm font-bold text-white">At a glance</p>
+                    </div>
+                    <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs">
+                      {[
+                        ['Emirate', zone.emirate],
+                        ['Type', zone.category],
+                        ['Relative cost', zone.costTier],
+                        ['Best suited to', zone.bestFor.slice(0, 2).join(', ')],
+                      ].map(([label, value]) => (
+                        <div key={label} className="min-w-0">
+                          <dt className="text-slate-400">{label}</dt>
+                          {/* Wraps rather than truncates: "Manufacturing,
+                              Logistics" overflows a phone-width column. */}
+                          <dd className="font-semibold leading-snug text-white">{value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                </HeroPhoto>
+              ) : (
               <div className="relative mx-auto w-full max-w-md lg:max-w-none">
                 <div className="relative rounded-3xl border border-white/15 bg-white/[0.07] p-6 shadow-2xl backdrop-blur-xl sm:p-8">
                   <div className="flex items-center gap-4">
@@ -213,6 +245,7 @@ export default async function JurisdictionPage({
                   </a>
                 </div>
               </div>
+              )}
             </div>
           </div>
         </section>
