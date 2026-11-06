@@ -230,8 +230,9 @@ export default function Footer({ nav }: { nav: NavData }) {
         </div>
       </div>
 
-      {/* Oversized wordmark, cropped by the footer's bottom edge. */}
-      <div aria-hidden="true" className="pointer-events-none relative -mb-[4vw] select-none overflow-hidden">
+      {/* Oversized wordmark, layered behind the bottom bar and cropped by the
+          footer's edge — decorative, so it adds no height. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 translate-y-[45%] select-none overflow-hidden">
         <p className="container-wide whitespace-nowrap text-center font-semibold leading-none tracking-[-0.06em] text-white/[0.035] [font-size:clamp(5rem,17vw,16rem)]">
           SMARTGIC
         </p>
