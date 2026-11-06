@@ -52,4 +52,4 @@ A lean foreign-owned setup: **from AED 5,750** (free zone licence with a visa al
 
 ## Open yours with a licensed partner
 
-Smartgic Visa (DET licence No. 1394564) opens companies for founders in 120+ countries — remotely started, properly structured, visa and bank included. [Book a free consultation](/#contact) and get an exact quote for your case.
+Smartgic Visa (DET licence No. 1394564) opens companies for founders from abroad — remotely started, properly structured, visa and bank included. [Book a free consultation](/contact) and get an exact quote for your case.

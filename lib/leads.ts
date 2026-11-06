@@ -38,7 +38,7 @@ export type LeadResult =
 export function formatLead(lead: LeadPayload): string {
   return [
     `Name: ${lead.name}`,
-    `Email: ${lead.email}`,
+    `Email: ${lead.email || 'Not provided'}`,
     `Phone: ${lead.phone}`,
     `Service: ${lead.service || 'Not specified'}`,
     `Enquiry: ${lead.message || 'No message provided'}`,
@@ -125,34 +125,90 @@ export function validateLead(lead: Pick<LeadPayload, 'name' | 'email' | 'phone' 
 }
 
 export const serviceOptions = [
-  'Company Formation',
-  'Trade Licence',
-  'Residence Visa',
+  'Company formation',
+  'Trade licence & renewals',
+  'PRO & document clearing',
+  'Corporate services',
+  'Bank account opening',
+  'Residence visa',
   'Golden Visa',
-  'PRO Services',
-  'Corporate Tax / VAT',
-  'Bank Account Opening',
-  'Document Clearing & Attestation',
-  'Licence Renewal',
+  'Corporate tax',
+  'VAT',
+  'Transfer pricing & other tax',
+  'AML & compliance',
+  'Accounting & bookkeeping',
+  'Payroll',
+  'Audit & assurance',
   'Not sure yet',
 ];
 
-/**
- * Pre-selects the form's service dropdown from the service page a visitor is
- * reading, so the field is already right when they reach the form. Slugs with
- * no natural match return '' and the placeholder option stays selected.
- */
-const SERVICE_BY_SLUG: Record<string, string> = {
-  'company-registration': 'Company Formation',
-  'professional-services': 'Trade Licence',
-  'bank-account-opening': 'Bank Account Opening',
-  'visa-services': 'Residence Visa',
-  'document-clearing-services': 'Document Clearing & Attestation',
-  'corporate-pro-services': 'PRO Services',
-  'trade-license-renewals': 'Licence Renewal',
-  'sponsorship-services': 'Residence Visa',
+/** Options from before the catalogue expansion, mapped to their new names, so
+ *  any page still passing an old label pre-selects the right option. */
+const LEGACY_OPTIONS: Record<string, string> = {
+  'Company Formation': 'Company formation',
+  'Trade Licence': 'Trade licence & renewals',
+  'Residence Visa': 'Residence visa',
+  'PRO Services': 'PRO & document clearing',
+  'Corporate Tax / VAT': 'Corporate tax',
+  'Bank Account Opening': 'Bank account opening',
+  'Document Clearing & Attestation': 'PRO & document clearing',
+  'Licence Renewal': 'Trade licence & renewals',
 };
 
-export function serviceOptionForSlug(slug: string): string {
-  return SERVICE_BY_SLUG[slug] ?? '';
+export function normaliseServiceOption(option: string): string {
+  if (serviceOptions.includes(option)) return option;
+  return LEGACY_OPTIONS[option] ?? '';
+}
+
+/** Default enquiry option for each service category. */
+const OPTION_BY_CATEGORY: Record<string, string> = {
+  'business-setup': 'Company formation',
+  'corporate-services': 'Corporate services',
+  'licensing-government': 'Trade licence & renewals',
+  'visa-immigration': 'Residence visa',
+  'tax-services': 'Corporate tax',
+  'compliance-risk': 'AML & compliance',
+  'accounting-bookkeeping': 'Accounting & bookkeeping',
+  'audit-assurance': 'Audit & assurance',
+};
+
+/** Services whose natural option differs from their category's default. */
+const OPTION_BY_SLUG: Record<string, string> = {
+  'bank-account-opening': 'Bank account opening',
+  'corporate-pro-services': 'PRO & document clearing',
+  'document-clearing-services': 'PRO & document clearing',
+  'vat-registration': 'VAT',
+  'vat-return-filing': 'VAT',
+  'vat-compliance': 'VAT',
+  'vat-refund': 'VAT',
+  'vat-deregistration': 'VAT',
+  'e-invoicing': 'VAT',
+  'transfer-pricing': 'Transfer pricing & other tax',
+  'tax-residency-certificate': 'Transfer pricing & other tax',
+  'customs-services': 'Transfer pricing & other tax',
+  'excise-tax': 'Transfer pricing & other tax',
+  'payroll-services': 'Payroll',
+};
+
+/**
+ * Pre-selects the form's service dropdown from the page a visitor is reading,
+ * so the field is already right when they reach the form.
+ */
+export function serviceOptionForSlug(slug: string, category?: string): string {
+  return OPTION_BY_SLUG[slug] ?? (category ? OPTION_BY_CATEGORY[category] : undefined) ?? '';
+}
+
+export function serviceOptionForCategory(category: string): string {
+  return OPTION_BY_CATEGORY[category] ?? '';
+}
+
+/* ───────────────────────────── Callback requests ───────────────────────────── */
+
+export type CallbackErrors = Partial<Record<'name' | 'phone', string>>;
+
+export function validateCallback(lead: { name: string; phone: string }): CallbackErrors {
+  const errors: CallbackErrors = {};
+  if (lead.name.trim().length < 2) errors.name = 'Please enter your name.';
+  if (lead.phone.replace(/\D/g, '').length < 7) errors.phone = 'Please enter a number we can call.';
+  return errors;
 }

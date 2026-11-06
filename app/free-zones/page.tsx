@@ -4,19 +4,12 @@ import { siteImages } from '@/lib/site-images';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import { ArrowRight, Compass, Scale, Wallet } from 'lucide-react';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import Reveal from '@/components/ui/Reveal';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Accordion from '@/components/ui/Accordion';
-import Disclaimer from '@/components/ui/Disclaimer';
 import ZoneDirectory from '@/components/freezones/ZoneDirectory';
 import StructureCompare from '@/components/freezones/StructureCompare';
-import Testimonials from '@/components/sections/Testimonials';
-import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
 
 import { jurisdictions } from '@/lib/freezones';
@@ -129,14 +122,13 @@ export default function FreeZonesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
       <main id="main">
         <PageHero
           image={siteImages.entrepreneurDubaiSkyline}
           eyebrow="Jurisdictions"
           title={
             <>
-              Find the right UAE <span className="gradient-text">jurisdiction</span>
+              Find the right UAE <span className="accent">jurisdiction</span>
             </>
           }
           subtitle="Free zone, mainland or offshore — the choice sets your ownership, costs, visa quota and which markets you can legally serve. Search and compare every option we work with, then talk to someone who will tell you honestly which fits."
@@ -144,13 +136,13 @@ export default function FreeZonesPage() {
         />
 
         {/* How to choose */}
-        <section className="section bg-slate-50/70">
+        <section className="section bg-surface">
           <div className="container-x">
             <SectionHeading
               eyebrow="Before you compare"
               title={
                 <>
-                  Three questions that <span className="gradient-text">decide it</span>
+                  Three questions that <span className="accent">decide it</span>
                 </>
               }
               description="Most founders start by comparing licence prices. That is the last thing to look at, not the first."
@@ -160,7 +152,7 @@ export default function FreeZonesPage() {
                 const Icon = f.icon;
                 return (
                   <Reveal key={f.title} delay={i * 80}>
-                    <div className="h-full rounded-2xl border border-slate-100 bg-white p-7 shadow-card">
+                    <div className="h-full rounded-2xl border border-slate-200/70 bg-white p-7 shadow-card">
                       <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-gradient-soft text-brand-blue">
                         <Icon className="h-5.5 w-5.5" />
                       </span>
@@ -173,7 +165,7 @@ export default function FreeZonesPage() {
             </div>
 
             <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href="/cost-estimator" className="btn-gradient group">
+              <Link href="/cost-estimator" className="btn-primary group">
                 Build an indicative estimate
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
@@ -187,13 +179,13 @@ export default function FreeZonesPage() {
         <StructureCompare />
         <ZoneDirectory />
 
-        <section className="section bg-slate-50/70">
+        <section className="section bg-surface">
           <div className="container-x">
             <SectionHeading
               eyebrow="Good to know"
               title={
                 <>
-                  Choosing a jurisdiction — <span className="gradient-text">answered</span>
+                  Choosing a jurisdiction — <span className="accent">answered</span>
                 </>
               }
               description="The questions that come up in almost every first consultation."
@@ -203,15 +195,8 @@ export default function FreeZonesPage() {
             </div>
           </div>
         </section>
-
-        <Testimonials />
-        <Disclaimer />
-        <CTABand />
         <Contact source="Jurisdictions directory" />
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <MobileActionBar />
     </>
   );
 }

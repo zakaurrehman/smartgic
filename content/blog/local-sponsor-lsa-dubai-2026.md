@@ -57,4 +57,4 @@ Corporate LSA and sponsorship arrangements typically run a **fixed annual fee** 
 
 ## Get it structured properly
 
-Smartgic Visa arranges vetted corporate sponsors and LSAs with watertight legal protection — and first checks whether you even need one, because most clients no longer do. See our [sponsorship services](/services/sponsorship-services) or [get a free assessment](/#contact).
+Smartgic Visa arranges vetted corporate sponsors and LSAs with watertight legal protection — and first checks whether you even need one, because most clients no longer do. See our [sponsorship services](/services/sponsorship-services) or [get a free assessment](/contact).

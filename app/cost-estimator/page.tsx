@@ -1,16 +1,11 @@
 import type { Metadata } from 'next';
+import { siteImages } from '@/lib/site-images';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Accordion from '@/components/ui/Accordion';
-import Disclaimer from '@/components/ui/Disclaimer';
 import CostEstimator from '@/components/tools/CostEstimator';
-import CTABand from '@/components/sections/CTABand';
 
 const SITE = 'https://www.smartgicvisa.com';
 const url = `${SITE}/cost-estimator`;
@@ -97,13 +92,14 @@ export default function CostEstimatorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
       <main id="main">
         <PageHero
+          variant="center"
+          image={siteImages.dubaiBusinessBayCanalSunset}
           eyebrow="Free tool"
           title={
             <>
-              What will your UAE setup <span className="gradient-text">actually cost?</span>
+              What will your UAE setup <span className="accent">actually cost?</span>
             </>
           }
           subtitle="Five questions, about a minute. You get the jurisdiction we would shortlist for a business like yours, an indicative package price, and an honest account of what we cannot know until we speak."
@@ -113,13 +109,13 @@ export default function CostEstimatorPage() {
 
         <CostEstimator />
 
-        <section className="section bg-slate-50/70">
+        <section className="section bg-surface">
           <div className="container-x">
             <SectionHeading
               eyebrow="About this tool"
               title={
                 <>
-                  How the estimate <span className="gradient-text">works</span>
+                  How the estimate <span className="accent">works</span>
                 </>
               }
               description="What it can tell you, what it deliberately does not, and why."
@@ -129,13 +125,7 @@ export default function CostEstimatorPage() {
             </div>
           </div>
         </section>
-
-        <Disclaimer />
-        <CTABand ctaHref="/contact" />
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <MobileActionBar />
     </>
   );
 }

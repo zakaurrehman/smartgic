@@ -1,55 +1,27 @@
 import {
   Building2, Briefcase, Wallet, Plane, FileCheck2, Landmark,
   RefreshCw, Building, FileSignature, Handshake, Copyright,
-  ArrowRightLeft, Archive, type LucideIcon,
+  ArrowRightLeft, Archive,
 } from 'lucide-react';
+import { categories, type CategorySlug } from './catalog';
+import { extendedServices } from './service-data';
 
-export type ServiceStat = { value: string; label: string };
-export type ServiceBenefit = { title: string; desc: string };
-export type ServiceStep = { title: string; desc: string };
-export type ServicePackage = {
-  name: string;
-  badge: string;
-  featured?: boolean;
-  price: string;
-  period: string;
-  features: string[];
-};
-export type ServiceFaq = { q: string; a: string };
-export type ServiceScopeGroup = { group: string; desc: string; items: string[] };
+import type { Service } from './service-types';
+export type {
+  Service,
+  ServiceStat,
+  ServiceBenefit,
+  ServiceStep,
+  ServicePackage,
+  ServiceFaq,
+  ServiceScopeGroup,
+} from './service-types';
 
-export type Service = {
-  slug: string;
-  navLabel: string;
-  icon: LucideIcon;
-  eyebrow: string;
-  /** Short Avyanco-style description shown under the label in the mega-menu. */
-  blurb?: string;
-  title: string;
-  heroSubtitle: string;
-  heroHighlights: string[];
-  metaTitle: string;
-  metaDescription: string;
-  keywords: string[];
-  overview: {
-    heading: string;
-    body: string[];
-  };
-  stats: ServiceStat[];
-  benefits: ServiceBenefit[];
-  process: ServiceStep[];
-  requirements: string[];
-  /** "What's included" — grouped sub-services rendered on the service page. */
-  included?: ServiceScopeGroup[];
-  packages?: ServicePackage[];
-  faqs: ServiceFaq[];
-  related: string[];
-};
-
-export const services: Service[] = [
+const coreServices: Service[] = [
   /* ───────────────────────── 1. COMPANY REGISTRATION ───────────────────────── */
   {
     slug: 'company-registration',
+    category: 'business-setup',
     navLabel: 'Company Registration',
     icon: Building2,
     eyebrow: 'Company Formation',
@@ -57,7 +29,7 @@ export const services: Service[] = [
     title: 'Company Registration in Dubai & the UAE',
     heroSubtitle:
       'Register your Mainland, Free Zone or Offshore company with 100% foreign ownership. We handle activity selection, trade name, approvals and your trade licence — start to finish.',
-    heroHighlights: ['100% Foreign Ownership', 'Setup in 3–5 Days', 'All-Inclusive Quote'],
+    heroHighlights: ['100% Foreign Ownership', 'Mainland, Free Zone & Offshore', 'Itemised Quote'],
     metaTitle: 'Company Registration in Dubai | UAE Business Formation | Smartgic Visa',
     metaDescription:
       'Register a Mainland, Free Zone or Offshore company in Dubai with 100% ownership. Trade name, approvals, MOA and licence handled end to end. Free consultation.',
@@ -76,10 +48,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '5,000+', label: 'Companies Formed' },
-      { value: '40+', label: 'Free Zones Covered' },
-      { value: '3–5', label: 'Days to Licence' },
-      { value: '100%', label: 'Ownership Retained' },
+      { value: '3', label: 'Routes — mainland, free zone and offshore' },
+      { value: '100%', label: 'Foreign ownership in free zones and most mainland activities' },
+      { value: '7', label: 'Emirates covered in our jurisdiction guide' },
+      { value: '1', label: 'Relationship manager from setup to renewal' },
     ],
     benefits: [
       { title: 'Full Foreign Ownership', desc: 'Keep 100% of your company across all free zones and most mainland activities — no local partner required.' },
@@ -117,7 +89,7 @@ export const services: Service[] = [
         badge: 'Trade Anywhere',
         price: 'AED 18,900',
         period: 'starting from',
-        features: ['DET commercial licence', 'Unlimited visa eligibility', 'MOA drafting & notarisation', 'Local market access', 'Establishment card', 'PRO & government liaison'],
+        features: ['DET commercial licence', 'Visa quota sized to your office', 'MOA drafting & notarisation', 'Local market access', 'Establishment card', 'PRO & government liaison'],
       },
       {
         name: 'Premium Free Zone',
@@ -175,6 +147,7 @@ export const services: Service[] = [
   /* ───────────────────────── 2. PROFESSIONAL SERVICES ───────────────────────── */
   {
     slug: 'professional-services',
+    category: 'business-setup',
     navLabel: 'Professional Services',
     icon: Briefcase,
     eyebrow: 'Professional Licence',
@@ -201,10 +174,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '100%', label: 'Owner Equity' },
-      { value: '50+', label: 'Activities Covered' },
-      { value: '4–6', label: 'Days to Licence' },
-      { value: '0%', label: 'Personal Income Tax' },
+      { value: '100%', label: 'Ownership for eligible professional activities' },
+      { value: 'LSA', label: 'Local Service Agent — no equity, fixed fee' },
+      { value: 'DET', label: 'Licensed by Dubai’s Department of Economy and Tourism' },
+      { value: '0%', label: 'Personal income tax in the UAE' },
     ],
     benefits: [
       { title: 'Keep 100% Equity', desc: 'Own your practice outright; the Local Service Agent holds no shares and no claim on profits.' },
@@ -276,6 +249,7 @@ export const services: Service[] = [
   /* ───────────────────────── 3. BANK ACCOUNT OPENING ───────────────────────── */
   {
     slug: 'bank-account-opening',
+    category: 'corporate-services',
     navLabel: 'Bank Account Opening',
     icon: Wallet,
     eyebrow: 'Corporate Banking',
@@ -302,10 +276,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '10+', label: 'Partner Banks' },
-      { value: '95%', label: 'Approval Rate' },
-      { value: '1–4', label: 'Weeks Typical' },
-      { value: 'Multi', label: 'Currency Accounts' },
+      { value: '2', label: 'Account types — corporate and personal' },
+      { value: 'KYC', label: 'Compliance file prepared before you apply' },
+      { value: 'Local', label: 'And digital banks compared for your profile' },
+      { value: 'Multi', label: 'Currency options where your bank offers them' },
     ],
     benefits: [
       { title: 'Right Bank, First Time', desc: 'We match your activity, nationality and turnover to banks most likely to approve you.' },
@@ -334,7 +308,7 @@ export const services: Service[] = [
       { q: 'Do I need to be in the UAE to open an account?', a: 'Most banks require the signatory to attend at least one in-person meeting or verification. We schedule this efficiently for you.' },
       { q: 'Can a brand-new company open an account?', a: 'Yes. Newly formed companies open accounts regularly — strong documentation and a clear business narrative are what matter most.' },
       { q: 'Which banks do you work with?', a: 'We work with leading local and international banks operating in the UAE and recommend the best fit for your profile — we do not push a single bank.' },
-      { q: 'Can you guarantee approval?', a: 'No one can guarantee a bank’s decision, but our preparation and introductions significantly improve approval odds — our success rate is around 95%.' },
+      { q: 'Can you guarantee approval?', a: 'No one can guarantee a bank’s decision, but a complete, well-prepared file and the right bank for your profile give your application its best chance.' },
     ],
     included: [
       {
@@ -377,6 +351,7 @@ export const services: Service[] = [
   /* ───────────────────────── 4. VISA SERVICES ───────────────────────── */
   {
     slug: 'visa-services',
+    category: 'visa-immigration',
     navLabel: 'Visa Services',
     icon: Plane,
     eyebrow: 'Residence Visas',
@@ -384,7 +359,7 @@ export const services: Service[] = [
     title: 'UAE Visa Services — Residence, Investor & Golden Visa',
     heroSubtitle:
       'Investor, partner, employment, family and 10-year Golden Visas — processed end to end, from entry permit and medical to Emirates ID and stamping.',
-    heroHighlights: ['Investor & Golden Visa', 'Family Sponsorship', '98% Success Rate'],
+    heroHighlights: ['Investor & Golden Visa', 'Family Sponsorship', 'Medical & Emirates ID Booked'],
     metaTitle: 'UAE Visa Services Dubai | Residence, Investor & Golden Visa | Smartgic Visa',
     metaDescription:
       'End-to-end UAE visa services: investor, partner, employment, family and 10-year Golden Visa. Entry permit, medical, Emirates ID and stamping handled. Free consultation.',
@@ -403,10 +378,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '98%', label: 'Visa Success Rate' },
-      { value: '10-Yr', label: 'Golden Visa' },
-      { value: '120+', label: 'Nationalities Served' },
-      { value: '5–10', label: 'Days Standard Visa' },
+      { value: '3', label: 'Routes — investor, employment and family' },
+      { value: '10-Yr', label: 'Golden Visa for eligible applicants' },
+      { value: 'EID', label: 'Medical and Emirates ID biometrics booked for you' },
+      { value: '1', label: 'File managed from entry permit to Emirates ID' },
     ],
     benefits: [
       { title: 'Investor & Partner Visas', desc: 'Residence visas linked to your company ownership, renewable and family-sponsoring.' },
@@ -478,6 +453,7 @@ export const services: Service[] = [
   /* ───────────────────────── 5. DOCUMENT CLEARING SERVICES ───────────────────────── */
   {
     slug: 'document-clearing-services',
+    category: 'licensing-government',
     navLabel: 'Document Clearing Services',
     icon: FileCheck2,
     eyebrow: 'Documents & Attestation',
@@ -485,7 +461,7 @@ export const services: Service[] = [
     title: 'Document Clearing & Attestation Services',
     heroSubtitle:
       'Typing-centre, attestation and government document clearing handled accurately and fast — applications, approvals, MOFA and embassy attestation, and certified translation.',
-    heroHighlights: ['MOFA & Embassy', 'Certified Translation', 'Same-Day Options'],
+    heroHighlights: ['MOFA & Embassy', 'Certified Translation', 'Government Typing'],
     metaTitle: 'Document Clearing & Attestation Services Dubai | Smartgic Visa',
     metaDescription:
       'Document clearing, MOFA and embassy attestation, certified legal translation and government applications in Dubai — accurate, fast and compliant. Free consultation.',
@@ -504,18 +480,18 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '50k+', label: 'Documents Cleared' },
-      { value: '100+', label: 'Document Types' },
-      { value: 'Same-Day', label: 'Express Options' },
-      { value: '12+', label: 'Languages Translated' },
+      { value: 'MOFA', label: 'UAE attestation and legalisation' },
+      { value: 'Arabic', label: 'Legal translation for official use' },
+      { value: 'Typing', label: 'For DET, GDRFA and MOHRE applications' },
+      { value: 'POA', label: 'Powers of attorney drafted and processed' },
     ],
     benefits: [
       { title: 'Certificate Attestation', desc: 'Degrees, diplomas and birth/marriage certificates attested for UAE and overseas use.' },
       { title: 'MOFA & Embassy Liaison', desc: 'End-to-end attestation through the Ministry of Foreign Affairs and relevant embassies.' },
-      { title: 'Certified Legal Translation', desc: 'Court- and government-accepted translation across 12+ languages.' },
+      { title: 'Certified Legal Translation', desc: 'Legal translation into and from Arabic, prepared for courts, notaries and government departments.' },
       { title: 'Government Applications', desc: 'Accurate typing and submission of DET, GDRFA and other government forms.' },
       { title: 'Commercial Documents', desc: 'MOA, contracts, powers of attorney and corporate document attestation.' },
-      { title: 'Express Turnaround', desc: 'Same-day and priority options when your deadline cannot move.' },
+      { title: 'Priority Handling', desc: 'Urgent files prioritised and walked through the counters where the authority allows it.' },
     ],
     process: [
       { title: 'Document Review', desc: 'We check your documents, confirm the attestation chain and flag anything missing.' },
@@ -554,11 +530,11 @@ export const services: Service[] = [
         group: 'Certified Translation',
         desc: 'Court- and government-accepted translation, done right the first time.',
         items: [
-          'Legal translation (12+ languages)',
+          'Legal translation into and from Arabic',
           'Court & notary document translation',
           'Certificate & contract translation',
           'Arabic ↔ English business documents',
-          'Same-day express options',
+          'Priority handling for urgent files',
         ],
       },
       {
@@ -579,6 +555,7 @@ export const services: Service[] = [
   /* ───────────────────────── 6. CORPORATE PRO SERVICES ───────────────────────── */
   {
     slug: 'corporate-pro-services',
+    category: 'licensing-government',
     navLabel: 'Corporate PRO Services',
     icon: Landmark,
     eyebrow: 'PRO & Compliance',
@@ -605,10 +582,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '15–20', label: 'Days Saved / Month' },
-      { value: 'All', label: 'Govt Departments' },
-      { value: '24/7', label: 'Renewal Tracking' },
-      { value: '0', label: 'Missed Deadlines' },
+      { value: 'All', label: 'Major federal and Dubai government departments' },
+      { value: 'PRO', label: 'Dedicated officer assigned to your account' },
+      { value: 'Retainer', label: 'Or pay-per-task, to suit your volume' },
+      { value: 'Calendar', label: 'Every licence, visa and permit expiry tracked' },
     ],
     benefits: [
       { title: 'Dedicated PRO', desc: 'A named officer who knows your file and represents you at every department.' },
@@ -636,23 +613,23 @@ export const services: Service[] = [
       {
         name: 'Pay Per Task',
         badge: 'Flexible',
-        price: 'From AED 500',
-        period: 'per transaction',
+        price: 'On request',
+        period: 'priced per task',
         features: ['Single renewal or approval', 'Document clearing', 'Visa stamping run', 'No monthly commitment', 'Transparent per-task pricing'],
       },
       {
         name: 'Monthly Retainer',
         badge: 'Best Value',
         featured: true,
-        price: 'From AED 1,500',
-        period: 'per month',
+        price: 'On request',
+        period: 'monthly retainer',
         features: ['Dedicated PRO', 'Unlimited government liaison*', 'Renewal calendar & alerts', 'Visa & card processing', 'Monthly compliance report', 'Priority turnaround'],
       },
       {
         name: 'Enterprise',
         badge: 'Teams 25+',
-        price: 'Custom',
-        period: 'tailored quote',
+        price: 'On request',
+        period: 'tailored scope',
         features: ['On-site PRO days', 'Bulk visa processing', 'Dedicated account director', 'SLA-backed turnaround', 'Quarterly compliance reviews'],
       },
     ],
@@ -704,6 +681,7 @@ export const services: Service[] = [
   /* ───────────────────────── 7. TRADE LICENSE RENEWALS ───────────────────────── */
   {
     slug: 'trade-license-renewals',
+    category: 'licensing-government',
     navLabel: 'Trade License Renewals',
     icon: RefreshCw,
     eyebrow: 'Licence Renewal',
@@ -730,10 +708,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '0', label: 'Missed Renewals' },
-      { value: '24/7', label: 'Expiry Tracking' },
-      { value: '1–2', label: 'Days Turnaround' },
-      { value: '100%', label: 'Penalty Avoidance' },
+      { value: '30 days', label: 'Before expiry is when we start your renewal' },
+      { value: 'Ejari', label: 'Tenancy or flexi-desk renewed alongside' },
+      { value: 'DET', label: 'And free zone renewals handled' },
+      { value: 'Calendar', label: 'Reminders for every future expiry' },
     ],
     benefits: [
       { title: 'Proactive Reminders', desc: 'We alert you well before expiry and start the renewal early to avoid any lapse.' },
@@ -805,6 +783,7 @@ export const services: Service[] = [
   /* ───────────────────────── MOA AMENDMENTS ───────────────────────── */
   {
     slug: 'moa-amendments',
+    category: 'corporate-services',
     navLabel: 'MoA Amendments',
     icon: FileSignature,
     eyebrow: 'Company Amendments',
@@ -831,10 +810,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '2–5', label: 'Days Typical' },
-      { value: 'All', label: 'Amendment Types' },
-      { value: '100%', label: 'Notary Compliant' },
-      { value: '0', label: 'Licence Downtime' },
+      { value: 'MOA', label: 'Bilingual amended memorandum prepared' },
+      { value: 'Notary', label: 'Appointment coordinated for every party' },
+      { value: 'DET', label: 'Or free zone approval filed for you' },
+      { value: 'Licence', label: 'And company records updated afterwards' },
     ],
     benefits: [
       { title: 'Activity Add / Remove', desc: 'Expand or refine what your licence covers, with the right activity codes selected first time.' },
@@ -906,6 +885,7 @@ export const services: Service[] = [
   /* ───────────────────────── SPONSORSHIP SERVICES ───────────────────────── */
   {
     slug: 'sponsorship-services',
+    category: 'corporate-services',
     navLabel: 'Sponsorship Services',
     icon: Handshake,
     eyebrow: 'Sponsorship & LSA',
@@ -932,17 +912,17 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '0%', label: 'Equity Taken' },
-      { value: 'Fixed', label: 'Annual Fee' },
-      { value: '100%', label: 'Profit Retention' },
-      { value: '24h', label: 'Signature Turnaround' },
+      { value: '0%', label: 'Equity held by a Local Service Agent' },
+      { value: 'Fixed', label: 'Annual fee — no share of profits' },
+      { value: '100%', label: 'Profit retention with an LSA arrangement' },
+      { value: 'Notarised', label: 'Agreements that protect your control' },
     ],
     benefits: [
       { title: 'Vetted Corporate Sponsor', desc: 'A stable corporate entity rather than an individual — no succession or availability risk.' },
       { title: 'LSA for Professional Licences', desc: 'Compliant Local Service Agent appointments with zero interference in your practice.' },
       { title: 'Watertight Side Agreements', desc: 'Notarised agreements and POAs that legally secure your control and profits.' },
       { title: 'Fixed Fee, No Profit Share', desc: 'A transparent annual fee — the sponsor has no claim on revenue or dividends.' },
-      { title: 'Fast Government Signatures', desc: 'Sponsor signatures for renewals, visas and amendments within 24 hours.' },
+      { title: 'Prompt Government Signatures', desc: 'Sponsor signatures for renewals, visas and amendments arranged promptly, so filings are not held up.' },
       { title: 'Easy Exit & Transfer', desc: 'Clean transfer terms if you later restructure to 100% ownership.' },
     ],
     process: [
@@ -1007,6 +987,7 @@ export const services: Service[] = [
   /* ───────────────────────── IP & TRADEMARK ───────────────────────── */
   {
     slug: 'ip-trademark',
+    category: 'corporate-services',
     navLabel: 'IP & Trademark',
     icon: Copyright,
     eyebrow: 'Brand Protection',
@@ -1033,10 +1014,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '10-Yr', label: 'Protection Term' },
-      { value: '45', label: 'Trademark Classes' },
-      { value: '24h', label: 'Search Report' },
-      { value: '1st', label: 'To File Wins' },
+      { value: '10-Yr', label: 'Protection term, renewable' },
+      { value: '45', label: 'International (Nice) classes to choose from' },
+      { value: 'MoE', label: 'Filed with the UAE Ministry of Economy' },
+      { value: '1st', label: 'To file generally takes priority' },
     ],
     benefits: [
       { title: 'Availability Search', desc: 'A professional search before you file — avoid rejections and conflicts with existing marks.' },
@@ -1108,6 +1089,7 @@ export const services: Service[] = [
   /* ───────────────────────── SHARE TRANSFER ───────────────────────── */
   {
     slug: 'share-transfer',
+    category: 'corporate-services',
     navLabel: 'Share Transfer',
     icon: ArrowRightLeft,
     eyebrow: 'Ownership Changes',
@@ -1134,10 +1116,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '3–7', label: 'Days Typical' },
-      { value: '100%', label: 'Legally Compliant' },
-      { value: '0', label: 'Business Downtime' },
-      { value: 'All', label: 'Legal Forms Covered' },
+      { value: 'SPA', label: 'Share purchase agreement drafted' },
+      { value: 'Notary', label: 'Signing arranged for buyer and seller' },
+      { value: 'MOA', label: 'Amended and registered with the authority' },
+      { value: 'Visas', label: 'And bank mandates realigned after transfer' },
     ],
     benefits: [
       { title: 'Share Purchase Agreements', desc: 'Clear, enforceable SPAs and resolutions drafted for both sides of the deal.' },
@@ -1209,6 +1191,7 @@ export const services: Service[] = [
   /* ───────────────────────── LIQUIDATION & DEREGISTRATION ───────────────────────── */
   {
     slug: 'liquidation-deregistration',
+    category: 'corporate-services',
     navLabel: 'Liquidation & Deregistration',
     icon: Archive,
     eyebrow: 'Company Closure',
@@ -1235,10 +1218,10 @@ export const services: Service[] = [
       ],
     },
     stats: [
-      { value: '4–8', label: 'Weeks Typical' },
-      { value: '0', label: 'Residual Liabilities' },
-      { value: 'All', label: 'Authority Clearances' },
-      { value: '100%', label: 'Compliant Strike-Off' },
+      { value: 'Liquidator', label: 'Appointed and liquidation report prepared' },
+      { value: 'All', label: 'Authority clearances obtained in sequence' },
+      { value: 'Visas', label: 'And permits cancelled in the right order' },
+      { value: 'Final', label: 'Deregistration certificate delivered' },
     ],
     benefits: [
       { title: 'Liquidator & Audit Report', desc: 'A registered liquidator appointed and the liquidation report prepared where required.' },
@@ -1310,6 +1293,7 @@ export const services: Service[] = [
   /* ───────────────────────── 8. CO-WORKING SPACE ───────────────────────── */
   {
     slug: 'co-working-space',
+    category: 'business-setup',
     navLabel: 'Co-working Space',
     icon: Building,
     eyebrow: 'Flexible Workspace',
@@ -1367,23 +1351,23 @@ export const services: Service[] = [
       {
         name: 'Flexi Desk',
         badge: 'Startups',
-        price: 'From AED 6,000',
-        period: 'per year',
+        price: 'On request',
+        period: 'annual or monthly terms',
         features: ['Shared hot-desk access', 'Registered business address', 'Mail handling', 'Meeting-room credits', 'Up to 1 visa allocation'],
       },
       {
         name: 'Dedicated Desk',
         badge: 'Most Popular',
         featured: true,
-        price: 'From AED 12,000',
-        period: 'per year',
+        price: 'On request',
+        period: 'annual or monthly terms',
         features: ['Your own permanent desk', 'Prime business address', 'Mail & call handling', 'Priority meeting rooms', 'Multiple visa allocations', '24/7 access option'],
       },
       {
         name: 'Private Office',
         badge: 'Teams',
-        price: 'From AED 30,000',
-        period: 'per year',
+        price: 'On request',
+        period: 'annual terms',
         features: ['Lockable private office', 'Branded reception option', 'Higher visa quota', 'Dedicated meeting room hours', 'Scalable floor space'],
       },
     ],
@@ -1433,9 +1417,43 @@ export const services: Service[] = [
   },
 ];
 
-export const servicesBySlug: Record<string, Service> = Object.fromEntries(
-  services.map((s) => [s.slug, s]),
+/**
+ * Every service, in catalogue order (category by category, then the order each
+ * category lists them). Services added in lib/service-data/* merge in here.
+ */
+const allServices: Service[] = [...coreServices, ...extendedServices];
+
+const bySlug: Record<string, Service> = Object.fromEntries(allServices.map((s) => [s.slug, s]));
+
+/** Catalogue integrity problems fail a production build; in development they
+ *  only warn, so the site keeps running while content is being written. */
+function catalogueProblem(message: string) {
+  if (process.env.NODE_ENV === 'production') throw new Error(message);
+  console.warn(`[catalogue] ${message}`);
+}
+
+export const services: Service[] = categories.flatMap((c) =>
+  c.services.flatMap((slug) => {
+    const s = bySlug[slug];
+    if (!s) {
+      catalogueProblem(`Category "${c.slug}" lists unknown service "${slug}"`);
+      return [];
+    }
+    if (s.category !== c.slug) {
+      catalogueProblem(`Service "${slug}" is in category "${s.category}" but listed under "${c.slug}"`);
+    }
+    return [s];
+  }),
 );
+
+// Catch services that exist but are not listed in any category menu.
+for (const s of allServices) {
+  if (!categories.some((c) => c.services.includes(s.slug))) {
+    catalogueProblem(`Service "${s.slug}" is not listed in any category`);
+  }
+}
+
+export const servicesBySlug: Record<string, Service> = bySlug;
 
 export function getService(slug: string): Service | undefined {
   return servicesBySlug[slug];
@@ -1443,10 +1461,15 @@ export function getService(slug: string): Service | undefined {
 
 export const serviceSlugs = services.map((s) => s.slug);
 
+export function servicesInCategory(slug: CategorySlug): Service[] {
+  return services.filter((s) => s.category === slug);
+}
+
 /** Compact list for nav mega-menu / footer. */
 export const serviceNav = services.map((s) => ({
   slug: s.slug,
   label: s.navLabel,
   icon: s.icon,
   blurb: s.blurb ?? s.eyebrow,
+  category: s.category,
 }));

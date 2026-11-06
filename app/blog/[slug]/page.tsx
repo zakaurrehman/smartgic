@@ -3,14 +3,9 @@ import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import { marked } from 'marked';
 import { CalendarDays, Clock, UserRound } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import MobileActionBar from '@/components/ui/MobileActionBar';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import PostCover from '@/components/blog/PostCover';
 import PostCard from '@/components/blog/PostCard';
-import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
 import {
   COVER_HEIGHT,
@@ -112,10 +107,9 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
       <main id="main">
         {/* Post hero */}
-        <section className="relative overflow-hidden bg-brand-navy pt-[72px] text-white">
+        <section className="relative overflow-hidden bg-brand-navy pt-[calc(var(--header-h)+1rem)] text-white">
           <div className="pointer-events-none absolute inset-0">
             <div className="aurora left-[-10%] top-[-15%] h-80 w-80 bg-brand-cyan/35" />
             <div className="aurora right-[-8%] top-[10%] h-96 w-96 bg-brand-blue/45" />
@@ -133,7 +127,7 @@ export default async function BlogPostPage({
             <span className="mt-8 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-brand-cyan backdrop-blur">
               {post.category}
             </span>
-            <h1 className="mt-5 max-w-3xl text-balance text-3xl font-extrabold leading-[1.12] tracking-tight !text-white sm:text-4xl lg:text-[2.7rem]">
+            <h1 className="mt-5 max-w-3xl text-balance text-3xl font-semibold leading-[1.12] tracking-tight !text-white sm:text-4xl lg:text-[2.7rem]">
               {post.title}
             </h1>
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-300">
@@ -178,10 +172,10 @@ export default async function BlogPostPage({
 
         {/* Related posts */}
         {related.length > 0 && (
-          <section className="section bg-slate-50/70">
+          <section className="section bg-surface">
             <div className="container-x">
-              <h2 className="text-center text-2xl font-extrabold sm:text-3xl">
-                Keep <span className="gradient-text">reading</span>
+              <h2 className="text-center text-2xl font-semibold sm:text-3xl">
+                Keep <span className="accent">reading</span>
               </h2>
               <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {related.map((p) => (
@@ -191,13 +185,8 @@ export default async function BlogPostPage({
             </div>
           </section>
         )}
-
-        <CTABand />
         <Contact source={`Blog post — ${post.title}`} />
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <MobileActionBar />
     </>
   );
 }

@@ -247,13 +247,13 @@ export default function CostEstimator() {
       <section className="section bg-white">
         <div className="container-x">
           <div className="mx-auto max-w-4xl">
-            <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-soft sm:p-10">
+            <div className="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-soft sm:p-10">
               <span className="eyebrow">
                 <Sparkles className="h-3.5 w-3.5" /> Your indicative result
               </span>
-              <h2 className="mt-5 text-2xl font-extrabold leading-tight sm:text-3xl">
+              <h2 className="mt-5 text-2xl font-semibold leading-tight sm:text-3xl">
                 Based on your answers, we would start with{' '}
-                <span className="gradient-text">{best ? best.abbr : 'a tailored structure'}</span>
+                <span className="accent">{best ? best.abbr : 'a tailored structure'}</span>
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-ink-500 sm:text-base">
                 {best
@@ -263,13 +263,13 @@ export default function CostEstimator() {
 
               {/* Starting figure */}
               {pkg && (
-                <div className="mt-8 rounded-2xl border border-slate-100 bg-slate-50/70 p-6">
+                <div className="mt-8 rounded-2xl border border-slate-200/70 bg-surface p-6">
                   <div className="flex flex-wrap items-baseline justify-between gap-3">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">
                         Smartgic {pkg.name} package — {pkg.period}
                       </p>
-                      <p className="mt-1 text-3xl font-extrabold tracking-tight text-ink-900">
+                      <p className="mt-1 text-3xl font-semibold tracking-tight text-ink-900">
                         {pkg.price}
                       </p>
                     </div>
@@ -290,7 +290,7 @@ export default function CostEstimator() {
 
               {/* Offshore has no package equivalent — say what it actually is. */}
               {!pkg && best?.category === 'Offshore' && (
-                <div className="mt-8 rounded-2xl border border-slate-100 bg-slate-50/70 p-6">
+                <div className="mt-8 rounded-2xl border border-slate-200/70 bg-surface p-6">
                   <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">
                     Quoted per structure
                   </p>
@@ -344,9 +344,9 @@ export default function CostEstimator() {
                       <Link
                         key={zone.slug}
                         href={`/free-zones/${zone.slug}`}
-                        className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
+                        className="group flex h-full flex-col rounded-2xl border border-slate-200/70 bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
                       >
-                        <span className="grid h-10 w-fit place-items-center rounded-lg bg-brand-gradient px-2.5 text-xs font-extrabold text-white">
+                        <span className="grid h-10 w-fit place-items-center rounded-lg bg-brand-gradient px-2.5 text-xs font-semibold text-white">
                           {zone.abbr}
                         </span>
                         <span className="mt-3 block text-sm font-bold text-ink-900 group-hover:text-brand-blue">
@@ -366,7 +366,7 @@ export default function CostEstimator() {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 {best && (
-                  <Link href={`/free-zones/${best.slug}`} className="btn-gradient group">
+                  <Link href={`/free-zones/${best.slug}`} className="btn-primary group">
                     Read the {best.abbr} guide
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
@@ -378,8 +378,8 @@ export default function CostEstimator() {
             </div>
 
             {/* Lead capture — answers travel with the enquiry */}
-            <div className="mt-8 rounded-3xl border border-slate-100 bg-slate-50/70 p-6 shadow-soft sm:p-10">
-              <h2 className="text-2xl font-extrabold text-ink-900">Get the itemised quote</h2>
+            <div className="mt-8 rounded-3xl border border-slate-200/70 bg-surface p-6 shadow-soft sm:p-10">
+              <h2 className="text-2xl font-semibold text-ink-900">Get the itemised quote</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-500">
                 Send us your details and an advisor will come back with a written, itemised quote for
                 this route — authority fees and service charges separated, nothing hidden.
@@ -425,7 +425,7 @@ export default function CostEstimator() {
 
           {/* Question */}
           <div className="mt-10">
-            <h2 className="text-2xl font-extrabold leading-tight text-ink-900 sm:text-3xl">
+            <h2 className="text-2xl font-semibold leading-tight text-ink-900 sm:text-3xl">
               {step.title}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-ink-500 sm:text-base">
@@ -473,7 +473,7 @@ export default function CostEstimator() {
           </div>
 
           {/* Reassurance strip */}
-          <div className="mt-14 grid gap-4 border-t border-slate-100 pt-10 sm:grid-cols-3">
+          <div className="mt-14 grid gap-4 border-t border-slate-200/70 pt-10 sm:grid-cols-3">
             {[
               { icon: Target, title: 'Matched, not guessed', desc: 'Built from the jurisdictions we actually work with.' },
               { icon: Wallet, title: 'No invented fees', desc: 'We show our own package pricing, not fictional authority fees.' },
@@ -482,7 +482,7 @@ export default function CostEstimator() {
               const Icon = f.icon;
               return (
                 <div key={f.title} className="flex items-start gap-3">
-                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-brand-cyan-dark" />
+                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-teal" />
                   <div>
                     <p className="text-sm font-bold text-ink-900">{f.title}</p>
                     <p className="mt-1 text-xs leading-relaxed text-ink-500">{f.desc}</p>

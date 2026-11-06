@@ -9,23 +9,16 @@ import {
   FileText,
   MapPin,
   Phone,
-  Sparkles,
   Target,
   Wallet,
 } from 'lucide-react';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import MobileActionBar from '@/components/ui/MobileActionBar';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import Reveal from '@/components/ui/Reveal';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Accordion from '@/components/ui/Accordion';
-import Disclaimer from '@/components/ui/Disclaimer';
 import HeroPhoto from '@/components/ui/HeroPhoto';
-import Testimonials from '@/components/sections/Testimonials';
-import CTABand from '@/components/sections/CTABand';
+import Aurora from '@/components/ui/Aurora';
 import Contact from '@/components/sections/Contact';
 
 import {
@@ -126,15 +119,10 @@ export default async function JurisdictionPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
       <main id="main">
         {/* ─────────────── Hero ─────────────── */}
-        <section className="relative overflow-hidden bg-brand-navy pt-[72px] text-white">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="aurora left-[-10%] top-[-10%] h-[380px] w-[380px] bg-brand-cyan/40" />
-            <div className="aurora right-[-8%] top-[0%] h-[460px] w-[460px] bg-brand-blue/50" />
-            <div className="absolute inset-0 grid-pattern opacity-[0.5]" />
-          </div>
+        <section className="on-dark relative isolate overflow-hidden bg-navy-900 pt-[calc(var(--header-h)+1rem)] text-slate-300">
+          <Aurora intensity="subtle" />
 
           <div className="container-x relative pb-16 pt-10 sm:pb-20 lg:pb-24 lg:pt-14">
             <Breadcrumbs
@@ -148,16 +136,15 @@ export default async function JurisdictionPage({
 
             <div className="mt-8 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
               <div>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-cyan backdrop-blur">
-                  <Sparkles className="h-3.5 w-3.5" />
+                <p className="eyebrow-dark">
                   {zone.emirate} · {zone.category}
-                </span>
+                </p>
 
-                <h1 className="mt-6 text-balance text-3xl font-extrabold leading-[1.08] tracking-tight !text-white sm:text-4xl lg:text-[2.9rem]">
+                <h1 className="mt-5 text-display-xl font-semibold text-white">
                   {zone.name}
                 </h1>
 
-                <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+                <p className="lead mt-6 max-w-xl !text-slate-300">
                   {zone.tagline}. {zone.standout}
                 </p>
 
@@ -174,11 +161,11 @@ export default async function JurisdictionPage({
                 </ul>
 
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <a href="#contact" className="btn-gradient group w-full sm:w-auto">
-                    Get a Free Consultation
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <a href="#contact" className="btn-primary btn-sheen group w-full sm:w-auto">
+                    Book a free consultation
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                   </a>
-                  <Link href="/cost-estimator" className="btn-white w-full sm:w-auto">
+                  <Link href="/cost-estimator" className="btn-glass w-full sm:w-auto">
                     <Wallet className="h-4 w-4" /> Estimate my cost
                   </Link>
                 </div>
@@ -191,7 +178,7 @@ export default async function JurisdictionPage({
                 <HeroPhoto image={photo}>
                   <div className="rounded-2xl border border-white/15 bg-brand-navy/75 p-4 shadow-2xl backdrop-blur-xl sm:p-5">
                     <div className="flex items-center gap-3">
-                      <span className="grid h-9 shrink-0 place-items-center rounded-lg bg-brand-gradient px-2.5 text-xs font-extrabold text-white">
+                      <span className="grid h-9 shrink-0 place-items-center rounded-lg bg-brand-gradient px-2.5 text-xs font-semibold text-white">
                         {zone.abbr}
                       </span>
                       <p className="text-sm font-bold text-white">At a glance</p>
@@ -217,7 +204,7 @@ export default async function JurisdictionPage({
               <div className="relative mx-auto w-full max-w-md lg:max-w-none">
                 <div className="relative rounded-3xl border border-white/15 bg-white/[0.07] p-6 shadow-2xl backdrop-blur-xl sm:p-8">
                   <div className="flex items-center gap-4">
-                    <div className="grid h-14 shrink-0 place-items-center rounded-2xl bg-brand-gradient px-4 text-base font-extrabold text-white shadow-glow">
+                    <div className="grid h-14 shrink-0 place-items-center rounded-2xl bg-brand-gradient px-4 text-base font-semibold text-white shadow-glow">
                       {zone.abbr}
                     </div>
                     <div className="min-w-0">
@@ -256,7 +243,7 @@ export default async function JurisdictionPage({
             <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
               <div>
                 <span className="eyebrow">Overview</span>
-                <h2 className="mt-5 text-3xl font-extrabold leading-[1.15] sm:text-[2.2rem]">
+                <h2 className="mt-5 text-3xl font-semibold leading-[1.15] sm:text-[2.2rem]">
                   Is {zone.abbr} the right fit for you?
                 </h2>
                 <div className="mt-6 space-y-5">
@@ -269,9 +256,9 @@ export default async function JurisdictionPage({
               </div>
 
               <Reveal delay={100}>
-                <div className="rounded-3xl border border-slate-100 bg-slate-50/70 p-7">
+                <div className="rounded-3xl border border-slate-200/70 bg-surface p-7">
                   <h3 className="flex items-center gap-2 text-base font-bold text-ink-900">
-                    <Target className="h-5 w-5 text-brand-cyan-dark" />
+                    <Target className="h-5 w-5 text-teal" />
                     Ideal for
                   </h3>
                   <ul className="mt-5 space-y-3">
@@ -289,13 +276,13 @@ export default async function JurisdictionPage({
         </section>
 
         {/* ─────────────── Highlights ─────────────── */}
-        <section className="section bg-slate-50/70">
+        <section className="section bg-surface">
           <div className="container-x">
             <SectionHeading
               eyebrow="Why this jurisdiction"
               title={
                 <>
-                  What {zone.abbr} <span className="gradient-text">actually gives you</span>
+                  What {zone.abbr} <span className="accent">actually gives you</span>
                 </>
               }
               description={`The advantages that matter commercially — not a feature list. If none of these apply to your business, we will point you somewhere cheaper.`}
@@ -303,7 +290,7 @@ export default async function JurisdictionPage({
             <div className="mt-14 grid gap-5 sm:grid-cols-2">
               {zone.highlights.map((h, i) => (
                 <Reveal key={h.title} delay={i * 70}>
-                  <div className="h-full rounded-2xl border border-slate-100 bg-white p-7 shadow-card">
+                  <div className="h-full rounded-2xl border border-slate-200/70 bg-white p-7 shadow-card">
                     <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-gradient-soft text-brand-blue">
                       <CheckCircle2 className="h-5 w-5" />
                     </span>
@@ -323,7 +310,7 @@ export default async function JurisdictionPage({
               eyebrow="Licensing"
               title={
                 <>
-                  Licence types &amp; <span className="gradient-text">workspace options</span>
+                  Licence types &amp; <span className="accent">workspace options</span>
                 </>
               }
               description="Your licence category follows your activity, and your workspace drives your visa allocation. We match both to what you actually need."
@@ -333,8 +320,8 @@ export default async function JurisdictionPage({
               <div className="grid gap-4 sm:grid-cols-2">
                 {zone.licenceTypes.map((l, i) => (
                   <Reveal key={l.name} delay={i * 70}>
-                    <div className="h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-card">
-                      <span className="text-xs font-bold uppercase tracking-wider text-brand-cyan-dark">
+                    <div className="h-full rounded-2xl border border-slate-200/70 bg-white p-6 shadow-card">
+                      <span className="text-xs font-bold uppercase tracking-wider text-teal">
                         0{i + 1}
                       </span>
                       <h3 className="mt-2 text-base font-bold text-ink-900">{l.name}</h3>
@@ -369,13 +356,13 @@ export default async function JurisdictionPage({
         </section>
 
         {/* ─────────────── Process ─────────────── */}
-        <section className="section bg-slate-50/70">
+        <section className="section bg-surface">
           <div className="container-x">
             <SectionHeading
               eyebrow="How it works"
               title={
                 <>
-                  From first call to <span className="gradient-text">licence in hand</span>
+                  From first call to <span className="accent">licence in hand</span>
                 </>
               }
               description="The same six steps apply across jurisdictions. What changes is the authority, the approvals and the documentation — which is the part we handle."
@@ -383,8 +370,8 @@ export default async function JurisdictionPage({
             <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {zoneSetupSteps.map((s, i) => (
                 <Reveal key={s.title} delay={i * 60} as="li">
-                  <div className="h-full rounded-2xl border border-slate-100 bg-white p-7 shadow-card">
-                    <span className="text-2xl font-extrabold tracking-tight text-brand-cyan/50">
+                  <div className="h-full rounded-2xl border border-slate-200/70 bg-white p-7 shadow-card">
+                    <span className="text-2xl font-semibold tracking-tight text-brand-cyan/50">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <h3 className="mt-3 text-base font-bold text-ink-900">{s.title}</h3>
@@ -402,25 +389,25 @@ export default async function JurisdictionPage({
             <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
               <div>
                 <span className="eyebrow">Paperwork</span>
-                <h2 className="mt-5 text-3xl font-extrabold leading-[1.15] sm:text-[2.2rem]">
-                  What you need to <span className="gradient-text">get started</span>
+                <h2 className="mt-5 text-3xl font-semibold leading-[1.15] sm:text-[2.2rem]">
+                  What you need to <span className="accent">get started</span>
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-ink-500">
                   This is the standard document set. Regulated activities and corporate shareholders
                   carry additional requirements — we confirm the exact list for your case before you
                   start gathering anything.
                 </p>
-                <a href="#contact" className="btn-gradient group mt-8">
+                <a href="#contact" className="btn-primary group mt-8">
                   Get my document checklist
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </div>
 
               <Reveal delay={100}>
-                <ul className="grid gap-3 rounded-3xl border border-slate-100 bg-slate-50/70 p-7">
+                <ul className="grid gap-3 rounded-3xl border border-slate-200/70 bg-surface p-7">
                   {zoneDocuments.map((d) => (
                     <li key={d} className="flex items-start gap-3 text-sm text-ink-500">
-                      <FileText className="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand-cyan-dark" />
+                      <FileText className="mt-0.5 h-4.5 w-4.5 shrink-0 text-teal" />
                       {d}
                     </li>
                   ))}
@@ -432,13 +419,13 @@ export default async function JurisdictionPage({
 
         {/* ─────────────── Related services ─────────────── */}
         {relatedServices.length > 0 && (
-          <section className="section bg-slate-50/70">
+          <section className="section bg-surface">
             <div className="container-x">
               <SectionHeading
                 eyebrow="What comes next"
                 title={
                   <>
-                    Services you will need <span className="gradient-text">alongside the licence</span>
+                    Services you will need <span className="accent">alongside the licence</span>
                   </>
                 }
                 description="A licence on its own does not make you operational. These are the pieces that usually follow."
@@ -450,7 +437,7 @@ export default async function JurisdictionPage({
                     <Reveal key={s.slug} delay={i * 70}>
                       <Link
                         href={`/services/${s.slug}`}
-                        className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
+                        className="group flex h-full flex-col rounded-2xl border border-slate-200/70 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
                       >
                         <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-gradient-soft text-brand-blue transition-colors duration-300 group-hover:bg-brand-gradient group-hover:text-white">
                           <Icon className="h-5.5 w-5.5" />
@@ -474,8 +461,6 @@ export default async function JurisdictionPage({
           </section>
         )}
 
-        <Testimonials />
-
         {/* ─────────────── FAQs ─────────────── */}
         <section className="section bg-white">
           <div className="container-x">
@@ -483,7 +468,7 @@ export default async function JurisdictionPage({
               eyebrow="Good to know"
               title={
                 <>
-                  {zone.abbr} <span className="gradient-text">questions answered</span>
+                  {zone.abbr} <span className="accent">questions answered</span>
                 </>
               }
               description="The questions founders actually ask us about this jurisdiction — answered straight."
@@ -496,13 +481,13 @@ export default async function JurisdictionPage({
 
         {/* ─────────────── Compare other jurisdictions ─────────────── */}
         {relatedZones.length > 0 && (
-          <section className="section bg-slate-50/70">
+          <section className="section bg-surface">
             <div className="container-x">
               <SectionHeading
                 eyebrow="Compare"
                 title={
                   <>
-                    Other jurisdictions <span className="gradient-text">worth considering</span>
+                    Other jurisdictions <span className="accent">worth considering</span>
                   </>
                 }
                 description="Most founders shortlist two or three before deciding. These are the closest alternatives to this one."
@@ -512,9 +497,9 @@ export default async function JurisdictionPage({
                   <Reveal key={z.slug} delay={i * 70}>
                     <Link
                       href={`/free-zones/${z.slug}`}
-                      className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
+                      className="group flex h-full flex-col rounded-2xl border border-slate-200/70 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
                     >
-                      <span className="grid h-11 w-fit place-items-center rounded-xl bg-brand-gradient px-3 text-sm font-extrabold text-white">
+                      <span className="grid h-11 w-fit place-items-center rounded-xl bg-brand-gradient px-3 text-sm font-semibold text-white">
                         {z.abbr}
                       </span>
                       <h3 className="mt-4 text-sm font-bold leading-snug text-ink-900 group-hover:text-brand-blue">
@@ -538,14 +523,8 @@ export default async function JurisdictionPage({
             </div>
           </section>
         )}
-
-        <Disclaimer />
-        <CTABand />
         <Contact source={`Jurisdiction — ${zone.abbr}`} defaultService="Company Formation" />
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <MobileActionBar />
     </>
   );
 }

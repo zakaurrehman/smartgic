@@ -1,18 +1,21 @@
 import Link from 'next/link';
 import {
-  Phone,
+  ArrowRight,
+  Clock,
+  Facebook,
+  Instagram,
+  Linkedin,
   Mail,
   MapPin,
-  Clock,
-  Linkedin,
-  Instagram,
-  Facebook,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
   type LucideIcon,
 } from 'lucide-react';
+import type { NavData } from '@/lib/nav';
 import { activeSocialLinks, company, mapsHref } from '@/lib/data';
-import { serviceNav } from '@/lib/services';
-import { featuredZoneSlugs, jurisdictionsBySlug } from '@/lib/freezones';
 import BrandMark from './ui/BrandMark';
+import Aurora from './ui/Aurora';
 
 const socialIcons: Record<string, LucideIcon> = {
   LinkedIn: Linkedin,
@@ -21,53 +24,100 @@ const socialIcons: Record<string, LucideIcon> = {
 };
 
 const companyLinks = [
-  { label: 'About Us', href: '/about' },
-  { label: 'Corporate Services', href: '/services' },
-  { label: 'Jurisdictions', href: '/free-zones' },
-  { label: 'Pricing & Packages', href: '/pricing' },
-  { label: 'Golden Visa', href: '/golden-visa' },
-  { label: 'Blog & Insights', href: '/blog' },
+  { label: 'About us', href: '/about' },
+  { label: 'All services', href: '/services' },
+  { label: 'Packages & pricing', href: '/pricing' },
+  { label: 'Compare jurisdictions', href: '/free-zones' },
+  { label: 'UAE Golden Visa', href: '/golden-visa' },
+  { label: 'Guides & insights', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
 
-const toolLinks = [
-  { label: 'Cost Estimator', href: '/cost-estimator' },
-  { label: 'Golden Visa Eligibility', href: '/golden-visa/eligibility' },
-  { label: 'Compare Jurisdictions', href: '/free-zones' },
-];
+const whatsappHref = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+  "Hello Smartgic, I'd like to book a consultation.",
+)}`;
 
-const footerZones = featuredZoneSlugs
-  .map((slug) => jurisdictionsBySlug[slug])
-  .filter(Boolean)
-  .map((z) => ({ slug: z.slug, label: z.name.split(' — ')[0] }));
-
-export default function Footer() {
+/**
+ * Site footer: a closing consultation panel, then complete navigation — every
+ * category and service, the tools and company pages — so any page is one click
+ * from the footer. Ends with the independence notice and legal links.
+ */
+export default function Footer({ nav }: { nav: NavData }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-brand-navy text-slate-300">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="aurora left-[-5%] top-[-30%] h-72 w-72 bg-brand-blue/25" />
-        <div className="aurora right-[-5%] bottom-[-40%] h-72 w-72 bg-brand-cyan/20" />
+    <footer className="on-dark relative isolate overflow-hidden bg-navy-950 text-slate-400" aria-labelledby="footer-heading">
+      <h2 id="footer-heading" className="sr-only">
+        Site footer
+      </h2>
+      <Aurora intensity="subtle" />
+
+      {/* ── Closing call to action ── */}
+      <div className="container-wide relative pt-16 sm:pt-20">
+        <div className="border-gradient relative overflow-hidden rounded-[2rem] bg-white/[0.035] px-6 py-10 backdrop-blur sm:px-10 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:px-14 lg:py-12">
+          <div className="max-w-2xl">
+            <p className="eyebrow-dark">Free first consultation</p>
+            <p className="mt-4 text-display-md font-semibold text-white">
+              Tell us what you are building. <span className="accent">We’ll map the route.</span>
+            </p>
+            <p className="mt-3 text-[0.95rem] leading-relaxed text-slate-400">
+              Setup, visas, tax, accounting or audit — one conversation covers the steps, the documents and an itemised
+              quote. No obligation.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0 lg:shrink-0">
+            <Link href="/contact" className="btn-primary btn-sheen">
+              Book a consultation <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btn-glass">
+              <MessageCircle className="h-4 w-4 text-[#25D366]" aria-hidden="true" /> WhatsApp us
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div className="container-x relative">
-        <div className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_1.1fr_0.9fr_1fr] lg:gap-8">
-          {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <BrandMark className="h-10 w-10" withWordmark wordmarkClassName="text-white" />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">
-              {company.legalName} — your licensed Dubai partner for business setup, immigration and
-              PRO services. Serving founders from 120+ countries.
+      {/* ── Navigation ── */}
+      <div className="container-wide relative">
+        <div className="grid gap-12 py-16 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-16">
+          {/* Brand + contact */}
+          <div>
+            <BrandMark className="h-10 w-10" withWordmark wordmarkClassName="text-white" subClassName="text-brand-cyan" />
+            <p className="mt-5 text-sm leading-relaxed text-slate-400">
+              {company.legalName} — a Dubai consultancy for business setup, visas, PRO, tax, accounting and audit.
             </p>
 
-            <p className="mt-5 inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-slate-300">
-              Licensed by DET · No.{' '}
-              <span className="font-semibold text-white">{company.licenseNo}</span>
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs text-slate-300">
+              <ShieldCheck className="h-3.5 w-3.5 text-brand-cyan" aria-hidden="true" />
+              DET licence <span className="font-mono font-medium text-white">{company.licenseNo}</span>
             </p>
+
+            <ul className="mt-7 space-y-3.5 text-sm">
+              <li>
+                <a href={`tel:${company.phoneHref}`} className="flex items-start gap-3 transition-colors hover:text-white">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" aria-hidden="true" />
+                  {company.phone}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${company.email}`} className="flex items-start gap-3 break-all transition-colors hover:text-white">
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" aria-hidden="true" />
+                  {company.email}
+                </a>
+              </li>
+              <li>
+                <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 transition-colors hover:text-white">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" aria-hidden="true" />
+                  {company.address}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" aria-hidden="true" />
+                {company.hours}
+              </li>
+            </ul>
 
             {activeSocialLinks.length > 0 && (
-              <div className="mt-6 flex gap-3">
+              <div className="mt-6 flex gap-2.5">
                 {activeSocialLinks.map((s) => {
                   const Icon = socialIcons[s.label];
                   return (
@@ -77,9 +127,9 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Smartgic Visa on ${s.label}`}
-                      className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition-colors hover:border-brand-cyan/40 hover:bg-brand-gradient hover:text-white"
+                      className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[0.04] transition-colors hover:border-brand-cyan/40 hover:text-white"
                     >
-                      {Icon ? <Icon className="h-4.5 w-4.5" /> : s.label.slice(0, 2)}
+                      {Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : s.label.slice(0, 2)}
                     </a>
                   );
                 })}
@@ -87,114 +137,82 @@ export default function Footer() {
             )}
           </div>
 
-          <FooterColumn title="Company" links={companyLinks} />
-
-          {/* Services */}
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-white">
-              Corporate Services
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm">
-              {serviceNav.map((service) => (
-                <li key={service.slug}>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="text-slate-400 transition-colors hover:text-brand-cyan"
-                  >
-                    {service.label}
+          {/* Every category and its services, then company links */}
+          <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 xl:grid-cols-4">
+            {nav.categories.map((c) => (
+              <div key={c.slug}>
+                <h3 className="text-sm font-semibold text-white">
+                  <Link href={c.href} className="transition-colors hover:text-brand-cyan">
+                    {c.label}
+                  </Link>
+                </h3>
+                <ul className="mt-4 space-y-2.5 text-[0.84rem]">
+                  {c.services.map((s) => (
+                    <li key={s.href}>
+                      <Link href={s.href} className="transition-colors hover:text-white">
+                        {s.label}
+                      </Link>
+                    </li>
+                  ))}
+                  {c.links
+                    .filter((l) => l.href === '/golden-visa')
+                    .map((l) => (
+                      <li key={l.href}>
+                        <Link href={l.href} className="transition-colors hover:text-white">
+                          {l.label}
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            ))}
+            <div>
+              <h3 className="text-sm font-semibold text-white">Company</h3>
+              <ul className="mt-4 space-y-2.5 text-[0.84rem]">
+                {companyLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="transition-colors hover:text-white">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-white">Free tools</h3>
+              <ul className="mt-4 space-y-2.5 text-[0.84rem]">
+                {nav.resources
+                  .filter((r) => r.href !== '/pricing' && r.href !== '/blog')
+                  .map((r) => (
+                    <li key={r.href}>
+                      <Link href={r.href} className="transition-colors hover:text-white">
+                        {r.label}
+                      </Link>
+                    </li>
+                  ))}
+                <li>
+                  <Link href="/free-zones" className="transition-colors hover:text-white">
+                    Jurisdiction comparison
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Jurisdictions + tools */}
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-white">Jurisdictions</h3>
-            <ul className="mt-5 space-y-3 text-sm">
-              {footerZones.map((z) => (
-                <li key={z.slug}>
-                  <Link
-                    href={`/free-zones/${z.slug}`}
-                    className="text-slate-400 transition-colors hover:text-brand-cyan"
-                  >
-                    {z.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <h3 className="mt-8 text-sm font-bold uppercase tracking-wider text-white">
-              Free Tools
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm">
-              {toolLinks.map((t) => (
-                <li key={t.href}>
-                  <Link
-                    href={t.href}
-                    className="text-slate-400 transition-colors hover:text-brand-cyan"
-                  >
-                    {t.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-white">Get in touch</h3>
-            <ul className="mt-5 space-y-4 text-sm">
-              <li className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand-cyan" />
-                <a href={`tel:${company.phoneHref}`} className="hover:text-white">
-                  {company.phone}
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand-cyan" />
-                <a href={`mailto:${company.email}`} className="break-all hover:text-white">
-                  {company.email}
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand-cyan" />
-                <a
-                  href={mapsHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white"
-                >
-                  {company.address}
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Clock className="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand-cyan" />
-                <span>{company.hours}</span>
-              </li>
-            </ul>
-
-            <Link href="/contact" className="btn-gradient mt-6 w-full !py-3 text-sm">
-              Free Consultation
-            </Link>
-          </div>
+              </ul>
+            </div>
+          </nav>
         </div>
 
         {/* Independence notice */}
         <div className="border-t border-white/10 py-7">
-          <p className="text-xs leading-relaxed text-slate-500">
-            {company.legalName} is a privately owned business setup and immigration consultancy
-            licensed by the {company.authority}. We are not a government entity and are not
-            affiliated with, endorsed by or acting on behalf of any UAE government or free zone
-            authority. Content on this site is general information, not legal, tax or immigration
-            advice. Government fees, processing times and visa eligibility are set by the relevant
-            authorities, vary case by case and are not guaranteed. All third-party names and
-            trademarks are the property of their respective owners.
+          <p className="max-w-5xl text-xs leading-relaxed text-slate-500">
+            {company.legalName} is a privately owned business setup and immigration consultancy licensed by the{' '}
+            {company.authority}. We are not a government entity and are not affiliated with, endorsed by or acting on
+            behalf of any UAE government or free zone authority. Audit opinions are issued by UAE-registered auditors.
+            Content on this site is general information, not legal, tax or immigration advice. Government fees,
+            processing times and visa eligibility are set by the relevant authorities, vary case by case and are not
+            guaranteed. All third-party names and trademarks are the property of their respective owners.
           </p>
         </div>
 
-        {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-7 text-xs text-slate-400 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-7 text-xs text-slate-500 sm:flex-row">
           <p>
             © {year} {company.legalName} All rights reserved.
           </p>
@@ -205,35 +223,20 @@ export default function Footer() {
             <Link href="/terms" className="transition-colors hover:text-brand-cyan">
               Terms of Service
             </Link>
-            <Link href="/contact" className="transition-colors hover:text-brand-cyan">
-              Contact
+            <Link href="/sitemap.xml" className="transition-colors hover:text-brand-cyan">
+              Sitemap
             </Link>
           </nav>
         </div>
       </div>
-    </footer>
-  );
-}
 
-function FooterColumn({
-  title,
-  links,
-}: {
-  title: string;
-  links: { label: string; href: string }[];
-}) {
-  return (
-    <div>
-      <h3 className="text-sm font-bold uppercase tracking-wider text-white">{title}</h3>
-      <ul className="mt-5 space-y-3 text-sm">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link href={link.href} className="text-slate-400 transition-colors hover:text-brand-cyan">
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+      {/* Oversized wordmark, layered behind the bottom bar and cropped by the
+          footer's edge — decorative, so it adds no height. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 translate-y-[45%] select-none overflow-hidden">
+        <p className="container-wide whitespace-nowrap text-center font-semibold leading-none tracking-[-0.06em] text-white/[0.035] [font-size:clamp(5rem,17vw,16rem)]">
+          SMARTGIC
+        </p>
+      </div>
+    </footer>
   );
 }

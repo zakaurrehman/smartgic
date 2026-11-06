@@ -10,6 +10,12 @@ import { SHARE_IMAGE_ALT } from '@/lib/seo';
  */
 
 export const alt = SHARE_IMAGE_ALT;
+
+const MARK =
+  'data:image/svg+xml;base64,' +
+  Buffer.from(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><line x1="5.9" y1="45.4" x2="32.4" y2="18.6" stroke="#11C2CC" stroke-width="11.7" stroke-linecap="round"/><line x1="31.6" y1="45.4" x2="58.1" y2="18.6" stroke="#2C7BFF" stroke-width="11.7" stroke-linecap="round"/><circle cx="55.4" cy="45.4" r="5.85" fill="#11C2CC"/></svg>',
+  ).toString('base64');
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -59,16 +65,17 @@ export default function OpengraphImage() {
               width: 64,
               height: 64,
               borderRadius: 18,
-              background: 'linear-gradient(100deg, #11C2CC 0%, #1763E8 100%)',
+              background: '#050B1A',
+              border: '1px solid rgba(255,255,255,0.16)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: 34,
-              fontWeight: 800,
-              color: '#ffffff',
             }}
           >
-            S
+            {/* The Smartgic mark, as an inline SVG data URI. ImageResponse
+                renders with Satori, where next/image is not available. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={MARK} width={46} height={46} alt="" />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ fontSize: 30, fontWeight: 800, color: '#ffffff', letterSpacing: -0.5 }}>
@@ -91,7 +98,7 @@ export default function OpengraphImage() {
               letterSpacing: -2,
             }}
           >
-            Dubai business setup,
+            Business setup, visas,
           </span>
           <span
             style={{
@@ -102,10 +109,10 @@ export default function OpengraphImage() {
               letterSpacing: -2,
             }}
           >
-            visas &amp; PRO services
+            tax, accounting &amp; audit
           </span>
           <span style={{ fontSize: 26, color: '#cbd5e1', marginTop: 24, lineHeight: 1.4 }}>
-            Company formation, Golden Visa, banking and compliance — handled end to end.
+            One DET-licensed team in Dubai — from your first licence to your annual audit.
           </span>
         </div>
 

@@ -1,16 +1,12 @@
 import type { Metadata } from 'next';
+import { siteImages } from '@/lib/site-images';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 import Link from 'next/link';
 import { ArrowUpRight, CalendarDays, Clock, Sparkles } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import Reveal from '@/components/ui/Reveal';
 import PostCover from '@/components/blog/PostCover';
 import BlogIndex from '@/components/blog/BlogIndex';
-import CTABand from '@/components/sections/CTABand';
 import Contact from '@/components/sections/Contact';
 import { getAllPosts, getCategories, toCard, formatDate } from '@/lib/blog';
 
@@ -71,13 +67,14 @@ export default function BlogIndexPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
       <main id="main">
         <PageHero
+          variant="center"
+          image={siteImages.dubaiFrameSunsetAerial}
           eyebrow="Blog & Insights"
           title={
             <>
-              Guides that make Dubai <span className="gradient-text">simple</span>
+              Guides that make Dubai <span className="accent">simple</span>
             </>
           }
           subtitle="Practical, up-to-date articles on business setup, visas, free zones and compliance — written by the team that processes these files every day."
@@ -91,7 +88,7 @@ export default function BlogIndexPage() {
               <Reveal>
                 <Link
                   href={`/blog/${featured.slug}`}
-                  className="group grid overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft lg:grid-cols-2 lg:items-center"
+                  className="group grid overflow-hidden rounded-3xl border border-slate-200/70 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft lg:grid-cols-2 lg:items-center"
                 >
                   {/* Inset at its native ratio rather than stretched to the
                       text column's height — stretching would crop the cover's
@@ -109,10 +106,10 @@ export default function BlogIndexPage() {
                   </div>
 
                   <div className="flex flex-col justify-center px-7 pb-8 pt-3 sm:px-10 sm:pb-10 lg:py-10 lg:pl-6">
-                    <span className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-cyan-dark">
+                    <span className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-teal">
                       <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Latest
                     </span>
-                    <h2 className="mt-5 text-2xl font-extrabold leading-snug text-ink-900 transition-colors group-hover:text-brand-blue sm:text-3xl">
+                    <h2 className="mt-5 text-2xl font-semibold leading-snug text-ink-900 transition-colors group-hover:text-brand-blue sm:text-3xl">
                       {featured.title}
                     </h2>
                     <p className="mt-4 text-sm leading-relaxed text-ink-500 sm:text-base">
@@ -127,7 +124,7 @@ export default function BlogIndexPage() {
                         <Clock className="h-3.5 w-3.5" aria-hidden="true" /> {featured.readingTime}{' '}
                         min read
                       </span>
-                      <span className="font-semibold text-brand-cyan-dark">
+                      <span className="font-semibold text-teal">
                         {featured.category}
                       </span>
                     </div>
@@ -143,13 +140,8 @@ export default function BlogIndexPage() {
         )}
 
         <BlogIndex posts={cards} categories={categories} />
-
-        <CTABand />
         <Contact source="Blog index" />
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <MobileActionBar />
     </>
   );
 }

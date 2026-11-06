@@ -52,4 +52,4 @@ MOFA attestation runs a fixed government fee per document (roughly AED 150–200
 
 ## One team for the whole chain
 
-Smartgic's licensed clearing team handles typing, attestation, translation and notary work as a single engagement — the same engine behind our [document clearing services](/services/document-clearing-services) and every visa we process. [Send us your document list](/#contact) and we'll map the exact chain and cost.
+Smartgic's licensed clearing team handles typing, attestation, translation and notary work as a single engagement — the same engine behind our [document clearing services](/services/document-clearing-services) and every visa we process. [Send us your document list](/contact) and we'll map the exact chain and cost.

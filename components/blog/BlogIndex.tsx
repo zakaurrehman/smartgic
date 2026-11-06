@@ -127,7 +127,7 @@ export default function BlogIndex({
               <button type="button" onClick={reset} className="btn-ghost">
                 Show all articles
               </button>
-              <Link href="/contact" className="btn-gradient">
+              <Link href="/contact" className="btn-primary">
                 Ask an advisor
               </Link>
             </div>

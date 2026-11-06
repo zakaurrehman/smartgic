@@ -61,4 +61,4 @@ So a founder starting from zero can realistically be **licensed, visa'd and bank
 
 ## Register with a licensed partner
 
-Smartgic Visa (DET licence No. 1394564) registers companies on the Dubai mainland and in 40+ free zones — name to licence to visa to bank account, end to end. See our [company registration service](/services/company-registration) or [get a free consultation](/#contact).
+Smartgic Visa (DET licence No. 1394564) registers companies on the Dubai mainland and in free zones across the UAE — name to licence to visa to bank account, end to end. See our [company registration service](/services/company-registration) or [get a free consultation](/contact).

@@ -53,4 +53,4 @@ Proper accounting records are now mandatory — invoices, expenses, payroll and 
 
 ## Get registered and compliant
 
-Smartgic Visa handles [Corporate Tax and VAT registration](/services/company-registration), bookkeeping referrals and filing support alongside your licence and visas — one team, everything compliant. [Talk to an advisor](/#contact) today.
+Smartgic Visa handles [corporate tax registration](/services/corporate-tax-registration), [annual returns](/services/corporate-tax-filing), [VAT](/services/vat-registration) and [bookkeeping](/services/bookkeeping-services) alongside your licence and visas — one team, everything compliant. Estimate your figure with our [corporate tax calculator](/corporate-tax-calculator), or [talk to an adviser](/contact) today.

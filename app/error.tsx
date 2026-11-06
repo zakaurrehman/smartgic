@@ -32,7 +32,7 @@ export default function Error({
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-white/15 bg-white/5 backdrop-blur">
           <AlertTriangle className="h-7 w-7 text-brand-cyan" />
         </span>
-        <h1 className="mt-7 text-3xl font-extrabold leading-tight !text-white sm:text-4xl">
+        <h1 className="mt-7 text-3xl font-semibold leading-tight !text-white sm:text-4xl">
           Something went wrong
         </h1>
         <p className="mt-4 text-base leading-relaxed text-slate-300">
@@ -41,7 +41,7 @@ export default function Error({
         </p>
 
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button type="button" onClick={reset} className="btn-gradient w-full sm:w-auto">
+          <button type="button" onClick={reset} className="btn-primary w-full sm:w-auto">
             <RotateCcw className="h-4 w-4" /> Try again
           </button>
           <a href={`tel:${company.phoneHref}`} className="btn-white w-full sm:w-auto">

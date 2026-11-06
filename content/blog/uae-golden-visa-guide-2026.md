@@ -62,4 +62,4 @@ Timelines vary by category: straightforward property-based applications can comp
 
 ## Get an honest eligibility check
 
-Smartgic Visa assesses your profile across every category and manages the full application — documents, submissions and follow-up. [Check your eligibility for free](/golden-visa) or [talk to an advisor](/#contact) today.
+Smartgic Visa assesses your profile across every category and manages the full application — documents, submissions and follow-up. [Check your eligibility for free](/golden-visa) or [talk to an advisor](/contact) today.

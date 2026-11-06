@@ -1,9 +1,5 @@
 import type { Metadata } from 'next';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import { company } from '@/lib/data';
 
@@ -129,13 +125,12 @@ const sections: { heading: string; body: string[] }[] = [
 export default function TermsPage() {
   return (
     <>
-      <Header />
       <main id="main">
         <PageHero
           eyebrow="Legal"
           title={
             <>
-              Terms of <span className="gradient-text">Service</span>
+              Terms of <span className="accent">Service</span>
             </>
           }
           subtitle="The terms that govern use of this website and our business setup, visa and PRO services. Written to be read, not to be skipped."
@@ -146,14 +141,14 @@ export default function TermsPage() {
         <section className="section bg-white">
           <div className="container-x">
             <div className="mx-auto max-w-3xl">
-              <p className="rounded-2xl border border-slate-100 bg-slate-50/70 p-5 text-sm text-ink-500">
+              <p className="rounded-2xl border border-slate-200/70 bg-surface p-5 text-sm text-ink-500">
                 Last updated: 20 September 2026
               </p>
 
               <div className="mt-10 space-y-10">
                 {sections.map((s) => (
                   <section key={s.heading}>
-                    <h2 className="text-xl font-extrabold text-ink-900 sm:text-2xl">{s.heading}</h2>
+                    <h2 className="text-xl font-semibold text-ink-900 sm:text-2xl">{s.heading}</h2>
                     <div className="mt-4 space-y-4">
                       {s.body.map((p) => (
                         <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-ink-500">
@@ -168,9 +163,6 @@ export default function TermsPage() {
           </div>
         </section>
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <MobileActionBar />
     </>
   );
 }

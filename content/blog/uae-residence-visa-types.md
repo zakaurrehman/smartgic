@@ -71,4 +71,4 @@ Most founders' cheapest fast route is the **investor visa via their own licence*
 
 ## Get matched to the right visa
 
-Smartgic Visa processes every route above — eligibility check, documents, medical, Emirates ID and stamping, end to end. [Talk to an advisor free](/#contact).
+Smartgic Visa processes every route above — eligibility check, documents, medical, Emirates ID and stamping, end to end. [Talk to an advisor free](/contact).
