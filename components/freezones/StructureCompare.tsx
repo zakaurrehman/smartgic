@@ -95,14 +95,14 @@ export default function StructureCompare() {
           eyebrow="Decide the type first"
           title={
             <>
-              Mainland, free zone or <span className="gradient-text">offshore?</span>
+              Mainland, free zone or <span className="accent">offshore?</span>
             </>
           }
           description="Before comparing individual jurisdictions, get the entity type right. These are structural differences — they do not change between one free zone and another."
         />
 
         <Reveal className="mt-14">
-          <div className="overflow-hidden rounded-2xl border border-slate-100 shadow-card">
+          <div className="overflow-hidden rounded-2xl border border-slate-200/70 shadow-card">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[680px] border-collapse text-left text-sm">
                 <caption className="sr-only">
@@ -128,7 +128,7 @@ export default function StructureCompare() {
                   {rows.map((row, i) => (
                     <tr
                       key={row.label}
-                      className={`border-t border-slate-100 align-top ${
+                      className={`border-t border-slate-200/70 align-top ${
                         i % 2 === 1 ? 'bg-slate-50/50' : ''
                       }`}
                     >

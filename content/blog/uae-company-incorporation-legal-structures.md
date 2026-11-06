@@ -70,4 +70,4 @@ Structure is cheap to get right at incorporation and expensive to fix later — 
 
 ## Incorporate it correctly the first time
 
-Smartgic Visa structures and incorporates every entity type across the mainland and 40+ free zones — see [company registration](/services/company-registration) or [get structure advice free](/#contact).
+Smartgic Visa structures and incorporates every entity type on the mainland, in free zones and offshore — see [company registration](/services/company-registration) or [get structure advice free](/contact).

@@ -7,7 +7,7 @@
  * name an image explicitly — otherwise its links share as bare text.
  */
 export const SHARE_IMAGE_ALT =
-  'Smartgic Visa — Dubai business setup, company formation and UAE visa services';
+  'Smartgic Visa — Dubai business setup, UAE visas, corporate tax, VAT, accounting and audit';
 
 export const DEFAULT_SHARE_IMAGE = {
   url: '/opengraph-image',

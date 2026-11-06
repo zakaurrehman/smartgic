@@ -1,50 +1,32 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowUpRight, BadgeCheck, Crown, Eye, Globe2, HeartHandshake, Landmark, MapPin, Percent, ShieldCheck, Zap } from 'lucide-react';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
-import {
-  ShieldCheck, Eye, Zap, HeartHandshake, Landmark, Globe2,
-  Percent, Crown, BadgeCheck,
-} from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/ui/Reveal';
-import WhyUs from '@/components/sections/WhyUs';
-import Testimonials from '@/components/sections/Testimonials';
-import CTABand from '@/components/sections/CTABand';
+import Spotlight from '@/components/ui/Spotlight';
+import Parallax from '@/components/ui/Parallax';
+import Aurora from '@/components/ui/Aurora';
 import Contact from '@/components/sections/Contact';
-import { company, stats } from '@/lib/data';
+import { company, mapsHref } from '@/lib/data';
+import { categories } from '@/lib/catalog';
+import { services } from '@/lib/services';
 import { siteImages } from '@/lib/site-images';
 
 const SITE = 'https://www.smartgicvisa.com';
 const url = `${SITE}/about`;
 const title = 'About Smartgic Visa | DET-Licensed Business Setup Consultancy in Dubai';
 const description =
-  'Smartgic Visa is a Dubai DET-licensed consultancy (License 1394564) for business setup, visas and PRO services — serving founders from 120+ countries from our Deira, Dubai office.';
+  'Smartgic Visa is a Dubai consultancy licensed by the Department of Economy and Tourism (licence 1394564) for business setup, visas, PRO, tax, accounting and audit — from our office in Deira.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
   description,
-  keywords: [
-    'about Smartgic Visa',
-    'business setup consultancy Dubai',
-    'DET licensed consultancy',
-    'immigration consultants Dubai',
-    'Smartgic Immigration',
-  ],
+  keywords: ['about Smartgic Visa', 'business setup consultancy Dubai', 'DET licensed consultancy', 'Smartgic Immigration', 'Deira Dubai consultancy'],
   alternates: { canonical: url },
-  openGraph: {
-    type: 'website',
-    locale: 'en_AE',
-    url,
-    siteName: 'Smartgic Visa',
-    title,
-    description,
-    images: [DEFAULT_SHARE_IMAGE],
-  },
+  openGraph: { type: 'website', locale: 'en_AE', url, siteName: 'Smartgic Visa', title, description, images: [DEFAULT_SHARE_IMAGE] },
   twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_SHARE_IMAGE] },
 };
 
@@ -59,174 +41,155 @@ const jsonLd = {
 };
 
 const values = [
-  {
-    icon: Eye,
-    title: 'Transparency',
-    desc: 'All-inclusive quotes with government fees itemised. You always know exactly what you pay and why.',
-  },
-  {
-    icon: Zap,
-    title: 'Speed',
-    desc: 'Licences in days, visas without queues. We move at the pace your business plan demands.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Compliance',
-    desc: 'Every filing done by the book with DET, GDRFA, MOHRE and MOFA — no shortcuts, no surprises later.',
-  },
-  {
-    icon: HeartHandshake,
-    title: 'Ownership',
-    desc: 'One dedicated manager owns your file from first call through every renewal. You are never passed around.',
-  },
+  { icon: Eye, title: 'Transparency', desc: 'Written, itemised quotes with government fees on their own lines. You always know what you pay, and to whom.' },
+  { icon: Zap, title: 'Pace', desc: 'We move at the speed your plan needs — and tell you honestly how long each authority’s part really takes.' },
+  { icon: ShieldCheck, title: 'Compliance', desc: 'Every filing done properly with DET, GDRFA, MOHRE, the FTA and the free zones. No shortcuts that cost you later.' },
+  { icon: HeartHandshake, title: 'Ownership', desc: 'One adviser owns your file from the first call through every renewal. You are never passed around.' },
 ];
 
 const whyDubai = [
-  { icon: Percent, title: '0% Personal Income Tax', desc: 'Keep what you earn — plus generous corporate-tax thresholds for small business.' },
-  { icon: Globe2, title: 'Gateway to the World', desc: 'Reach Europe, Asia and Africa within an 8-hour flight from a world-class logistics hub.' },
-  { icon: BadgeCheck, title: '100% Foreign Ownership', desc: 'Own your company outright — free zones and most mainland activities.' },
-  { icon: Crown, title: 'Long-Term Residency', desc: 'Investor visas and the 10-year Golden Visa give you and your family real stability.' },
+  { icon: Percent, title: 'No personal income tax', desc: 'Salaries carry no personal income tax, and small businesses benefit from a 0% corporate tax band.' },
+  { icon: Globe2, title: 'Between three continents', desc: 'Europe, Asia and Africa are all within reach from one of the world’s great aviation and logistics hubs.' },
+  { icon: BadgeCheck, title: '100% foreign ownership', desc: 'Own your company outright in a free zone, and in most mainland activities too.' },
+  { icon: Crown, title: 'Long-term residency', desc: 'Investor visas and the 10-year Golden Visa give you and your family stability.' },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <Header />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main id="main">
         <PageHero
           image={siteImages.smartgicMeetingRoom}
-          eyebrow="About Us"
+          ctaHref="#contact"
+          eyebrow="About Smartgic"
           title={
             <>
-              The licensed Dubai partner behind{' '}
-              <span className="gradient-text">5,000+ success stories</span>
+              A Dubai consultancy built on <span className="accent">getting it right</span>
             </>
           }
-          subtitle="Smartgic Visa helps founders from 120+ countries start, run and grow in the UAE — company formation, visas, PRO and everything in between, handled end to end."
-          crumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
+          subtitle="Licensed by Dubai’s Department of Economy and Tourism, we take companies from their first licence to their annual audit — one accountable team, one file, from our office in Deira."
+          crumbs={[{ label: 'Home', href: '/' }, { label: 'About us' }]}
+          aside={
+            <div className="rounded-3xl border border-white/10 bg-navy-900/80 p-5 shadow-float backdrop-blur-xl">
+              <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-brand-cyan">Licensed by Dubai DET</p>
+              <p className="mt-2 font-mono text-2xl text-white">No. {company.licenseNo}</p>
+              <p className="mt-1 text-xs text-slate-400">Documents Clearing Services · Sole Establishment</p>
+            </div>
+          }
         />
 
         {/* Story */}
-        <section className="section bg-white">
-          <div className="container-x grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+        <section className="section-lg bg-white">
+          <div className="container-x grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20">
             <div>
               <Reveal>
                 <span className="eyebrow">Our story</span>
               </Reveal>
-              <Reveal delay={80}>
-                <h2 className="mt-5 text-3xl font-extrabold leading-tight sm:text-4xl">
-                  Built in Dubai, for people building in Dubai
+              <Reveal delay={70}>
+                <h2 className="mt-5 text-display-lg font-semibold text-ink-900">
+                  Built in Dubai, for people <span className="accent">building in Dubai</span>
                 </h2>
               </Reveal>
-              <Reveal delay={140}>
-                <p className="mt-5 text-base leading-relaxed text-ink-500 sm:text-[1.05rem]">
-                  {company.legalName} is a consultancy licensed by the {company.authority} — licence
-                  No. {company.licenseNo} — with document clearing, the paperwork engine behind every
-                  licence and visa in the UAE, as our core licensed activity. That focus is deliberate:
-                  when government paperwork is your craft, everything built on top of it moves faster.
+              <Reveal delay={130}>
+                <p className="mt-6 text-[1.05rem] leading-[1.8] text-ink-500">
+                  {company.legalName} is licensed by the {company.authority} — licence No. {company.licenseNo} — with
+                  document clearing as its core licensed activity. That focus is deliberate: government paperwork is the
+                  engine behind every licence, visa and filing in the UAE, and when it is your craft, everything built on
+                  top of it moves with less friction.
                 </p>
               </Reveal>
-              <Reveal delay={200}>
-                <p className="mt-4 text-base leading-relaxed text-ink-500 sm:text-[1.05rem]">
-                  From our office in Deira, Dubai, we have grown into a full-service partner for
-                  company registration, residence and Golden Visas, PRO services, banking, trademarks
-                  and workspace — serving entrepreneurs, SMEs and relocating families from more than
-                  120 countries, in one engagement with one accountable team.
+              <Reveal delay={190}>
+                <p className="mt-5 text-[1.05rem] leading-[1.8] text-ink-500">
+                  From our office in Deira we have grown into a full-service partner: company formation, visas and the
+                  Golden Visa, PRO, banking and trademarks, and now corporate tax, VAT, accounting, compliance and audit —
+                  so the team that sets up your company can keep it compliant for as long as it trades.
                 </p>
+              </Reveal>
+              <Reveal delay={240}>
+                <div className="mt-9 flex items-center gap-4 rounded-3xl border border-slate-200/80 bg-surface p-5">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-navy-900 font-semibold text-white">AS</span>
+                  <div>
+                    <p className="text-sm font-semibold text-ink-900">Adeel Shahbaz</p>
+                    <p className="text-xs text-ink-500">Founder &amp; Managing Director</p>
+                  </div>
+                </div>
               </Reveal>
             </div>
 
             <Reveal delay={120}>
-              <div className="relative overflow-hidden rounded-3xl bg-brand-navy p-8 text-white shadow-glow">
-                <div className="pointer-events-none absolute inset-0">
-                  <div className="aurora right-[-20%] top-[-25%] h-56 w-56 bg-brand-blue/40" />
-                  <div className="aurora bottom-[-25%] left-[-15%] h-52 w-52 bg-brand-cyan/30" />
-                  <div className="absolute inset-0 dot-pattern opacity-30" />
-                </div>
-                <div className="relative">
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-gradient">
-                      <Landmark className="h-6 w-6 text-white" />
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold text-slate-300">Licensed by</p>
-                      <p className="text-base font-bold !text-white">Dubai Economy &amp; Tourism</p>
-                    </div>
-                  </div>
-                  <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.05] p-5">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                      Professional Licence No.
-                    </p>
-                    <p className="mt-1 text-3xl font-extrabold tracking-tight !text-white">
-                      {company.licenseNo}
-                    </p>
-                    <p className="mt-2 text-sm text-slate-300">
-                      Documents Clearing Services — Sole Establishment
-                    </p>
-                  </div>
-                  <div className="mt-5 flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.05] p-5">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-gradient text-base font-extrabold">
-                      AS
-                    </span>
-                    <div>
-                      <p className="text-sm font-bold !text-white">Adeel Shahbaz</p>
-                      <p className="text-xs text-slate-400">Founder &amp; Managing Director</p>
-                      <p className="mt-1.5 text-xs leading-relaxed text-slate-300">
-                        &ldquo;Every client gets the setup I would want for my own business — fast,
-                        compliant and with no surprises on the invoice.&rdquo;
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Parallax offset={24} className="photo-frame aspect-[4/5] !rounded-[2rem]">
+                <Image
+                  src={siteImages.officeReceptionDesk.src}
+                  alt={siteImages.officeReceptionDesk.alt}
+                  fill
+                  placeholder="blur"
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  className="scale-110 object-cover"
+                />
+              </Parallax>
             </Reveal>
           </div>
         </section>
 
-        {/* Stats */}
-        <section className="border-y border-slate-100 bg-slate-50/70 py-12">
-          <div className="container-x grid grid-cols-2 gap-6 lg:grid-cols-4">
-            {stats.map((s, i) => (
-              <Reveal key={s.label} delay={i * 70}>
-                <div className="text-center">
-                  <p className="bg-brand-gradient bg-clip-text text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl">
-                    {s.value}
-                  </p>
-                  <p className="mt-1 text-sm text-ink-500">{s.label}</p>
-                </div>
-              </Reveal>
-            ))}
+        {/* What we cover */}
+        <section className="section on-dark relative isolate overflow-hidden bg-navy-900 text-slate-300">
+          <Aurora intensity="subtle" />
+          <div className="container-x relative">
+            <SectionHeading
+              dark
+              eyebrow="What we cover"
+              title={
+                <>
+                  {services.length} services across <span className="accent">{categories.length} practice areas</span>
+                </>
+              }
+              description="Everything a UAE company needs over its life, handled by one team."
+            />
+            <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {categories.map((c, i) => {
+                const Icon = c.icon;
+                return (
+                  <Reveal key={c.slug} delay={(i % 4) * 60} className="h-full">
+                    <Link href={`/services/${c.slug}`} className="group glass-dark flex h-full flex-col rounded-3xl p-6 transition-colors hover:border-brand-cyan/30">
+                      <Icon className="h-5 w-5 text-brand-cyan" aria-hidden="true" />
+                      <h3 className="mt-4 text-base font-semibold text-white">{c.label}</h3>
+                      <p className="mt-1.5 flex-1 text-sm leading-relaxed text-slate-400">{c.tagline}</p>
+                      <span className="mt-4 inline-flex items-center gap-1 font-mono text-xs text-brand-cyan">
+                        {c.services.length} services <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </span>
+                    </Link>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
         </section>
 
         {/* Values */}
-        <section className="section bg-white">
+        <section className="section-lg bg-white">
           <div className="container-x">
             <SectionHeading
               eyebrow="How we work"
               title={
                 <>
-                  The values behind <span className="gradient-text">every engagement</span>
+                  Four principles behind <span className="accent">every engagement</span>
                 </>
               }
-              description="Four principles we refuse to compromise on — they are why clients stay with us long after the licence is issued."
+              description="They are why clients stay with us long after the licence is issued."
             />
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {values.map((v, i) => {
                 const Icon = v.icon;
                 return (
-                  <Reveal key={v.title} delay={i * 80}>
-                    <div className="group h-full rounded-2xl border border-slate-100 bg-slate-50/60 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:bg-white hover:shadow-card">
-                      <div className="grid h-12 w-12 place-items-center rounded-xl bg-white text-brand-blue shadow-sm ring-1 ring-slate-100 transition-colors group-hover:bg-brand-gradient group-hover:text-white">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="mt-5 text-base font-bold text-ink-900">{v.title}</h3>
+                  <Reveal key={v.title} delay={i * 70} className="h-full">
+                    <Spotlight className="card card-hover h-full p-7">
+                      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-surface-2 text-brand-blue">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <h3 className="mt-5 text-lg font-semibold text-ink-900">{v.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-ink-500">{v.desc}</p>
-                    </div>
+                    </Spotlight>
                   </Reveal>
                 );
               })}
@@ -235,23 +198,18 @@ export default function AboutPage() {
         </section>
 
         {/* Why Dubai */}
-        <section className="section bg-slate-50/70">
+        <section className="section bg-surface">
           <div className="container-x">
             <SectionHeading
               eyebrow="Why Dubai"
               title={
                 <>
-                  The world&apos;s most rewarding place to{' '}
-                  <span className="gradient-text">build a business</span>
+                  One of the world’s most rewarding places <span className="accent">to build a business</span>
                 </>
               }
-              description="There's a reason founders from 120+ countries choose the UAE — and why most of them never leave."
             />
-            {/* The city, not the office — this section is about Dubai itself,
-                so an iconic landmark belongs here rather than beside the
-                story copy about the Deira office. */}
             <Reveal className="mt-14">
-              <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-slate-200 shadow-soft sm:aspect-[16/7]">
+              <div className="photo-frame aspect-[16/9] !rounded-[2rem] sm:aspect-[16/7]">
                 <Image
                   src={siteImages.museumOfTheFutureDubai.src}
                   alt={siteImages.museumOfTheFutureDubai.alt}
@@ -262,17 +220,15 @@ export default function AboutPage() {
                 />
               </div>
             </Reveal>
-            <div className="relative -mt-10 grid gap-5 px-3 sm:-mt-16 sm:grid-cols-2 sm:px-6 lg:-mt-20 lg:grid-cols-4 lg:px-8">
+            <div className="relative -mt-10 grid gap-4 px-3 sm:-mt-16 sm:grid-cols-2 sm:px-6 lg:-mt-20 lg:grid-cols-4 lg:px-8">
               {whyDubai.map((w, i) => {
                 const Icon = w.icon;
                 return (
-                  <Reveal key={w.title} delay={i * 80}>
-                    <div className="h-full rounded-2xl border border-slate-100 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-soft">
-                      <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand-gradient-soft text-brand-blue">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="mt-5 text-base font-bold text-ink-900">{w.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-ink-500">{w.desc}</p>
+                  <Reveal key={w.title} delay={i * 70} className="h-full">
+                    <div className="card h-full p-6">
+                      <Icon className="h-5 w-5 text-brand-blue" aria-hidden="true" />
+                      <h3 className="mt-4 text-base font-semibold text-ink-900">{w.title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-ink-500">{w.desc}</p>
                     </div>
                   </Reveal>
                 );
@@ -281,14 +237,36 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <WhyUs />
-        <Testimonials />
-        <CTABand />
+        {/* Office */}
+        <section className="section bg-white">
+          <div className="container-x">
+            <Reveal>
+              <div className="surface-navy on-dark noise flex flex-col gap-8 rounded-[2rem] p-8 sm:p-12 lg:flex-row lg:items-center lg:justify-between">
+                <div className="relative z-[2] flex items-start gap-5">
+                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/10 text-brand-cyan">
+                    <MapPin className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-brand-cyan">Visit us</p>
+                    <p className="mt-2 text-display-sm font-semibold text-white">{company.address}</p>
+                    <p className="mt-1.5 text-sm text-slate-400">{company.hours}</p>
+                  </div>
+                </div>
+                <div className="relative z-[2] flex flex-col gap-3 sm:flex-row">
+                  <a href={mapsHref} target="_blank" rel="noopener noreferrer" className="btn-white">
+                    <Landmark className="h-4 w-4" aria-hidden="true" /> Get directions
+                  </a>
+                  <Link href="/contact" className="btn-glass">
+                    Contact the team
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         <Contact source="About page" />
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <MobileActionBar />
     </>
   );
 }

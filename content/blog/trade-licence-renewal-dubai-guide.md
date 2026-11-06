@@ -51,4 +51,4 @@ Adding an activity, changing a manager, upgrading your visa quota or moving offi
 
 ## Never miss a renewal again
 
-Smartgic Visa tracks your expiry, renews your Ejari and licence before the deadline, and keeps your establishment card and visas aligned — see our [trade licence renewal service](/services/trade-license-renewals) or [talk to us](/#contact) before your date comes around.
+Smartgic Visa tracks your expiry, renews your Ejari and licence before the deadline, and keeps your establishment card and visas aligned — see our [trade licence renewal service](/services/trade-license-renewals) or [talk to us](/contact) before your date comes around.

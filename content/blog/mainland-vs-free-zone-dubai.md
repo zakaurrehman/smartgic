@@ -63,4 +63,4 @@ Banks assess your activity and structure, not just your jurisdiction. Mainland c
 
 ## Talk it through before you commit
 
-Smartgic Visa sets up companies in **40+ free zones and on the Dubai mainland**, so our advice is genuinely neutral — we recommend what fits, not what we sell. [Book a free consultation](/#contact) or compare options on our [Free Zones page](/free-zones).
+Smartgic Visa sets up companies **on the mainland, in free zones and offshore across all seven emirates**, so our advice is genuinely neutral — we recommend what fits, not what we sell. [Book a free consultation](/contact) or compare options on our [Free Zones page](/free-zones).

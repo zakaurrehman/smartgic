@@ -17,7 +17,7 @@ export default function GuidesSection({
   eyebrow,
   title,
   description,
-  className = 'bg-slate-50/70',
+  className = 'bg-surface',
 }: {
   posts: PostSummary[];
   eyebrow: string;
@@ -52,7 +52,7 @@ export default function GuidesSection({
         <div className="mt-12 text-center">
           <Link href="/blog" className="btn-ghost group">
             View all guides
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </Link>
         </div>
       </div>

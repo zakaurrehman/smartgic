@@ -247,7 +247,7 @@ export default function EligibilityChecker() {
       <section className="section bg-white">
         <div className="container-x">
           <div className="mx-auto max-w-3xl">
-            <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-soft sm:p-10">
+            <div className="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-soft sm:p-10">
               <span
                 className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-wider ${style.className}`}
               >
@@ -255,9 +255,9 @@ export default function EligibilityChecker() {
                 {style.label}
               </span>
 
-              <h2 className="mt-5 text-2xl font-extrabold leading-tight sm:text-3xl">
+              <h2 className="mt-5 text-2xl font-semibold leading-tight sm:text-3xl">
                 {profile.label} —{' '}
-                <span className="gradient-text">
+                <span className="accent">
                   {verdict === 'alternative' ? 'here is the practical route' : 'here is where you stand'}
                 </span>
               </h2>
@@ -302,8 +302,8 @@ export default function EligibilityChecker() {
               </div>
             </div>
 
-            <div className="mt-8 rounded-3xl border border-slate-100 bg-slate-50/70 p-6 shadow-soft sm:p-10">
-              <h2 className="text-2xl font-extrabold text-ink-900">Get a proper assessment</h2>
+            <div className="mt-8 rounded-3xl border border-slate-200/70 bg-surface p-6 shadow-soft sm:p-10">
+              <h2 className="text-2xl font-semibold text-ink-900">Get a proper assessment</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-500">
                 Send your details and an advisor will confirm the current criteria for your
                 category, tell you honestly whether it is worth applying now, and set out exactly
@@ -349,7 +349,7 @@ export default function EligibilityChecker() {
               </div>
             </div>
 
-            <h2 className="mt-8 text-2xl font-extrabold leading-tight text-ink-900 sm:text-3xl">
+            <h2 className="mt-8 text-2xl font-semibold leading-tight text-ink-900 sm:text-3xl">
               {profile.question}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-ink-500">{profile.questionHint}</p>
@@ -384,7 +384,7 @@ export default function EligibilityChecker() {
       <div className="container-x">
         <div className="mx-auto max-w-4xl">
           <p className="text-xs font-bold uppercase tracking-wider text-ink-400">Step 1 of 2</p>
-          <h2 className="mt-2.5 text-2xl font-extrabold leading-tight text-ink-900 sm:text-3xl">
+          <h2 className="mt-2.5 text-2xl font-semibold leading-tight text-ink-900 sm:text-3xl">
             Which of these describes you best?
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-ink-500 sm:text-base">
@@ -421,8 +421,8 @@ export default function EligibilityChecker() {
             </div>
           </fieldset>
 
-          <div className="mt-10 flex items-start gap-3 rounded-2xl border border-slate-100 bg-slate-50/70 p-5">
-            <Briefcase className="mt-0.5 h-5 w-5 shrink-0 text-brand-cyan-dark" />
+          <div className="mt-10 flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-surface p-5">
+            <Briefcase className="mt-0.5 h-5 w-5 shrink-0 text-teal" />
             <p className="text-xs leading-relaxed text-ink-500">
               None of these quite fit? There are additional categories including executive directors,
               pioneers of humanitarian work and frontline heroes.{' '}

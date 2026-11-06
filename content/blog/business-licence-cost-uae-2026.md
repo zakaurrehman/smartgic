@@ -61,4 +61,4 @@ A lean free zone consultancy realistically runs on **AED 12–18k per year** all
 
 ## Get an exact all-inclusive quote
 
-Smartgic Visa quotes are itemised and all-inclusive — you see the authority's fees and ours, line by line. Compare packages on our [pricing page](/pricing) or [get your exact number](/#contact) in one free call.
+Smartgic Visa quotes are itemised and all-inclusive — you see the authority's fees and ours, line by line. Compare packages on our [pricing page](/pricing) or [get your exact number](/contact) in one free call.

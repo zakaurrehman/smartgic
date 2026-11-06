@@ -1,8 +1,4 @@
 import type { Metadata } from 'next';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import { company } from '@/lib/data';
 
@@ -88,13 +84,12 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <>
-      <Header />
       <main id="main">
         <PageHero
           eyebrow="Legal"
           title={
             <>
-              Privacy <span className="gradient-text">Policy</span>
+              Privacy <span className="accent">Policy</span>
             </>
           }
           subtitle="How we collect, use and protect your information across the Smartgic website and client portal app. Last updated: 23 June 2026."
@@ -106,7 +101,7 @@ export default function PrivacyPage() {
             <div className="mx-auto max-w-3xl space-y-10">
               {sections.map((s) => (
                 <div key={s.h}>
-                  <h2 className="text-xl font-extrabold text-ink-900">{s.h}</h2>
+                  <h2 className="text-xl font-semibold text-ink-900">{s.h}</h2>
                   {s.p.map((para, i) => (
                     <p key={i} className="mt-3 text-[0.95rem] leading-relaxed text-ink-500">
                       {para}
@@ -118,9 +113,6 @@ export default function PrivacyPage() {
           </div>
         </section>
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <MobileActionBar />
     </>
   );
 }

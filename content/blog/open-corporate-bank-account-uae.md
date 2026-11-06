@@ -59,4 +59,4 @@ Minimum balance requirements range from roughly **AED 0 (digital) to AED 50,000+
 
 ## Skip the trial and error
 
-Smartgic Visa prepares bank-ready files and introduces you directly to relationship managers at the right banks — a ~95% approval rate across our clients. See our [bank account opening service](/services/bank-account-opening) or [book a free consultation](/#contact).
+Smartgic Visa prepares bank-ready files and introduces you directly to relationship managers at the right banks — the bank makes the final decision, and a complete file gives yours its best chance. See our [bank account opening service](/services/bank-account-opening) or [book a free consultation](/contact).

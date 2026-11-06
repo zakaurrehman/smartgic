@@ -1,8 +1,31 @@
 import {
-  Building2, FileCheck2, IdCard, Plane, Landmark,
-  Briefcase, Stamp, Users, Wallet, ShieldCheck, Receipt,
-  Globe2, Crown, FileSignature, BadgeCheck,
+  BadgeCheck,
+  Building,
+  Boxes,
+  HeartPulse,
+  Laptop,
+  Layers,
+  Megaphone,
+  MessagesSquare,
+  Scale,
+  Ship,
+  ShieldCheck,
+  ShoppingCart,
+  UtensilsCrossed,
+  UserCheck,
+  Wallet,
 } from 'lucide-react';
+
+/**
+ * Business facts and shared marketing content.
+ *
+ * Everything here must be true and checkable. Template statistics ("5,000+
+ * companies", "98% visa success", "120+ nationalities"), a "4.9/5" rating and
+ * three named testimonials were removed on 2026-11-06 at the owner's
+ * instruction because none could be verified. Do not reintroduce figures,
+ * ratings or reviews without a real, citable source (e.g. a Google Business
+ * Profile).
+ */
 
 export const company = {
   name: 'SMARTGIC',
@@ -19,111 +42,10 @@ export const company = {
   hours: 'Mon – Sat, 9:00 AM – 6:00 PM (GST)',
 };
 
-export const stats = [
-  { value: '5,000+', label: 'Companies Formed' },
-  { value: '40+', label: 'Free Zones Covered' },
-  { value: '98%', label: 'Visa Success Rate' },
-  { value: '120+', label: 'Nationalities Served' },
-];
-
-export const services = [
-  {
-    icon: Building2,
-    title: 'Company Formation',
-    desc: 'Mainland, Free Zone & Offshore company setup with 100% foreign ownership and the right legal structure for your goals.',
-    tag: 'Setup',
-  },
-  {
-    icon: FileCheck2,
-    title: 'Trade License',
-    desc: 'Commercial, professional and industrial trade licenses issued and renewed fast — fully compliant with DET regulations.',
-    tag: 'Licensing',
-  },
-  {
-    icon: Plane,
-    title: 'Residence Visa Processing',
-    desc: 'Investor, partner, employment and family residence visas handled end-to-end, from entry permit to stamping.',
-    tag: 'Visas',
-  },
-  {
-    icon: IdCard,
-    title: 'Emirates ID & Medical',
-    desc: 'Emirates ID registration, medical fitness booking and biometric appointments managed without the queues.',
-    tag: 'Visas',
-  },
-  {
-    icon: Crown,
-    title: 'Golden Visa (10-Year)',
-    desc: 'Long-term residency for investors, entrepreneurs, talents and skilled professionals — eligibility to approval.',
-    tag: 'Visas',
-  },
-  {
-    icon: Briefcase,
-    title: 'PRO & Government Liaison',
-    desc: 'Dedicated PRO services across DET, GDRFA, MOHRE and all government departments to keep you 100% compliant.',
-    tag: 'PRO',
-  },
-  {
-    icon: Stamp,
-    title: 'Document Attestation',
-    desc: 'Certificate, degree and contract attestation through MOFA, embassies and notary — accepted worldwide.',
-    tag: 'PRO',
-  },
-  {
-    icon: FileSignature,
-    title: 'MOA / AOA Drafting',
-    desc: 'Memorandum and Articles of Association drafted, amended and legally notarised by our in-house specialists.',
-    tag: 'Legal',
-  },
-  {
-    icon: Landmark,
-    title: 'Establishment & Immigration Card',
-    desc: 'Establishment card and immigration card issuance so you can sponsor employees and dependents with ease.',
-    tag: 'PRO',
-  },
-  {
-    icon: Receipt,
-    title: 'Corporate Tax & VAT',
-    desc: 'Corporate Tax registration, VAT registration and ongoing filing handled by qualified tax consultants.',
-    tag: 'Compliance',
-  },
-  {
-    icon: Wallet,
-    title: 'Bank Account Opening',
-    desc: 'Personal and corporate bank account assistance with leading UAE banks — introductions and full paperwork.',
-    tag: 'Banking',
-  },
-  {
-    icon: Users,
-    title: 'Dedicated Relationship Manager',
-    desc: 'A single point of contact who knows your file and guides you through every milestone, every renewal.',
-    tag: 'Support',
-  },
-];
-
-export const process = [
-  {
-    step: '01',
-    title: 'Free Consultation',
-    desc: 'We learn your business activity, goals and budget, then recommend the ideal jurisdiction and structure.',
-  },
-  {
-    step: '02',
-    title: 'Name & Initial Approval',
-    desc: 'We reserve your trade name and secure initial approval from the relevant authority on your behalf.',
-  },
-  {
-    step: '03',
-    title: 'Documentation & License',
-    desc: 'We draft your MOA, compile documents and issue your trade license — typically within a few working days.',
-  },
-  {
-    step: '04',
-    title: 'Visa, ID & Banking',
-    desc: 'We process residence visas, Emirates ID and open your corporate bank account so you are ready to trade.',
-  },
-];
-
+/**
+ * Setup packages. Starting prices confirmed by the owner (2026-11-06); they are
+ * Smartgic's service fee and exclude government and authority fees.
+ */
 export const packages = [
   {
     name: 'Free Zone',
@@ -131,9 +53,9 @@ export const packages = [
     featured: true,
     price: 'AED 5,750',
     period: 'starting from',
-    summary: '100% ownership, fast setup and zero corporate tax up to thresholds — ideal for startups & global trade.',
+    summary: 'Full ownership and a packaged licence with a flexi-desk — ideal for startups, consultancies and international trade.',
     features: [
-      'Trade License (1 year)',
+      'Trade licence (1 year)',
       '100% foreign ownership',
       'Trade name reservation',
       'Up to 1 investor visa allocation',
@@ -147,10 +69,10 @@ export const packages = [
     featured: false,
     price: 'AED 18,900',
     period: 'starting from',
-    summary: 'Trade freely across the UAE and bid for government contracts with no restriction on local market access.',
+    summary: 'Trade with any customer in the UAE and bid for government work, with a licence from Dubai’s Department of Economy and Tourism.',
     features: [
-      'DET commercial license',
-      'Unlimited visa eligibility',
+      'DET commercial licence',
+      'Visa quota sized to your office',
       'MOA drafting & notarisation',
       'Local market access',
       'Establishment card',
@@ -163,13 +85,13 @@ export const packages = [
     featured: false,
     price: 'AED 12,900',
     period: 'starting from',
-    summary: 'Multiple activities, larger visa quotas and prestige free zones for growing teams and holding companies.',
+    summary: 'Multiple activities, larger visa allocations and prestige free zones for growing teams and holding structures.',
     features: [
-      'Multi-activity license',
+      'Multi-activity licence',
       'Up to 6 visa allocations',
       'Premium free zone address',
       'Corporate bank assistance',
-      'Corporate Tax registration',
+      'Corporate tax registration',
       'Priority PRO support',
     ],
   },
@@ -177,98 +99,116 @@ export const packages = [
 
 export const goldenVisaPoints = [
   '10-year renewable UAE residency',
-  'Sponsor your family & domestic staff',
-  'No local sponsor required',
-  '6-month multiple-entry stay outside UAE',
+  'Self-sponsored — no employer needed',
+  'Sponsor your family and domestic staff',
+  'Stays valid during long periods abroad',
 ];
 
+/** Reasons to work with Smartgic — each one something a visitor can check. */
 export const whyUs = [
   {
     icon: ShieldCheck,
-    title: 'Licensed & Compliant',
-    desc: `Officially licensed by Dubai DET (License ${company.licenseNo}). Every filing is handled by the book.`,
+    title: 'Licensed in Dubai',
+    desc: `A DET-licensed consultancy (licence ${company.licenseNo}) with an office you can visit in Deira.`,
   },
   {
-    icon: Globe2,
-    title: 'Global Clientele',
-    desc: 'We serve founders from 120+ nationalities, with multilingual advisors who understand cross-border needs.',
+    icon: UserCheck,
+    title: 'One named adviser',
+    desc: 'The same person owns your file from the first call to every renewal — you are never passed around.',
   },
   {
     icon: BadgeCheck,
-    title: 'Transparent Pricing',
-    desc: 'Clear, all-inclusive quotes with no hidden government-fee surprises — you always know what you pay.',
+    title: 'Itemised quotes',
+    desc: 'Our fee and government fees on separate lines, in writing, before you commit to anything.',
   },
   {
-    icon: Users,
-    title: 'End-to-End Service',
-    desc: 'From license to visa, banking, tax and renewals, one team owns your journey from day one onwards.',
+    icon: Layers,
+    title: 'Setup to audit, one team',
+    desc: 'Formation, visas, PRO, corporate tax, VAT, accounting and audit — no hand-offs between firms.',
+  },
+  {
+    icon: Scale,
+    title: 'Honest advice',
+    desc: 'We will tell you when a cheaper jurisdiction or a simpler structure does the same job.',
+  },
+  {
+    icon: MessagesSquare,
+    title: 'Reach us your way',
+    desc: 'WhatsApp, phone, email or in person — whichever suits you, during clearly stated business hours.',
   },
 ];
 
-export const testimonials = [
-  {
-    quote:
-      'Smartgic set up my DMCC company and processed my investor visa in under two weeks. The most seamless experience I have had in Dubai.',
-    name: 'Daniyal R.',
-    role: 'Founder, Logistics Tech',
-    country: '🇵🇰',
-  },
-  {
-    quote:
-      'Their team handled my Golden Visa and corporate bank account end-to-end. Professional, responsive and genuinely transparent on fees.',
-    name: 'Sarah M.',
-    role: 'Managing Director, Consultancy',
-    country: '🇬🇧',
-  },
-  {
-    quote:
-      'I relocated my e-commerce business from Europe to an IFZA free zone with zero stress. My relationship manager replied within minutes.',
-    name: 'Andrei V.',
-    role: 'CEO, E-commerce',
-    country: '🇷🇴',
-  },
+/** Sector entry points shown on the homepage. */
+export const sectors = [
+  { icon: Boxes, title: 'Trading & distribution', desc: 'General trading, import/export and wholesale, from a single activity to port-side warehousing.' },
+  { icon: ShoppingCart, title: 'E-commerce & retail', desc: 'Online stores and marketplaces, with activity codes that payment gateways accept.' },
+  { icon: Laptop, title: 'Technology & SaaS', desc: 'Software, IT services and AI businesses, including the clusters where your talent already is.' },
+  { icon: Ship, title: 'Logistics & freight', desc: 'Forwarding, fulfilment and storage, matched to the port or airport your goods move through.' },
+  { icon: Building, title: 'Real estate & construction', desc: 'Brokerage, development and contracting, including the mainland licences these usually need.' },
+  { icon: Wallet, title: 'Finance & family offices', desc: 'Asset management and wealth structures in the UAE’s common-law financial centres.' },
+  { icon: Megaphone, title: 'Media & creative', desc: 'Agencies, production and design, including freelance permits for solo practitioners.' },
+  { icon: UtensilsCrossed, title: 'F&B & hospitality', desc: 'Restaurants, cafés and cloud kitchens, where mainland licensing and municipality approvals apply.' },
+  { icon: HeartPulse, title: 'Healthcare & wellness', desc: 'Clinics and practitioners, with health-authority licensing alongside the trade licence.' },
+];
+
+/**
+ * Authorities and zones whose applications we prepare and file. Names only —
+ * no logos, and no suggestion of affiliation (see the independence notice).
+ */
+export const authorities = [
+  'Department of Economy & Tourism',
+  'GDRFA Dubai',
+  'ICP',
+  'MOHRE',
+  'Federal Tax Authority',
+  'Ministry of Economy',
+  'Dubai Customs',
+  'DMCC',
+  'IFZA',
+  'Meydan Free Zone',
+  'JAFZA',
+  'DIFC',
+  'ADGM',
+  'RAKEZ',
+  'SHAMS',
 ];
 
 export const faqs = [
   {
     q: 'How long does it take to set up a company in Dubai?',
-    a: 'Most free zone companies are formed within 3–5 working days once documents are ready. Mainland setups and certain regulated activities may take a little longer depending on approvals.',
+    a: 'It depends on the jurisdiction, the activity and how quickly documents are ready. Many free zone licences are issued within days of a complete application; mainland companies and regulated activities take longer because of additional approvals. We give you a realistic timeline at the first consultation.',
   },
   {
     q: 'Can a foreigner own 100% of a UAE company?',
-    a: 'Yes. Free zone companies have always allowed 100% foreign ownership, and most mainland commercial and professional activities now permit full foreign ownership too. We advise on the best fit for your activity.',
+    a: 'Yes. Free zone companies have always allowed 100% foreign ownership, and most mainland commercial and professional activities now do too. A short list of strategic activities has restrictions — we confirm the position for your activity before you apply.',
   },
   {
-    q: 'Do I need to be in the UAE to start the process?',
-    a: 'No. We can begin your company formation remotely. A short visit is usually only required for the medical, Emirates ID biometrics and bank account verification, which we schedule efficiently for you.',
+    q: 'Do I need to be in the UAE to start?',
+    a: 'No. Most of the formation can be done remotely. You will usually need a short visit for the residence visa medical test, Emirates ID biometrics and, for most banks, the account-opening meeting — we schedule them together.',
   },
   {
     q: 'What is included in your fees?',
-    a: 'Our quotes are all-inclusive of our professional service charges. Government and authority fees are itemised transparently so you always see exactly what goes to the authority versus our service.',
+    a: 'Our quote covers our professional fee for the scope agreed in writing. Government and authority fees are itemised separately and passed through at cost, so you can see exactly what goes to the authority and what comes to us.',
   },
   {
-    q: 'Do you help with the UAE Golden Visa?',
-    a: 'Absolutely. We assess your eligibility as an investor, entrepreneur, skilled professional or talent, then compile and submit your application for the 10-year renewable Golden Visa.',
+    q: 'Does my company need to register for corporate tax and VAT?',
+    a: 'Almost every UAE company must register for corporate tax and file an annual return, even when no tax is due. VAT registration depends on your taxable supplies — it becomes mandatory above AED 375,000 a year. We register you for both where required and keep the returns on schedule.',
   },
   {
-    q: 'Can you handle visa and PRO renewals after setup?',
-    a: 'Yes. We offer ongoing PRO and compliance support — license renewals, visa renewals, Emirates ID, attestation and government liaison — so your business stays fully compliant year after year.',
+    q: 'Do you handle accounting, audit and renewals after setup?',
+    a: 'Yes. Bookkeeping, payroll, financial statements, audits (carried out by UAE-registered auditors), licence and visa renewals and PRO work are all part of what we do, so your company stays compliant year after year with one team.',
   },
 ];
 
-
-/** Google Maps deep link for the office address (used by contact cards & directions). */
+/** Google Maps deep link for the office address (contact cards & directions). */
 export const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   `${company.legalName}, ${company.address}`,
 )}`;
 
 /**
- * Social profiles.
- *
- * Only entries with a real URL are rendered. Previously these pointed at "#"
- * in the footer and at bare platform homepages in the Organization schema,
- * which sent visitors nowhere and gave search engines incorrect `sameAs` data.
- * Fill in the href as each profile goes live and it appears automatically.
+ * Social profiles. Only entries with a real URL are rendered, and only those
+ * feed the Organization schema's `sameAs`. Fill in the href as each profile
+ * goes live.
  */
 export const socialLinks: { label: string; href: string }[] = [
   { label: 'LinkedIn', href: '' },
@@ -277,3 +217,26 @@ export const socialLinks: { label: string; href: string }[] = [
 ];
 
 export const activeSocialLinks = socialLinks.filter((s) => s.href.trim().length > 0);
+
+/**
+ * How an engagement runs, whatever the service — used on category hubs and
+ * the homepage. Describes Smartgic's own way of working, not authority timings.
+ */
+export const engagementSteps = [
+  {
+    title: 'Free consultation',
+    desc: 'We learn what you are trying to do, check the facts that change the answer, and tell you the cleanest route — including when the simpler option is the right one.',
+  },
+  {
+    title: 'Scope & itemised quote',
+    desc: 'You receive a written scope and a quote that separates our fee from government and authority fees, before you commit to anything.',
+  },
+  {
+    title: 'We do the work',
+    desc: 'One adviser prepares the documents, submits to each authority, answers their queries and keeps you updated at every step.',
+  },
+  {
+    title: 'Ongoing support',
+    desc: 'Renewals, filings and deadlines are tracked on our calendar, so the next obligation is handled before it becomes urgent.',
+  },
+];

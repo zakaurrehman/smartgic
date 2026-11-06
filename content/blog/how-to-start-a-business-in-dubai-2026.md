@@ -62,4 +62,4 @@ Beware of quotes that exclude government fees — always ask for an all-inclusiv
 
 ## Start with a free consultation
 
-Smartgic Visa is a DET-licensed consultancy (licence No. 1394564) based in Deira, Dubai. We handle the entire journey — activity selection, licence, visas, bank account — end to end. [Book a free consultation](/#contact) or explore our [company registration service](/services/company-registration).
+Smartgic Visa is a DET-licensed consultancy (licence No. 1394564) based in Deira, Dubai. We handle the entire journey — activity selection, licence, visas, bank account — end to end. [Book a free consultation](/contact) or explore our [company registration service](/services/company-registration).

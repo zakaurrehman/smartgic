@@ -55,4 +55,4 @@ The logic is identical but runs through the free zone's own portal and forms; so
 
 ## Do it cleanly, once
 
-Smartgic Visa manages the whole transfer — SPA, resolutions, notary, authority filing, and the visa/card/bank realignment afterwards — discreetly and typically within a week. See our [share transfer service](/services/share-transfer) or [speak to an advisor](/#contact).
+Smartgic Visa manages the whole transfer — SPA, resolutions, notary, authority filing, and the visa/card/bank realignment afterwards — discreetly and typically within a week. See our [share transfer service](/services/share-transfer) or [speak to an advisor](/contact).

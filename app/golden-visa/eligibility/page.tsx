@@ -1,16 +1,11 @@
 import type { Metadata } from 'next';
+import { siteImages } from '@/lib/site-images';
 import { DEFAULT_SHARE_IMAGE } from '@/lib/seo';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/ui/WhatsAppButton';
-import MobileActionBar from '@/components/ui/MobileActionBar';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Accordion from '@/components/ui/Accordion';
-import Disclaimer from '@/components/ui/Disclaimer';
 import EligibilityChecker from '@/components/tools/EligibilityChecker';
-import CTABand from '@/components/sections/CTABand';
 
 const SITE = 'https://www.smartgicvisa.com';
 const url = `${SITE}/golden-visa/eligibility`;
@@ -101,13 +96,14 @@ export default function EligibilityPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
       <main id="main">
         <PageHero
+          variant="center"
+          image={siteImages.dubaiTerraceSkyline}
           eyebrow="Free tool"
           title={
             <>
-              Which Golden Visa category <span className="gradient-text">fits you?</span>
+              Which Golden Visa category <span className="accent">fits you?</span>
             </>
           }
           subtitle="Two questions, about thirty seconds. You get the category that matches your profile and an honest read on whether applying is worth your time right now — including when the answer is “not yet”."
@@ -121,14 +117,14 @@ export default function EligibilityPage() {
 
         <EligibilityChecker />
 
-        <section className="section bg-slate-50/70">
+        <section className="section bg-surface">
           <div className="container-x">
             <SectionHeading
               eyebrow="About this check"
               title={
                 <>
                   What this tool can — and cannot —{' '}
-                  <span className="gradient-text">tell you</span>
+                  <span className="accent">tell you</span>
                 </>
               }
               description="Golden Visa advice is full of confident claims. Here is exactly how far this goes."
@@ -138,13 +134,7 @@ export default function EligibilityPage() {
             </div>
           </div>
         </section>
-
-        <Disclaimer />
-        <CTABand ctaHref="/contact" />
       </main>
-      <Footer />
-      <WhatsAppButton />
-      <MobileActionBar />
     </>
   );
 }

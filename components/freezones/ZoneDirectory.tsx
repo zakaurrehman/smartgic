@@ -129,7 +129,7 @@ export default function ZoneDirectory() {
           }`}
         >
           <div className="overflow-hidden">
-            <div className="space-y-4 rounded-2xl border border-slate-100 bg-slate-50/70 p-5">
+            <div className="space-y-4 rounded-2xl border border-slate-200/70 bg-surface p-5">
               <FilterRow
                 label="Type"
                 options={['All', ...zoneCategories]}
@@ -182,7 +182,7 @@ export default function ZoneDirectory() {
               <button type="button" onClick={reset} className="btn-ghost">
                 Clear filters
               </button>
-              <Link href="/contact" className="btn-gradient">
+              <Link href="/contact" className="btn-primary">
                 Ask an advisor <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -193,10 +193,10 @@ export default function ZoneDirectory() {
               <li key={z.slug} className="h-full">
                 <Link
                   href={`/free-zones/${z.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
+                  className="group flex h-full flex-col rounded-2xl border border-slate-200/70 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <span className="grid h-12 shrink-0 place-items-center rounded-xl bg-brand-gradient px-3 text-sm font-extrabold tracking-tight text-white">
+                    <span className="grid h-12 shrink-0 place-items-center rounded-xl bg-brand-gradient px-3 text-sm font-semibold tracking-tight text-white">
                       {z.abbr}
                     </span>
                     <span
@@ -225,7 +225,7 @@ export default function ZoneDirectory() {
                     ))}
                   </ul>
 
-                  <span className="mt-5 inline-flex items-center gap-1.5 border-t border-slate-100 pt-4 text-sm font-semibold text-brand-blue">
+                  <span className="mt-5 inline-flex items-center gap-1.5 border-t border-slate-200/70 pt-4 text-sm font-semibold text-brand-blue">
                     View jurisdiction
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
@@ -234,7 +234,7 @@ export default function ZoneDirectory() {
             ))}
           </ul>
         ) : (
-          <div className="mt-8 overflow-hidden rounded-2xl border border-slate-100 shadow-card">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200/70 shadow-card">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[720px] border-collapse text-left text-sm">
                 <caption className="sr-only">
@@ -251,7 +251,7 @@ export default function ZoneDirectory() {
                 </thead>
                 <tbody>
                   {results.map((z) => (
-                    <tr key={z.slug} className="border-t border-slate-100 align-top hover:bg-slate-50/60">
+                    <tr key={z.slug} className="border-t border-slate-200/70 align-top hover:bg-surface">
                       <th scope="row" className="px-5 py-4 font-semibold">
                         <Link
                           href={`/free-zones/${z.slug}`}

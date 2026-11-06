@@ -49,4 +49,4 @@ Consultant service fees (on top of government costs) typically run **AED 1,500�
 
 ## Judge us by the same test
 
-Ask Smartgic the five questions above — we welcome them. Licensed, itemised quotes, one named manager per file, and everything from licence to visa to bank in one engagement. [Start with a free consultation](/#contact).
+Ask Smartgic the five questions above — we welcome them. Licensed, itemised quotes, one named manager per file, and everything from licence to visa to bank in one engagement. [Start with a free consultation](/contact).

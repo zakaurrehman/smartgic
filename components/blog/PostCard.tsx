@@ -34,15 +34,15 @@ export default function PostCard({
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/20 hover:shadow-soft"
+      className="group card card-hover flex h-full flex-col overflow-hidden"
     >
       <PostCover post={post} sizes={sizes} zoomOnHover />
 
       <div className="flex flex-1 flex-col p-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-brand-cyan-dark">
+        <span className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-teal">
           {post.category}
         </span>
-        <Heading className="mt-2 text-lg font-bold leading-snug text-ink-900 transition-colors group-hover:text-brand-blue">
+        <Heading className="mt-2.5 text-lg font-semibold leading-snug text-ink-900 transition-colors group-hover:text-brand-blue">
           {post.title}
         </Heading>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">{post.description}</p>
@@ -58,7 +58,7 @@ export default function PostCard({
           </span>
         </div>
 
-        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
+        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-blue">
           Read article
           <ArrowUpRight
             className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
